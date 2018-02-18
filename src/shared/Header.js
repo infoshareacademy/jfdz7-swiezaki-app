@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
-import  from './'
+
 
 class Header extends Component {
  render() {
    return (
-       <React.Fragment></React.Fragment>
-     }
+       <React.Fragment>
+           <div>Header</div>
+       </React.Fragment>
+   )
      }
 }
 

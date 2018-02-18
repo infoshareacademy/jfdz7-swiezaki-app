@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
-import from './'
+
 
 class Search extends Component {
  render() {
    return (
-       <React.Fragment></React.Fragment>
-     }
+       <React.Fragment>
+           <div>Search</div>
+       </React.Fragment>
+   )
      }
 }
 

@@ -1,11 +1,18 @@
 import React, { Component } from 'react'
 
+import Header from '../shared/Header'
+import Search from '../shared/Search'
+import Footer from '../shared/Footer'
+
+
 
 class App extends Component {
     render (){
         return (
             <React.Fragment>
-                <div>test</div>
+                <Header/>
+                <Search/>
+                <Footer/>
             </React.Fragment>
         )
     }
