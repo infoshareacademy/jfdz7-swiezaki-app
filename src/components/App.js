@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import Header from './shared/Header'
-import Search from './shared/Search'
+import Search from './Search'
 import Footer from './shared/Footer'
 import Login from './Login'
 
