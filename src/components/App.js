@@ -4,7 +4,7 @@ import { Route, BrowserRouter} from 'react-router-dom'
 import Header from './shared/Header'
 import Footer from './shared/Footer'
 import Login from './Login'
-import Search from './shared/Search'
+import Search from './Search'
 
 
 
