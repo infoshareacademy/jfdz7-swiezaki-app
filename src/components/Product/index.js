@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import Browser from './Browser';
 
-class Search extends Component {
+class Product extends Component {
     render() {
+
         return (
             <React.Fragment>
-                <Browser />
+                To jest produkt o id: przykład
             </React.Fragment>
-        )
+        );
     }
 }
 
-export default Search
+export default Product;
