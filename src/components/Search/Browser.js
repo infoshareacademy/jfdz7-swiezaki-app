@@ -26,7 +26,7 @@ class Browser extends Component {
                 <button>Wyszukaj</button>
                 <br/>
                 { this.state.parts.map((part,idx) =>
-                    <PartsList name={ part.name } producer= { part.producer } type={ part.type } date={ part.date } key={ idx }/>)}
+                    <PartsList id = { part.id } name={ part.name } producer= { part.producer } type={ part.type } date={ part.date } key={ idx }/>)}
             </React.Fragment>
         );
     }

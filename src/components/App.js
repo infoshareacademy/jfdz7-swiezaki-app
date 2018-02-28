@@ -5,6 +5,7 @@ import Header from './shared/Header'
 import Search from './Search'
 import Footer from './shared/Footer'
 import Login from './Login'
+import Product from './Product'
 
 
 
@@ -15,7 +16,8 @@ class App extends Component {
             <React.Fragment>
                 <Header/>
                 <Route path="/" exact component={Login}/>
-                <Route path="/search" component={Search}/>
+                <Route path="/search" exact component={Search}/>
+                <Route path="/search/:id" component={Product}/>
                 <Footer/>
             </React.Fragment>
             </BrowserRouter>

@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class PartsList extends Component {
 
     render() {
 
-        const { name, producer, type, date } = this.props;
+        const { id, name, producer, type, date } = this.props;
 
         return (
             <React.Fragment>
                 <ul>
-                    <li>{ name } <strong>{ producer }</strong> { type } { date }</li>
+                    <li>
+                        <Link to={`/search/${ id }`}>{ name } <strong>{ producer }</strong>
+                            { type } { date }</Link>
+                    </li>
                 </ul>
             </React.Fragment>
         );
