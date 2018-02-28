@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import Browser from './Browser';
 
 class Search extends Component {
     render() {
         return (
             <React.Fragment>
-                <input type="text" size="40" />
-                <button>Wyszukaj</button>
+                <Browser />
             </React.Fragment>
         )
     }
