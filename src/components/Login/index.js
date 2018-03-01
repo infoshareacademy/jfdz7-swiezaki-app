@@ -12,6 +12,7 @@ class Login extends Component {
                 <input type="name"/><br/>
                 <input type="password"/><br/>
                 <button onClick={this.handleSubmit}>Zaloguj</button>
+                <input type="checkbox"/><label>Zapamiętaj mnie</label>
             </React.Fragment>
         )
     }
