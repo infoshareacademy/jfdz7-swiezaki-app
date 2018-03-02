@@ -27,32 +27,12 @@ class Browser extends Component {
         this.setState({
             [name]: value
         });
-
-        name === 'vehicle' ?
-            console.log(`
-                samochody: ${ value }, 
-                części: ${ this.state.category }, 
-                wpis użytkownika: ${ this.state.userInput }
-                `) :
-
-            console.log(`
-                samochody: ${ this.state.vehicle }, 
-                części: ${ value }, 
-                wpis użytkownika: ${ this.state.userInput }
-                `);
-
     };
 
     handleInput = ({ target: { value } }) => {
         this.setState({
             userInput: value
         });
-
-        console.log(`
-                samochody: ${ this.state.vehicle }, 
-                części: ${ this.state.category }, 
-                wpis użytkownika: ${ value }
-                `);
     };
 
     render() {
