@@ -14,7 +14,8 @@ class Browser extends Component {
         ],
 
         vehicle: 'osobowe',
-        category: 'nowe'
+        category: 'nowe',
+        userInput: ''
     };
 
 
@@ -24,9 +25,29 @@ class Browser extends Component {
         });
 
         name === 'vehicle' ?
-            console.log(`samochody: ${ value }, części: ${ this.state.category }`) :
-            console.log(`samochody: ${ this.state.vehicle }, części: ${ value }`);
+            console.log(`
+                samochody: ${ value }, 
+                części: ${ this.state.category }, 
+                wpis użytkownika: ${ this.state.userInput }
+                `) :
 
+            console.log(`
+                samochody: ${ this.state.vehicle }, 
+                części: ${ value }, 
+                wpis użytkownika: ${ this.state.userInput }
+                `);
+
+    };
+
+    handleInput = ({ target: { value } }) => {
+        this.setState({
+            userInput: value
+        });
+        console.log(`
+                samochody: ${ this.state.vehicle }, 
+                części: ${ this.state.category }, 
+                wpis użytkownika: ${ value }
+                `)
     };
 
     render() {
@@ -53,7 +74,7 @@ class Browser extends Component {
                        checked={ this.state.category === 'używane' }
                 />używane
                 <br/>
-                <input type="text" size="40" />
+                <input type="text" size="40" onChange={ this.handleInput } />
                 <button>Wyszukaj</button>
                 <br/>
                 { this.state.parts.map((part,idx) =>

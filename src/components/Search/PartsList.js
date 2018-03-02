@@ -11,8 +11,8 @@ class PartsList extends Component {
             <React.Fragment>
                 <ul>
                     <li>
-                        <Link to={`/search/${ id }`}>{ name } <strong>{ producer }</strong>
-                            { type } { date }</Link>
+                        <Link to={`/search/${ id }`}>{ name } | <strong>{ producer } </strong>
+                            | { type } | { date }</Link>
                     </li>
                 </ul>
             </React.Fragment>
