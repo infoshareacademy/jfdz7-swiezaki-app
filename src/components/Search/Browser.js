@@ -24,7 +24,8 @@ class Browser extends Component {
         });
 
         name === 'vehicle' ?
-            console.log('samochód') : console.log('rodzaj');
+            console.log(`samochody: ${ value }, części: ${ this.state.category }`) :
+            console.log(`samochody: ${ this.state.vehicle }, części: ${ value }`);
 
     };
 
