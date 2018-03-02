@@ -6,6 +6,8 @@ import Search from './Search'
 import Footer from './shared/Footer'
 import Login from './Login'
 import Product from './Product'
+import Register from './Register'
+
 
 
 
@@ -18,6 +20,7 @@ class App extends Component {
                 <Route path="/" exact component={Login}/>
                 <Route path="/search" exact component={Search}/>
                 <Route path="/search/:id" component={Product}/>
+                <Route path="/register" component={Register}/>
                 <Footer/>
             </React.Fragment>
             </BrowserRouter>
