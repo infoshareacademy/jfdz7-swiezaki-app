@@ -8,12 +8,12 @@ class Browser extends Component {
         parts: [
             { "id": 1, "vehicle": "osobowe", "category": "nowe", "name": "hamulec", "producer": "Opel", "type": "tarczowy", "date": 1998 },
             { "id": 2, "vehicle": "ciężarowe", "category": "używane", "name": "hamulec", "producer": "Mazda", "type": "tarczowy", "date": 1999 },
-            { "id": 3, "vehicle": "osobowe", "category": "nowe", "name": "hamulec", "producer": "Toyota", "type": "tarczowy", "date": 1995 },
+            { "id": 3, "vehicle": "osobowe", "category": "nowe", "name": "kierownica", "producer": "Toyota", "type": "tarczowy", "date": 1995 },
             { "id": 4, "vehicle": "osobowe", "category": "używane", "name": "hamulec", "producer": "BMW", "type": "tarczowy", "date": 2009 },
-            { "id": 5, "vehicle": "ciężarowe", "category": "nowe", "name": "hamulec", "producer": "Fiat", "type": "tarczowy", "date": 1999 },
+            { "id": 5, "vehicle": "ciężarowe", "category": "nowe", "name": "drzwi", "producer": "Fiat", "type": "tarczowy", "date": 1999 },
             { "id": 6, "vehicle": "ciężarowe", "category": "nowe", "name": "hamulec", "producer": "Fiat", "type": "tarczowy", "date": 1999 },
             { "id": 7, "vehicle": "osobowe", "category": "nowe", "name": "hamulec", "producer": "Fiat", "type": "tarczowy", "date": 1999 },
-            { "id": 8, "vehicle": "ciężarowe", "category": "nowe", "name": "hamulec", "producer": "Fiat", "type": "tarczowy", "date": 1999 },
+            { "id": 8, "vehicle": "ciężarowe", "category": "nowe", "name": "maska", "producer": "Fiat", "type": "tarczowy", "date": 1999 },
             { "id": 9, "vehicle": "osobowe", "category": "nowe", "name": "hamulec", "producer": "Fiat", "type": "tarczowy", "date": 1999 }
         ],
 
@@ -21,7 +21,6 @@ class Browser extends Component {
         category: 'nowe',
         userInput: ''
     };
-
 
     handleChange = ({ target: { name, value } }) => {
         this.setState({
@@ -66,7 +65,8 @@ class Browser extends Component {
                 { this.state.parts.map((part, idx) =>
 
                     part.vehicle === this.state.vehicle &&
-                    part.category === this.state.category ?
+                    part.category === this.state.category &&
+                    part.name.includes(this.state.userInput) === true ?
                     <PartsList
                         id = { part.id }
                         name={ part.name }
