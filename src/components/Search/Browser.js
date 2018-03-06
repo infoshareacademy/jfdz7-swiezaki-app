@@ -69,7 +69,7 @@ class Browser extends Component {
                     )}
                 </select>
                 <br/>
-                <input type="text" size="40" placeholder="Wprowadź nazwę części" onChange={ this.handleInput } />
+                <input type="text" size="40" placeholder="Wprowadź nazwę części, np. hamulec" onChange={ this.handleInput } />
                 <br/>
                 { this.state.parts.map((part, idx) =>
 
