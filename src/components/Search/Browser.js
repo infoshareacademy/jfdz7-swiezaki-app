@@ -71,6 +71,10 @@ class Browser extends Component {
                 <br/>
                 <input type="text" size="40" placeholder="Wprowadź nazwę części, np. hamulec" onChange={ this.handleInput } />
                 <br/>
+                { this.state.producer !=='' ?
+                    <div style={{margin: '10px 0 10px 0'}}>:/ Brak części spełniających wybrane kryteria.</div> :
+                    <div style={{marginTop: '10px'}}>Lista części spełniających wybrane kryteria &darr;</div>
+                }
                 { this.state.parts.map((part, idx) =>
 
                     part.vehicle === this.state.vehicle &&
@@ -85,8 +89,7 @@ class Browser extends Component {
                         date={ part.date }
                         key={ idx }
                     /> :
-                        null
-
+                       null
                 )}
 
             </React.Fragment>
