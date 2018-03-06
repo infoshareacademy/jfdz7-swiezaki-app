@@ -12,6 +12,12 @@ class Browser extends Component {
         userInput: ''
     };
 
+    componentDidMount() {
+        fetch('/data/carParts.json')
+            .then(response => response.json())
+            .then(data => this.setState({parts: data }))
+    };
+
     handleChange = ({ target: { name, value } }) => {
         this.setState({
             [name]: value
