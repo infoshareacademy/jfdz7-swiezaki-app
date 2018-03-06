@@ -36,7 +36,7 @@ class Browser extends Component {
     };
 
     render() {
-
+        console.log(this.state.producer!=='all');
         const uniqueCategoriesFromState = [...(new Set(this.state.parts.map(({ producer }) => producer)))];
 
         return (
@@ -63,7 +63,7 @@ class Browser extends Component {
                 />używane
                 &nbsp;
                 <select name="producer" onChange={ this.handleChange }>
-                    <option value="0">Marka</option>
+                    <option value=''>Wszystkie marki</option>
                     {
                        uniqueCategoriesFromState.map((category, idx) =>
 
@@ -81,7 +81,7 @@ class Browser extends Component {
 
                     part.vehicle === this.state.vehicle &&
                     part.category === this.state.category &&
-                    part.producer === this.state.producer &&
+                    part.producer.includes(this.state.producer) &&
                     part.name.toLowerCase().includes(this.state.userInput) === true ?
                     <PartsList
                         id = { part.id }
