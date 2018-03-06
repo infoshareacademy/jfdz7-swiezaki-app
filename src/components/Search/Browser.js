@@ -19,6 +19,7 @@ class Browser extends Component {
 
         vehicle: 'osobowe',
         category: 'nowe',
+        producer: '',
         userInput: ''
     };
 
@@ -36,7 +37,8 @@ class Browser extends Component {
 
     render() {
 
-        console.log(this.state.userInput)
+        const uniqueCategoriesFromState = [...(new Set(this.state.parts.map(({ producer }) => producer)))];
+
         return (
             <React.Fragment>
 
@@ -59,6 +61,18 @@ class Browser extends Component {
                        onChange={ this.handleChange }
                        checked={ this.state.category === 'używane' }
                 />używane
+                &nbsp;
+                <select name="producer" onChange={ this.handleChange }>
+                    <option value="0">Marka</option>
+                    {
+                       uniqueCategoriesFromState.map((category, idx) =>
+
+                            <option value={ category } key={ idx } >
+                                { category }
+                            </option>
+
+                    )}
+                </select>
                 <br/>
                 <input type="text" size="40" onChange={ this.handleInput } />
                 <button>Wyszukaj</button>
@@ -67,6 +81,7 @@ class Browser extends Component {
 
                     part.vehicle === this.state.vehicle &&
                     part.category === this.state.category &&
+                    part.producer === this.state.producer &&
                     part.name.toLowerCase().includes(this.state.userInput) === true ?
                     <PartsList
                         id = { part.id }
