@@ -36,7 +36,7 @@ class Browser extends Component {
     };
 
     render() {
-        console.log(this.state.producer!=='all');
+
         const uniqueCategoriesFromState = [...(new Set(this.state.parts.map(({ producer }) => producer)))];
 
         return (
@@ -74,8 +74,7 @@ class Browser extends Component {
                     )}
                 </select>
                 <br/>
-                <input type="text" size="40" onChange={ this.handleInput } />
-                <button>Wyszukaj</button>
+                <input type="text" size="40" placeholder="Wprowadź nazwę części" onChange={ this.handleInput } />
                 <br/>
                 { this.state.parts.map((part, idx) =>
 
