@@ -35,8 +35,6 @@ class Browser extends Component {
 
     incrementCounter = () => {
         this.setState({counter: this.state.counter + 1});
-        console.log('called');
-        console.log(this.state.counter);
     };
 
     render() {
@@ -81,17 +79,19 @@ class Browser extends Component {
                 <input type="text" size="40" placeholder="Wprowadź nazwę części, np. hamulec" onChange={ this.handleInput } />
                 <br/>
                 {
-                    this.state.counter>0 ?
-                    <div style={{marginTop: '10px'}}>Lista części spełniających kryteria &darr;</div>
-                                        :
+                    this.state.counter>0    ?
+                        <div style={{marginTop: '10px'}}>Lista części spełniających kryteria &darr;</div>
+                                            :
                         <div style={{margin: '10px 0'}}>:/ Brak części spełniających podane kryteria</div>
                 }
+
                 { this.state.parts.map((part, idx) =>
 
                     part.vehicle === this.state.vehicle &&
                     part.category === this.state.category &&
                     part.producer.includes(this.state.producer) &&
                     part.name.toLowerCase().includes(this.state.userInput) === true ?
+
                     <PartsList
                         id = { part.id }
                         name={ part.name.toLowerCase() }
@@ -100,8 +100,9 @@ class Browser extends Component {
                         date={ part.date }
                         key={ idx }
                         incrementCounter={ this.incrementCounter }
-                    /> :
-                       null
+                    />
+                        :
+                        null
                 )}
 
             </React.Fragment>

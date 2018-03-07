@@ -5,7 +5,6 @@ class PartsList extends Component {
 
     componentDidMount() {
         this.props.incrementCounter();
-        console.log('mounted');
     }
 
     render() {
