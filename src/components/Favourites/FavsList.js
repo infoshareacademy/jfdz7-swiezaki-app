@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class FavsList extends Component {
 
@@ -12,7 +13,7 @@ class FavsList extends Component {
                     {
                         favParts.map((favPart, id) =>
                             <li key={id}>
-                                <strong>{favPart.name}</strong>
+                                <Link to={`/search/${ favPart.id }`}><strong>{favPart.name}</strong></Link>
                                 <br/>
                                 &nbsp;
                                 producent: {favPart.producer},
