@@ -9,7 +9,8 @@ class Browser extends Component {
         vehicle: 'osobowe',
         category: 'nowe',
         producer: '',
-        userInput: ''
+        userInput: '',
+        counter: 0
     };
 
     componentDidMount() {
@@ -20,14 +21,22 @@ class Browser extends Component {
 
     handleChange = ({ target: { name, value } }) => {
         this.setState({
-            [name]: value
+            [name]: value,
+            counter: 0
         });
     };
 
     handleInput = ({ target: { value } }) => {
         this.setState({
-            userInput: value.toLowerCase()
+            userInput: value.toLowerCase(),
+            counter: 0
         });
+    };
+
+    incrementCounter = () => {
+        this.setState({counter: this.state.counter + 1});
+        console.log('called');
+        console.log(this.state.counter);
     };
 
     render() {
@@ -71,9 +80,11 @@ class Browser extends Component {
                 <br/>
                 <input type="text" size="40" placeholder="Wprowadź nazwę części, np. hamulec" onChange={ this.handleInput } />
                 <br/>
-                { this.state.producer !=='' ?
-                    <div style={{margin: '10px 0 10px 0'}}>:/ Brak części spełniających wybrane kryteria.</div> :
-                    <div style={{marginTop: '10px'}}>Lista części spełniających wybrane kryteria &darr;</div>
+                {
+                    this.state.counter>0 ?
+                    <div style={{marginTop: '10px'}}>Lista części spełniających kryteria &darr;</div>
+                                        :
+                        <div style={{margin: '10px 0'}}>:/ Brak części spełniających podane kryteria</div>
                 }
                 { this.state.parts.map((part, idx) =>
 
@@ -88,6 +99,7 @@ class Browser extends Component {
                         type={ part.type }
                         date={ part.date }
                         key={ idx }
+                        incrementCounter={ this.incrementCounter }
                     /> :
                        null
                 )}

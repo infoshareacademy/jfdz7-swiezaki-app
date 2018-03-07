@@ -3,6 +3,11 @@ import { Link } from 'react-router-dom';
 
 class PartsList extends Component {
 
+    componentDidMount() {
+        this.props.incrementCounter();
+        console.log('mounted');
+    }
+
     render() {
 
         const { id, name, producer, type, date } = this.props;
