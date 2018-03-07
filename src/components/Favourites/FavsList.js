@@ -4,13 +4,13 @@ class FavsList extends Component {
 
     render() {
 
-        const { favs } = this.props;
+        const { favParts, removeFavPart } = this.props;
 
         return (
             <React.Fragment>
                 <ul>
                     {
-                        favs.map((favPart, id) =>
+                        favParts.map((favPart, id) =>
                             <li key={id}>
                                 <strong>{favPart.name}</strong>
                                 <br/>
@@ -21,7 +21,7 @@ class FavsList extends Component {
                                 &nbsp;
                                 rok produkcji: {favPart.date}
                                 <br/>
-                                <button>Usuń z ulubionych</button>
+                                <button onClick={ () => removeFavPart(favPart.id) }>Usuń z ulubionych</button>
                                 <br/>
                                 &nbsp;
                             </li>
