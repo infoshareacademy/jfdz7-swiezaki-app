@@ -10,7 +10,7 @@ class Browser extends Component {
         category: 'nowe',
         producer: '',
         userInput: '',
-        counter: 0
+        showEmptyMessage: false
     };
 
     componentDidMount() {
@@ -22,24 +22,28 @@ class Browser extends Component {
     handleChange = ({ target: { name, value } }) => {
         this.setState({
             [name]: value,
-            counter: 0
+            showEmptyMessage: true
         });
     };
 
     handleInput = ({ target: { value } }) => {
         this.setState({
             userInput: value.toLowerCase(),
-            counter: 0
+            showEmptyMessage: true
         });
     };
 
-    incrementCounter = () => {
-        this.setState({counter: this.state.counter + 1});
+    changeMessageState = () => {
+        this.setState({showEmptyMessage: false});
+        console.log('called');
+        console.log(this.state.showEmptyMessage);
     };
+
 
     render() {
 
         const uniqueCategoriesFromState = [...(new Set(this.state.parts.map(({ producer }) => producer)))];
+
 
         return (
             <React.Fragment>
@@ -79,8 +83,8 @@ class Browser extends Component {
                 <input type="text" size="40" placeholder="Wprowadź nazwę części, np. hamulec" onChange={ this.handleInput } />
                 <br/>
                 {
-                    this.state.counter>0    ?
-                        <div style={{marginTop: '10px'}}>Lista części spełniających kryteria &darr;</div>
+                    this.state.showEmptyMessage === false    ?
+                        <div style={{marginTop: '10px'}}>Lista części spełniających kryteria &darr; ({ document.getElementsByTagName('li').length })</div>
                                             :
                         <div style={{margin: '10px 0'}}>:/ Brak części spełniających podane kryteria</div>
                 }
@@ -99,7 +103,7 @@ class Browser extends Component {
                         type={ part.type }
                         date={ part.date }
                         key={ idx }
-                        incrementCounter={ this.incrementCounter }
+                        changeMessageState={ this.changeMessageState }
                     />
                         :
                         null
