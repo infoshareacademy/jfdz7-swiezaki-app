@@ -35,8 +35,6 @@ class Browser extends Component {
 
     changeMessageState = () => {
         this.setState({showEmptyMessage: false});
-        console.log('called');
-        console.log(this.state.showEmptyMessage);
     };
 
 
