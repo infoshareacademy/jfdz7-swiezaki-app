@@ -5,34 +5,36 @@ import PartsList from './PartsList';
 class Browser extends Component {
 
     state = {
-        parts: [
-            { "id": 1, "vehicle": "osobowe", "category": "nowe", "name": "hamulec", "producer": "Opel", "type": "tarczowy", "date": 1998 },
-            { "id": 2, "vehicle": "ciężarowe", "category": "używane", "name": "hamulec", "producer": "Mazda", "type": "tarczowy", "date": 1999 },
-            { "id": 3, "vehicle": "osobowe", "category": "nowe", "name": "kierownica", "producer": "Toyota", "type": "tarczowy", "date": 1995 },
-            { "id": 4, "vehicle": "osobowe", "category": "używane", "name": "hAmulec", "producer": "BMW", "type": "tarczowy", "date": 2009 },
-            { "id": 5, "vehicle": "ciężarowe", "category": "nowe", "name": "drzwi", "producer": "Fiat", "type": "tarczowy", "date": 1999 },
-            { "id": 6, "vehicle": "ciężarowe", "category": "nowe", "name": "hamUlec", "producer": "Fiat", "type": "tarczowy", "date": 1999 },
-            { "id": 7, "vehicle": "osobowe", "category": "nowe", "name": "Hamulec", "producer": "Fiat", "type": "tarczowy", "date": 1999 },
-            { "id": 8, "vehicle": "ciężarowe", "category": "nowe", "name": "MASKA", "producer": "Fiat", "type": "tarczowy", "date": 1999 },
-            { "id": 9, "vehicle": "osobowe", "category": "nowe", "name": "hamulec", "producer": "Fiat", "type": "tarczowy", "date": 1999 }
-        ],
-
+        parts: [],
         vehicle: 'osobowe',
         category: 'nowe',
         producer: '',
-        userInput: ''
+        userInput: '',
+        counter: 0
+    };
+
+    componentDidMount() {
+        fetch('/data/carParts.json')
+            .then(response => response.json())
+            .then(data => this.setState({parts: data }))
     };
 
     handleChange = ({ target: { name, value } }) => {
         this.setState({
-            [name]: value
+            [name]: value,
+            counter: 0
         });
     };
 
     handleInput = ({ target: { value } }) => {
         this.setState({
-            userInput: value.toLowerCase()
+            userInput: value.toLowerCase(),
+            counter: 0
         });
+    };
+
+    incrementCounter = () => {
+        this.setState({counter: this.state.counter + 1});
     };
 
     render() {
@@ -63,7 +65,7 @@ class Browser extends Component {
                 />używane
                 &nbsp;
                 <select name="producer" onChange={ this.handleChange }>
-                    <option value="0">Marka</option>
+                    <option value=''>Wszystkie marki</option>
                     {
                        uniqueCategoriesFromState.map((category, idx) =>
 
@@ -74,15 +76,22 @@ class Browser extends Component {
                     )}
                 </select>
                 <br/>
-                <input type="text" size="40" onChange={ this.handleInput } />
-                <button>Wyszukaj</button>
+                <input type="text" size="40" placeholder="Wprowadź nazwę części, np. hamulec" onChange={ this.handleInput } />
                 <br/>
+                {
+                    this.state.counter>0    ?
+                        <div style={{marginTop: '10px'}}>Lista części spełniających kryteria &darr;</div>
+                                            :
+                        <div style={{margin: '10px 0'}}>:/ Brak części spełniających podane kryteria</div>
+                }
+
                 { this.state.parts.map((part, idx) =>
 
                     part.vehicle === this.state.vehicle &&
                     part.category === this.state.category &&
-                    part.producer === this.state.producer &&
+                    part.producer.includes(this.state.producer) &&
                     part.name.toLowerCase().includes(this.state.userInput) === true ?
+
                     <PartsList
                         id = { part.id }
                         name={ part.name.toLowerCase() }
@@ -90,9 +99,10 @@ class Browser extends Component {
                         type={ part.type }
                         date={ part.date }
                         key={ idx }
-                    /> :
+                        incrementCounter={ this.incrementCounter }
+                    />
+                        :
                         null
-
                 )}
 
             </React.Fragment>
