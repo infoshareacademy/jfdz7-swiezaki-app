@@ -21,6 +21,8 @@ class FavsList extends Component {
                                 &nbsp;
                                 rok produkcji: {favPart.date}
                                 <br/>
+                                <button>Usuń z ulubionych</button>
+                                <br/>
                                 &nbsp;
                             </li>
                         )
