@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import FavsList from './FavsList';
+
 class Favourites extends Component {
 
     state = {
@@ -18,9 +20,11 @@ class Favourites extends Component {
 
 
     render() {
+
         return (
             <React.Fragment>
                 <h2>Obserwowane produkty:</h2>
+                <FavsList/>
             </React.Fragment>
         )
     }
