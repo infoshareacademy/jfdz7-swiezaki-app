@@ -3,16 +3,21 @@ import { Link } from 'react-router-dom';
 
 class FavsList extends Component {
 
+    handleRemove = event => {
+        const favPartId = event.target.dataset.favpartId;
+        this.props.removeFavPart(parseInt(favPartId, 10));
+    };
+
     render() {
 
-        const { favParts, removeFavPart } = this.props;
+        const { favParts } = this.props;
 
         return (
             <React.Fragment>
                 <ul>
                     {
-                        favParts.map((favPart, id) =>
-                            <li key={id}>
+                        favParts.map(favPart =>
+                            <li key={favPart.id}>
                                 <Link to={`/search/${ favPart.id }`}><strong>{favPart.name}</strong></Link>
                                 <br/>
                                 &nbsp;
@@ -22,7 +27,9 @@ class FavsList extends Component {
                                 &nbsp;
                                 rok produkcji: {favPart.date}
                                 <br/>
-                                <button onClick={ () => removeFavPart(favPart.id) }>Usuń z ulubionych</button>
+                                <button
+                                    data-favpart-id={favPart.id}
+                                    onClick={ this.handleRemove }>Usuń z ulubionych</button>
                                 <br/>
                                 &nbsp;
                             </li>

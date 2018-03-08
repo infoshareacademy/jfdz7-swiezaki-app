@@ -22,7 +22,7 @@ class Favourites extends Component {
     removeFavPart = favPartId => {
         this.setState({
             favParts: this.state.favParts.filter(favPart => favPart.id !== favPartId)
-        })
+        });
     };
 
     render() {
