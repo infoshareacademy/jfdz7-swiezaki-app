@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 class PartsList extends Component {
 
-    componentDidMount() {
-        this.props.incrementCounter();
+    componentWillMount() {
+        this.props.changeMessageState();
     }
 
     render() {
@@ -12,6 +12,7 @@ class PartsList extends Component {
         const { id, name, producer, type, date } = this.props;
 
         return (
+
             <React.Fragment>
                 <ul>
                     <li>
