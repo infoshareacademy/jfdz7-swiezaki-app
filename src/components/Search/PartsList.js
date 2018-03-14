@@ -19,6 +19,11 @@ class PartsList extends Component {
             currentFavParts = JSON.parse(localStorage.getItem("carPartsBrowserFavParts"));
         }
 
+        // preventing the case of adding one part multiple times
+        currentFavParts = currentFavParts.filter(part => {
+            return part.id !== currentPart.id
+        });
+
         // adding current part and sending updated array to LS
         const updatedFavParts = currentFavParts.concat(currentPart);
         localStorage.setItem("carPartsBrowserFavParts", JSON.stringify(updatedFavParts))
