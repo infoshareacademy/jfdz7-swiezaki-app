@@ -5,7 +5,7 @@ class FavsList extends Component {
 
     handleRemove = event => {
         const favPartId = event.target.dataset.favpartId;
-        this.props.removeFavPart(parseInt(favPartId, 10));
+        this.props.removeFavPart(favPartId);
     };
 
     render() {

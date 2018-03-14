@@ -17,8 +17,8 @@ class Favourites extends Component {
             favPartsFromStorage = []
             :
             favPartsFromStorage = JSON.parse(localStorage.getItem("carPartsBrowserFavParts"));
-        // this check is necessary to prevent an error caused by trying to get data from null
-        // (in case user didn't add anything to favourites yet)
+        /* This check is necessary to prevent an error caused by trying to get data from null
+            (in case user didn't add anything to favourites yet)*/
 
         this.setState({
             favParts: favPartsFromStorage
@@ -43,7 +43,12 @@ class Favourites extends Component {
                 </Link>
             </React.Fragment>
         )
-    }
+    };
+
+    componentDidUpdate() {
+        localStorage.setItem("carPartsBrowserFavParts", JSON.stringify(this.state.favParts))
+    } // updating local storage with current state in case some parts were removed
+
 }
 
 export default Favourites
