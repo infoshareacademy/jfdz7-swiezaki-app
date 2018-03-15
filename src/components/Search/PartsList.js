@@ -11,20 +11,17 @@ class PartsList extends Component {
         const currentPart = this.props;
         let currentFavParts;
 
-        // checking if a list of fav parts has been previously created in LS
-        if ( !localStorage.getItem("carPartsBrowserFavParts") ) {
-            localStorage.setItem("carPartsBrowserFavParts", JSON.stringify([]));
-            currentFavParts = JSON.parse(localStorage.getItem("carPartsBrowserFavParts"));
-        } else {
-            currentFavParts = JSON.parse(localStorage.getItem("carPartsBrowserFavParts"));
-        }
-
-        // preventing the case of adding one part multiple times
+        !localStorage.getItem("carPartsBrowserFavParts")
+            ?
+            ( localStorage.setItem("carPartsBrowserFavParts", JSON.stringify([])),
+            currentFavParts = JSON.parse(localStorage.getItem("carPartsBrowserFavParts"))
+            ):(
+        currentFavParts = JSON.parse(localStorage.getItem("carPartsBrowserFavParts")) );
+        
         currentFavParts = currentFavParts.filter(part => {
             return part.id !== currentPart.id
         });
 
-        // adding current part and sending updated array to LS
         const updatedFavParts = currentFavParts.concat(currentPart);
         localStorage.setItem("carPartsBrowserFavParts", JSON.stringify(updatedFavParts))
     }
