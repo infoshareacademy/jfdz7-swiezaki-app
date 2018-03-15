@@ -6,17 +6,24 @@ import FavsList from './FavsList';
 class Favourites extends Component {
 
     state = {
-        favParts: [
-            { "id": 1, "vehicle": "osobowe", "category": "nowe", "name": "hamulec", "producer": "Opel", "type": "tarczowy", "date": 1998 },
-            { "id": 2, "vehicle": "ciężarowe", "category": "używane", "name": "hamulec", "producer": "Mazda", "type": "tarczowy", "date": 1999 },
-            { "id": 3, "vehicle": "osobowe", "category": "nowe", "name": "kierownica", "producer": "Toyota", "type": "tarczowy", "date": 1995 },
-            { "id": 4, "vehicle": "osobowe", "category": "używane", "name": "hamulec", "producer": "BMW", "type": "tarczowy", "date": 2009 },
-            { "id": 5, "vehicle": "ciężarowe", "category": "nowe", "name": "drzwi", "producer": "Fiat", "type": "tarczowy", "date": 1999 },
-            { "id": 6, "vehicle": "ciężarowe", "category": "nowe", "name": "hamulec", "producer": "Fiat", "type": "tarczowy", "date": 1999 },
-            { "id": 7, "vehicle": "osobowe", "category": "nowe", "name": "hamulec", "producer": "Fiat", "type": "tarczowy", "date": 1999 },
-            { "id": 8, "vehicle": "ciężarowe", "category": "nowe", "name": "maska", "producer": "Fiat", "type": "tarczowy", "date": 1999 },
-            { "id": 9, "vehicle": "osobowe", "category": "nowe", "name": "hamulec", "producer": "Fiat", "type": "tarczowy", "date": 1999 }
-        ] // temporary data, added for the sake of testing. Will be removed after connecting Favourites to Search.
+        favParts: []
+    };
+
+    componentWillMount() {
+
+        let favPartsFromStorage;
+
+        !localStorage.getItem("carPartsBrowserFavParts") ?
+            favPartsFromStorage = []
+            :
+            favPartsFromStorage = JSON.parse(localStorage.getItem("carPartsBrowserFavParts"));
+        /* This check is necessary to prevent an error caused by trying to get data from null
+            (in case user didn't add anything to favourites yet)*/
+
+        this.setState({
+            favParts: favPartsFromStorage
+        })
+
     };
 
     removeFavPart = favPartId => {
@@ -36,7 +43,12 @@ class Favourites extends Component {
                 </Link>
             </React.Fragment>
         )
-    }
+    };
+
+    componentDidUpdate() {
+        localStorage.setItem("carPartsBrowserFavParts", JSON.stringify(this.state.favParts))
+    } // updating local storage with current state in case some parts were removed
+
 }
 
 export default Favourites
