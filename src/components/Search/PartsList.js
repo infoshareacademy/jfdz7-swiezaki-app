@@ -9,15 +9,10 @@ class PartsList extends Component {
 
     handleAddToFavsBtn = () => {
         const currentPart = this.props;
-        let currentFavParts;
 
-        !localStorage.getItem("carPartsBrowserFavParts")
-            ?
-            ( localStorage.setItem("carPartsBrowserFavParts", JSON.stringify([])),
-            currentFavParts = JSON.parse(localStorage.getItem("carPartsBrowserFavParts"))
-            ):(
-        currentFavParts = JSON.parse(localStorage.getItem("carPartsBrowserFavParts")) );
-        
+        let currentFavParts = JSON.parse((localStorage.getItem('carPartsBrowserFavParts') || '[]'));
+        localStorage.setItem('carPartsBrowserFavParts', JSON.stringify(currentFavParts));
+
         currentFavParts = currentFavParts.filter(part => {
             return part.id !== currentPart.id
         });
@@ -25,7 +20,7 @@ class PartsList extends Component {
         const updatedFavParts = currentFavParts.concat(currentPart);
         localStorage.setItem("carPartsBrowserFavParts", JSON.stringify(updatedFavParts))
     }
-
+    
     render() {
 
         const { id, name, producer, type, date } = this.props;
