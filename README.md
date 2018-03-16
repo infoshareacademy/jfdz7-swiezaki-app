@@ -12,6 +12,11 @@ __Functionality:__
 * Login/Register - welcome screen allows user to login or register to the application.
 * Favourites - allows user to store his/her favourite car parts having an opportunity to get back to them later.
 * Shared - header and footer components shared by all the application screens.
+
+__Technology:__
+
+`HTML`, `CSS`, `JavaScript`, `React (with Redux)`, `Semantic UI`
+
 ---
 
 ### Developed by:
