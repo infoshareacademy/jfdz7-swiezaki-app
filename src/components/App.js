@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { Route, BrowserRouter } from 'react-router-dom'
 
-import store from '../store'
-
 import Header from './Shared/Header'
 import Search from './Search'
 import Footer from './Shared/Footer'
