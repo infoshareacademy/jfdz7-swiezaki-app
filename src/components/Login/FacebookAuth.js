@@ -20,9 +20,9 @@ class FacebookAuth extends Component {
     /**
      * Check login status
      */
-    checkLoginStatus = () => {
+    checkLoginStatus = () =>
         this.FB.getLoginStatus(this.facebookLoginHandler);
-    }
+
     /**
      * Check login status and call login api is user is not logged in
      */
@@ -30,11 +30,11 @@ class FacebookAuth extends Component {
         if (!this.FB) return;
 
         this.FB.getLoginStatus(response => {
-            if (response.status === 'connected') {
-                this.facebookLoginHandler(response);
-            } else {
+            response.status === 'connected' ?
+                this.facebookLoginHandler(response)
+            :
                 this.FB.login(this.facebookLoginHandler, {scope: 'public_profile'});
-            }
+
         }, );
     };
     /**

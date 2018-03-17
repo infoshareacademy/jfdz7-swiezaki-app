@@ -9,16 +9,14 @@ class Login extends Component {
     };
 
     onFacebookLogin = (loginStatus, resultObject) => {
-        if (loginStatus === true) {
-            this.setState({
-                username: resultObject.user.name
-            });
-        } else {
-            alert('Facebook login error');
-        }
+        loginStatus
+            ?
+            this.setState({username:resultObject.user.name})
+            :
+            alert('Błąd logowania')
     }
 
-    handleSubmit = () => {
+       handleSubmit = () => {
         this.props.history.push('/search');
     };
 

@@ -9,7 +9,7 @@
       homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
-    <link rel="shortcut icon" href="logo_pic.ico">
+    <link rel="shortcut icon" href="../src/logo_pic.ico">
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -30,12 +30,10 @@
               xfbml: true,
               version: 'v2.12'
           });
-
-      //     // Broadcast an event when FB object is ready
+          //     // Broadcast an event when FB object is ready
           let fbInitEvent = new Event('FBObjectReady');
           document.dispatchEvent(fbInitEvent);
       };
-
       (function (d, s, id) {
           let js, fjs = d.getElementsByTagName(s)[0];
           if (d.getElementById(id)) { return; }
