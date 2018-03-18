@@ -10,6 +10,7 @@
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <link rel="shortcut icon" href="../src/logo_pic.ico">
+
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -22,26 +23,6 @@
     <title>Wyszukiwarka Części Samochodowych</title>
   </head>
   <body>
-  <script>
-      window.fbAsyncInit = function () {
-          FB.init({
-              appId: '945562922269046',
-              autoLogAppEvents: true,
-              xfbml: true,
-              version: 'v2.12'
-          });
-          //     // Broadcast an event when FB object is ready
-          let fbInitEvent = new Event('FBObjectReady');
-          document.dispatchEvent(fbInitEvent);
-      };
-      (function (d, s, id) {
-          let js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) { return; }
-          js = d.createElement(s); js.id = id;
-          js.src = "https://connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v2.12&appId=945562922269046";
-          fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-  </script>
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
