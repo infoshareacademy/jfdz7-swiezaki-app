@@ -1,15 +1,10 @@
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 
-const initialState = {
-    parts: []
-};
+import parts from './state/parts';
 
-const reducer = (state = initialState, action = {}) => {
-    switch (action.type) {
-        default:
-            return state
-    }
-};
+const reducer = combineReducers({
+    parts
+});
 
 const store = createStore(
     reducer,

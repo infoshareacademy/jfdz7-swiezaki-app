@@ -14,9 +14,9 @@ class Browser extends Component {
     };
 
     componentDidMount() {
-        fetch('/data/carParts.json')
+        fetch(process.env.PUBLIC_URL + '/data/carParts.json')
             .then(response => response.json())
-            .then(data => this.setState({parts: data }))
+            .then(data => this.setState({ parts: data }))
     };
 
     handleChange = ({ target: { name, value } }) => {
@@ -81,7 +81,7 @@ class Browser extends Component {
                 <input type="text" size="40" placeholder="Wprowadź nazwę części, np. hamulec" onChange={ this.handleInput } />
                 <br/>
                 {
-                    this.state.showEmptyMessage === false    ?
+                    !this.state.showEmptyMessage ?
                         <div style={{marginTop: '10px'}}>Lista części spełniających kryteria &darr; ({ document.getElementsByTagName('li').length })</div>
                                             :
                         <div style={{margin: '10px 0'}}>:/ Brak części spełniających podane kryteria</div>
@@ -92,12 +92,12 @@ class Browser extends Component {
                     part.vehicle === this.state.vehicle &&
                     part.category === this.state.category &&
                     part.producer.includes(this.state.producer) &&
-                    part.name.toLowerCase().includes(this.state.userInput) === true ?
+                    part.name.toLowerCase().includes(this.state.userInput) ?
 
                     <PartsList
                         id = { part.id }
                         name={ part.name.toLowerCase() }
-                        producer= { part.producer }
+                        producer={ part.producer }
                         type={ part.type }
                         date={ part.date }
                         key={ idx }
