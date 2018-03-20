@@ -14,24 +14,33 @@ class FavsList extends Component {
         const { favParts } = this.props;
 
         return (
-            <Container>
             <Grid>
                 {
                     favParts.map(favPart =>
                     <Grid.Column
                         key={favPart.id}
-                        mobile={8} tablet={4} computer={3}>
-                        <Card>
-                            <Image src="/data/images/akumulator.png" />
-                            {/* This is temporary image, will be replaced after setting new JSON file */}
-                            <Card.Content>
-                                <Link to={"/search/${ favPart.id }"}>
-                                    <Card.Header>{favPart.name}</Card.Header>
+                        mobile={16} tablet={8} computer={4} largeScreen={3} widescreen={3}>
+                        <Card centered>
+                                <Link to={`/search/${ favPart.id }`}>
+                                    <Image src="/data/images/akumulator.png" />
                                 </Link>
-                                <Card.Meta>{favPart.producer}</Card.Meta>
+                                {/* This is temporary image, will be replaced after setting new JSON file */}
+                            <Card.Content>
+                                    <Card.Header>
+                                        {favPart.name}
+                                    </Card.Header>
+                                    <Card.Meta>
+                                        {favPart.producer}
+                                    </Card.Meta>
                                 <Card.Description>
-                                    <p><strong>Rodzaj: </strong>{favPart.type}</p>
-                                    <p><strong>Rok produkcji: </strong>{favPart.date}</p>
+                                    <p>
+                                        <strong>Rodzaj: </strong>
+                                        {favPart.type}
+                                    </p>
+                                    <p>
+                                        <strong>Rok produkcji: </strong>
+                                        {favPart.date}
+                                    </p>
                                 </Card.Description>
                             </Card.Content>
                             <Card.Content extra>
@@ -48,7 +57,6 @@ class FavsList extends Component {
                     )
                 }
             </Grid>
-            </Container>
         )
     }
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Button, Container, Divider } from 'semantic-ui-react'
 
 import FavsHeader from './FavsHeader';
 import FavsList from './FavsList';
@@ -36,13 +37,15 @@ class Favourites extends Component {
     render() {
 
         return (
-            <React.Fragment>
+            <Container>
                 <FavsHeader/>
+                <Divider/>
                 <FavsList favParts={this.state.favParts} removeFavPart={this.removeFavPart}/>
+                <Divider/>
                 <Link to={`/search`}>
-                    <button>Wróć do wyszukiwarki</button>
+                    <Button primary size="huge">Wróć do wyszukiwarki</Button>
                 </Link>
-            </React.Fragment>
+            </Container>
         )
     };
 
