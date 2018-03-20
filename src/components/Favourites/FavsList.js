@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Grid, Image, Card, Icon, Button } from 'semantic-ui-react'
+import { Grid, Image, Card, Icon, Button } from 'semantic-ui-react'
+
 
 class FavsList extends Component {
 
