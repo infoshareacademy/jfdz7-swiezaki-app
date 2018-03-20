@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Grid, Image, Card, Icon } from 'semantic-ui-react'
+import { Container, Grid, Image, Card, Icon, Button } from 'semantic-ui-react'
 
 class FavsList extends Component {
 
@@ -14,66 +14,43 @@ class FavsList extends Component {
         const { favParts } = this.props;
 
         return (
+            <Container>
             <Grid>
                 {
                     favParts.map(favPart =>
                     <Grid.Column
                         key={favPart.id}
-                        mobile={16} tablet={8} computer={4}>
+                        mobile={8} tablet={4} computer={3}>
                         <Card>
                             <Image src="/data/images/akumulator.png" />
+                            {/* This is temporary image, will be replaced after setting new JSON file */}
                             <Card.Content>
-                                <Link to={`/search/${ favPart.id }`}>
+                                <Link to={"/search/${ favPart.id }"}>
                                     <Card.Header>{favPart.name}</Card.Header>
                                 </Link>
                                 <Card.Meta>{favPart.producer}</Card.Meta>
                                 <Card.Description>
-                                    <p>Rodzaj: {favPart.type}</p>
-                                    <p>Rok produkcji: {favPart.date}</p>
+                                    <p><strong>Rodzaj: </strong>{favPart.type}</p>
+                                    <p><strong>Rok produkcji: </strong>{favPart.date}</p>
                                 </Card.Description>
                             </Card.Content>
                             <Card.Content extra>
-
+                                <Button
+                                    color="red"
+                                    data-favpart-id={favPart.id}
+                                    onClick={ this.handleRemove }>
+                                    <Icon name="remove circle" />
+                                        Usuń z ulubionych
+                                </Button>
                             </Card.Content>
                         </Card>
                     </Grid.Column>
                     )
                 }
             </Grid>
+            </Container>
         )
     }
 }
 
 export default FavsList
-
-// render() {
-//
-//     const { favParts } = this.props;
-//
-//     return (
-//         <React.Fragment>
-//             <ul>
-//                 {
-//                     favParts.map(favPart =>
-//                         <li key={favPart.id}>
-//                             <Link to={`/search/${ favPart.id }`}><strong>{favPart.name}</strong></Link>
-//                             <br/>
-//                             &nbsp;
-//                             producent: {favPart.producer},
-//                             &nbsp;
-//                             rodzaj: {favPart.type},
-//                             &nbsp;
-//                             rok produkcji: {favPart.date}
-//                             <br/>
-//                             <button
-//                                 data-favpart-id={favPart.id}
-//                                 onClick={ this.handleRemove }>Usuń z ulubionych</button>
-//                             <br/>
-//                             &nbsp;
-//                         </li>
-//                     )
-//                 }
-//             </ul>
-//         </React.Fragment>
-//     )
-// }
