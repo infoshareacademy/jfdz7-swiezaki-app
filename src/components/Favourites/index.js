@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import FavsHeader from './FavsHeader';
 import FavsList from './FavsList';
 
 class Favourites extends Component {
@@ -36,7 +37,7 @@ class Favourites extends Component {
 
         return (
             <React.Fragment>
-                <h2>Obserwowane produkty:</h2>
+                <FavsHeader/>
                 <FavsList favParts={this.state.favParts} removeFavPart={this.removeFavPart}/>
                 <Link to={`/search`}>
                     <button>Wróć do wyszukiwarki</button>
