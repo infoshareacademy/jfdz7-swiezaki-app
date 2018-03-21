@@ -2,19 +2,27 @@ const FETCH__BEGIN = 'parts/FETCH__BEGIN';
 const FETCH__SUCCESS = 'parts/FETCH__SUCCESS';
 const FETCH__FAIL = 'parts/FETCH__FAIL';
 
-export const fetchBegin = () => ({
+const fetchBegin = () => ({
     type: FETCH__BEGIN
 });
 
-export const fetchSuccess = data => ({
+const fetchSuccess = data => ({
     type: FETCH__SUCCESS,
     data
 });
 
-export const fetchFail = error => ({
+const fetchFail = error => ({
     type: FETCH__FAIL,
     error
 });
+
+export const fetchParts = () => dispatch => {
+    dispatch(fetchBegin());
+    return fetch(`${process.env.PUBLIC_URL}/data/carParts.json`)
+        .then(response => response.json())
+        .then(data => dispatch(fetchSuccess(data)))
+        .catch(error => dispatch(fetchFail(error)))
+};
 
 const initialState = {
     data: null,

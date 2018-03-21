@@ -1,23 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import PartsList from './PartsList';
+import { fetchParts } from "../../state/parts";
 
 class Browser extends Component {
 
-    state = {
-        parts: [],
-        vehicle: 'osobowe',
-        category: 'nowe',
-        producer: '',
-        userInput: '',
-        showEmptyMessage: false
-    };
-
     componentDidMount() {
-        fetch(process.env.PUBLIC_URL + '/data/carParts.json')
-            .then(response => response.json())
-            .then(data => this.setState({ parts: data }))
-    };
+        this.props.fetchParts()
+    }
 
     handleChange = ({ target: { name, value } }) => {
         this.setState({
@@ -40,11 +31,20 @@ class Browser extends Component {
 
     render() {
 
-        const uniqueCategoriesFromState = [...(new Set(this.state.parts.map(({ producer }) => producer)))];
+        if (!this.props.isFetching && this.props.parts) {
+            const uniqueCategoriesFromState = [...(new Set(this.props.parts.map(({producer}) => producer)))];
+        }
 
 
         return (
             <React.Fragment>
+
+                { this.props.error && <p>{ this.props.error.message }</p> }
+                { this.props.isFetching && <p>Fetching...</p> }
+                { this.props.parts &&
+                this.props.parts.map(part => (
+                    <p key={ part.id }>{ part.name }</p>
+                )) }
 
                 <input type="radio" name="vehicle" value="osobowe"
                        onChange={ this.handleChange }
@@ -69,13 +69,13 @@ class Browser extends Component {
                 <select name="producer" onChange={ this.handleChange }>
                     <option value=''>Wszystkie marki</option>
                     {
-                       uniqueCategoriesFromState.map((category, idx) =>
+                        uniqueCategoriesFromState.map((category, idx) =>
 
                             <option value={ category } key={ idx } >
                                 { category }
                             </option>
 
-                    )}
+                        )}
                 </select>
                 <br/>
                 <input type="text" size="40" placeholder="Wprowadź nazwę części, np. hamulec" onChange={ this.handleInput } />
@@ -83,7 +83,7 @@ class Browser extends Component {
                 {
                     !this.state.showEmptyMessage ?
                         <div style={{marginTop: '10px'}}>Lista części spełniających kryteria &darr; ({ document.getElementsByTagName('li').length })</div>
-                                            :
+                        :
                         <div style={{margin: '10px 0'}}>:/ Brak części spełniających podane kryteria</div>
                 }
 
@@ -94,15 +94,15 @@ class Browser extends Component {
                     part.producer.includes(this.state.producer) &&
                     part.name.toLowerCase().includes(this.state.userInput) ?
 
-                    <PartsList
-                        id = { part.id }
-                        name={ part.name.toLowerCase() }
-                        producer={ part.producer }
-                        type={ part.type }
-                        date={ part.date }
-                        key={ idx }
-                        changeMessageState={ this.changeMessageState }
-                    />
+                        <PartsList
+                            id = { part.id }
+                            name={ part.name.toLowerCase() }
+                            producer={ part.producer }
+                            type={ part.type }
+                            date={ part.date }
+                            key={ idx }
+                            changeMessageState={ this.changeMessageState }
+                        />
                         :
                         null
                 )}
@@ -112,4 +112,8 @@ class Browser extends Component {
     }
 }
 
-export default Browser;
+export default connect(state => ({
+    parts: state.parts.data,
+    isFetching: state.parts.isFetching,
+    error: state.parts.error
+    }), { fetchParts })(Browser)

@@ -10,6 +10,7 @@ import Register from './Register'
 import Favourites from './Favourites'
 
 class App extends Component {
+
     render (){
         return (
             <BrowserRouter>
