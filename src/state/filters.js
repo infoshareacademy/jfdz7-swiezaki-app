@@ -1,6 +1,17 @@
 const TOGGLE_FILTER = 'filters/TOGGLE_FILTER';
 const USER_INPUT_FILTER = 'filters/USER_INPUT_FILTER';
 
+export const toggleFilter = (filterName, filterValue) => ({
+    type: TOGGLE_FILTER,
+    filterName,
+    filterValue
+});
+
+export const userInputFilter = filterValue => ({
+    type: USER_INPUT_FILTER,
+    filterValue
+});
+
 const initialState = {
     category: 'nowe',
     vehicle: 'osobowe',
