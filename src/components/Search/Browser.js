@@ -35,7 +35,9 @@ class Browser extends Component {
             const uniqueCategoriesFromState = [...(new Set(this.props.parts.map(({producer}) => producer)))];
         }
 
-
+        console.log('vehicle: ', this.props.vehicle, 'producer: ', this.props.producer,
+            'category: ', this.props.category, 'userInput: ', this.props.userInput,
+            'showEmptyMessage: ', this.props.showEmptyMessage);
         return (
             <React.Fragment>
 
@@ -112,9 +114,9 @@ export default connect(state => ({
     parts: state.parts.data,
     isFetching: state.parts.isFetching,
     error: state.parts.error,
-    category: state.parts.category,
-    vehicle: state.parts.vehicle,
-    producer: state.parts.producer,
-    userInput: state.parts.userInput,
-    showEmptyMessage: state.parts.showEmptyMessage
+    category: state.filters.category,
+    vehicle: state.filters.vehicle,
+    producer: state.filters.producer,
+    userInput: state.filters.userInput,
+    showEmptyMessage: state.filters.showEmptyMessage
     }), { fetchParts })(Browser)

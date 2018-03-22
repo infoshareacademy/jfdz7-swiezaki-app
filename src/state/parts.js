@@ -28,11 +28,6 @@ const initialState = {
     data: null,
     fetching: false,
     error: null,
-    category: 'nowe',
-    vehicle: 'osobowe',
-    producer: '',
-    userInput: '',
-    showEmptyMessage: false
 };
 
 export default (state = initialState, action = {}) => {
