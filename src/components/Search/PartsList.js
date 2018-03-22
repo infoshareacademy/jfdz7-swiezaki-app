@@ -30,7 +30,7 @@ class PartsList extends Component {
             <React.Fragment>
                 <ul>
                     <li>
-                        <Link to={`/search/${ id }`}><img src={ image } alt='car part' /><strong>{ name }</strong> | { date } | { price }</Link>
+                        <Link to={`/search/${ id }`}><img src={ image } alt='car part' style={{"width": "50px"}} /><strong>{ name }</strong> | { date } | { price }</Link>
                         <br/>
                         <button onClick={ this.handleAddToFavsBtn }>Dodaj do ulubionych</button>
                     </li>

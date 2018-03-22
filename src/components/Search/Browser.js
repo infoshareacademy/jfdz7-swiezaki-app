@@ -54,7 +54,7 @@ class Browser extends Component {
                     checked={this.props.category === 'używane'}
                     />używane
                     &nbsp;
-                    { this.props.parts && !this.props.isFetching ? <select name="brand" onChange={this.props.toggleFilter}>
+                    { this.props.parts && !this.props.isFetching && <select name="brand" onChange={this.props.toggleFilter}>
                     <option value=''>Wszystkie marki</option>
                     {
                         [...(new Set(this.props.parts.map(({brand}) => brand)))].map((category, idx) =>
@@ -64,7 +64,7 @@ class Browser extends Component {
                             </option>
                         )
                     }
-                    </select> : null }
+                    </select> }
                     <br/>
                     <input type="text" size="40" placeholder="Wprowadź nazwę części, np. hamulec" onChange={this.props.userInputFilter} />
                     <br/>
