@@ -56,12 +56,12 @@ class Browser extends Component {
                     />ciężarowe
 
                     <input type="radio" name="category" value="nowe"
-                    onChange={this.handleChange}
+                    onChange={this.props.toggleFilter}
                     checked={this.props.category === 'nowe'}
                     />nowe
 
                     <input type="radio" name="category" value="używane"
-                    onChange={this.handleChange}
+                    onChange={this.props.toggleFilter}
                     checked={this.props.category === 'używane'}
                     />używane
                     &nbsp;
