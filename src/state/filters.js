@@ -1,15 +1,15 @@
 const TOGGLE_FILTER = 'filters/TOGGLE_FILTER';
 const USER_INPUT_FILTER = 'filters/USER_INPUT_FILTER';
 
-export const toggleFilter = (filterName, filterValue) => ({
+export const toggleFilter = ({ target: { name, value}}) => ({
     type: TOGGLE_FILTER,
-    filterName,
-    filterValue
+    name,
+    value
 });
 
-export const userInputFilter = filterValue => ({
+export const userInputFilter = ({ target: { value }}) => ({
     type: USER_INPUT_FILTER,
-    filterValue
+    value
 });
 
 const initialState = {
@@ -25,12 +25,12 @@ export default (state = initialState, action = {}) => {
         case TOGGLE_FILTER:
             return {
                 ...initialState,
-                [action.filterName]: action.filterValue
+                [action.name]: action.value
             };
         case USER_INPUT_FILTER:
             return {
                 ...initialState,
-                userInput: action.filterValue
+                userInput: action.value
             };
         default:
             return state

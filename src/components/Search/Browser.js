@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import PartsList from './PartsList';
 import { fetchParts } from "../../state/parts";
+import { toggleFilter, userInputFilter } from "../../state/filters";
 
 class Browser extends Component {
 
@@ -45,12 +46,12 @@ class Browser extends Component {
                 { this.props.isFetching && <p>Pobieram dane...</p> }
 
                     <input type="radio" name="vehicle" value="osobowe"
-                    onChange={this.handleChange}
+                    onChange={this.props.toggleFilter}
                     checked={this.props.vehicle === 'osobowe'}
                     />osobowe
 
                     <input type="radio" name="vehicle" value="ciężarowe"
-                    onChange={this.handleChange}
+                    onChange={this.props.toggleFilter}
                     checked={this.props.vehicle === 'ciężarowe'}
                     />ciężarowe
 
@@ -119,4 +120,4 @@ export default connect(state => ({
     producer: state.filters.producer,
     userInput: state.filters.userInput,
     showEmptyMessage: state.filters.showEmptyMessage
-    }), { fetchParts })(Browser)
+    }), { fetchParts, toggleFilter, userInputFilter })(Browser)
