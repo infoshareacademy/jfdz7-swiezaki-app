@@ -54,10 +54,10 @@ class Browser extends Component {
                     checked={this.props.category === 'używane'}
                     />używane
                     &nbsp;
-                    { this.props.parts && !this.props.isFetching ? <select name="producer" onChange={this.props.toggleFilter}>
+                    { this.props.parts && !this.props.isFetching ? <select name="brand" onChange={this.props.toggleFilter}>
                     <option value=''>Wszystkie marki</option>
                     {
-                        [...(new Set(this.props.parts.map(({producer}) => producer)))].map((category, idx) =>
+                        [...(new Set(this.props.parts.map(({brand}) => brand)))].map((category, idx) =>
 
                             <option value={category} key={idx}>
                                 {category}
@@ -79,15 +79,15 @@ class Browser extends Component {
 
                     part.vehicle === this.props.vehicle &&
                     part.category === this.props.category &&
-                    part.producer.includes(this.props.producer) &&
+                    part.brand.includes(this.props.brand) &&
                     part.name.toLowerCase().includes(this.props.userInput) ?
 
                     <PartsList
                     id = {part.id}
                     name={part.name.toLowerCase()}
-                    producer={part.producer}
-                    type={part.type}
                     date={part.date}
+                    price={part.price}
+                    image={part.image}
                     key={idx}
                     changeMessageState={this.changeMessageState}
                     />
@@ -106,7 +106,7 @@ export default connect(state => ({
     error: state.parts.error,
     category: state.filters.category,
     vehicle: state.filters.vehicle,
-    producer: state.filters.producer,
+    brand: state.filters.brand,
     userInput: state.filters.userInput,
     showEmptyMessage: state.filters.showEmptyMessage
     }), { fetchParts, toggleFilter, userInputFilter })(Browser)

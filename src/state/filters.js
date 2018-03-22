@@ -15,7 +15,7 @@ export const userInputFilter = ({ target: { value }}) => ({
 const initialState = {
     category: 'nowe',
     vehicle: 'osobowe',
-    producer: '',
+    brand: '',
     userInput: '',
     showEmptyMessage: false
 };

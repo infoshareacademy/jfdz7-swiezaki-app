@@ -23,15 +23,14 @@ class PartsList extends Component {
     
     render() {
 
-        const { id, name, producer, type, date } = this.props;
+        const { id, name, date, price, image } = this.props;
 
         return (
 
             <React.Fragment>
                 <ul>
                     <li>
-                        <Link to={`/search/${ id }`}>{ name } | <strong>{ producer } </strong>
-                            | { type } | { date }</Link>
+                        <Link to={`/search/${ id }`}><img src={ image } alt='car part' /><strong>{ name }</strong> | { date } | { price }</Link>
                         <br/>
                         <button onClick={ this.handleAddToFavsBtn }>Dodaj do ulubionych</button>
                     </li>
