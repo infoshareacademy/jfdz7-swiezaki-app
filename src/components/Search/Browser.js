@@ -25,10 +25,6 @@ class Browser extends Component {
 
     render() {
 
-        if (!this.props.isFetching && this.props.parts) {
-            const uniqueCategoriesFromState = [...(new Set(this.props.parts.map(({producer}) => producer)))];
-        }
-
         console.log('vehicle: ', this.props.vehicle, 'producer: ', this.props.producer,
             'category: ', this.props.category, 'userInput: ', this.props.userInput,
             'showEmptyMessage: ', this.props.showEmptyMessage);
@@ -58,19 +54,19 @@ class Browser extends Component {
                     checked={this.props.category === 'używane'}
                     />używane
                     &nbsp;
-                    {/*<select name="producer" onChange={this.handleChange}>*/}
-                    {/*<option value=''>Wszystkie marki</option>*/}
-                    {/*{*/}
-                       {/*uniqueCategoriesFromState.map((category, idx) =>*/}
+                    { this.props.parts && !this.props.isFetching ? <select name="producer" onChange={this.props.toggleFilter}>
+                    <option value=''>Wszystkie marki</option>
+                    {
+                        [...(new Set(this.props.parts.map(({producer}) => producer)))].map((category, idx) =>
 
-                            {/*<option value={category} key={idx}>*/}
-                                {/*{category}*/}
-                            {/*</option>*/}
-                        {/*)*/}
-                    {/*}*/}
-                    {/*</select>*/}
+                            <option value={category} key={idx}>
+                                {category}
+                            </option>
+                        )
+                    }
+                    </select> : null }
                     <br/>
-                    <input type="text" size="40" placeholder="Wprowadź nazwę części, np. hamulec" onChange={this.handleInput} />
+                    <input type="text" size="40" placeholder="Wprowadź nazwę części, np. hamulec" onChange={this.props.userInputFilter} />
                     <br/>
                 {
                     !this.props.showEmptyMessage ?

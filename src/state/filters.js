@@ -25,12 +25,12 @@ export default (state = initialState, action = {}) => {
         case TOGGLE_FILTER:
             return {
                 ...initialState,
-                [action.name]: action.value
+                [action.name]: action.value,
             };
         case USER_INPUT_FILTER:
             return {
                 ...initialState,
-                userInput: action.value
+                userInput: action.value.toLowerCase(),
             };
         default:
             return state
