@@ -1,14 +1,14 @@
-import firebase from 'firebase'
+import firebase from 'firebase';
 
-const SET_USER = 'auth/SET_USER'
+const SET_USER = 'auth/SET_USER';
 
 export const setUser = user => ({
     type: SET_USER,
     user
-})
+});
 export const signIn = (email, password) => dispatch => {
     return firebase.auth().signInWithEmailAndPassword(email, password)
-}
+};
 
 export const signUp = (email, password, userData) => dispatch => {
     return firebase
@@ -20,15 +20,15 @@ export const signUp = (email, password, userData) => dispatch => {
                 .ref('/users/' + user.uid)
                 .set(userData)
         })
-}
+};
 
 export const signOut = () => dispatch => {
     firebase.auth().signOut()
-}
+};
 
 const initialState = {
     user: null
-}
+};
 
 export default (state = initialState, action = {}) => {
     switch (action.type) {
@@ -36,7 +36,7 @@ export default (state = initialState, action = {}) => {
             return {
                 ...state,
                 user: action.user
-            }
+            };
 
         default:
             return state
