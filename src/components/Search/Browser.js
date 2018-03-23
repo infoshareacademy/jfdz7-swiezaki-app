@@ -11,13 +11,6 @@ class Browser extends Component {
         this.props.fetchParts()
     }
 
-    handleInput = ({ target: { value } }) => {
-        this.setState({
-            userInput: value.toLowerCase(),
-            showEmptyMessage: true
-        });
-    };
-
     changeMessageState = () => {
         this.setState({showEmptyMessage: false});
     };
