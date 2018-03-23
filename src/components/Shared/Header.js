@@ -6,11 +6,16 @@ class Header extends Component {
  render() {
    return (
        <React.Fragment>
-           <div>Header</div>
-           <Link to={`/favourites`}>
-               <button id="favsBtn">Ulubione części</button>
-               <br/>
-           </Link>
+           <menu>
+               <Link to={`/search`}>
+                   [ Wyszukiwarka ]
+               </Link>
+                &nbsp;
+                <Link to={`/favourites`}>
+                    [ Ulubione ]
+                </Link>
+
+           </menu>
        </React.Fragment>
    )
      }

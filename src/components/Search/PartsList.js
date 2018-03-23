@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { incrementPartsCounter } from '../../state/filters';
 
 class PartsList extends Component {
 
-    componentWillMount() {
-        this.props.changeMessageState();
+    componentDidMount() {
+        this.props.incrementPartsCounter();
     }
 
     handleAddToFavsBtn = () => {
@@ -19,19 +21,18 @@ class PartsList extends Component {
 
         const updatedFavParts = currentFavParts.concat(currentPart);
         localStorage.setItem("carPartsBrowserFavParts", JSON.stringify(updatedFavParts))
-    }
+    };
     
     render() {
 
-        const { id, name, producer, type, date } = this.props;
+        const { id, name, date, price, image } = this.props;
 
         return (
 
             <React.Fragment>
                 <ul>
                     <li>
-                        <Link to={`/search/${ id }`}>{ name } | <strong>{ producer } </strong>
-                            | { type } | { date }</Link>
+                        <Link to={`/search/${ id }`}><img src={ image } alt='car part' style={{"width": "50px"}} /><strong>{ name }</strong> | { date } | { price }</Link>
                         <br/>
                         <button onClick={ this.handleAddToFavsBtn }>Dodaj do ulubionych</button>
                     </li>
@@ -41,4 +42,4 @@ class PartsList extends Component {
     }
 }
 
-export default PartsList;
+export default connect(null, { incrementPartsCounter })(PartsList);

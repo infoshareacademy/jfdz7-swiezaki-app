@@ -1,18 +1,16 @@
 import React, { Component } from 'react'
 import { Route, BrowserRouter } from 'react-router-dom'
 
-import Header from './shared/Header'
+import Header from './Shared/Header'
 import Search from './Search'
-import Footer from './shared/Footer'
+import Footer from './Shared/Footer'
 import Login from './Login'
 import Product from './Product'
 import Register from './Register'
 import Favourites from './Favourites'
 
-
-
-
 class App extends Component {
+
     render (){
         return (
             <BrowserRouter>
