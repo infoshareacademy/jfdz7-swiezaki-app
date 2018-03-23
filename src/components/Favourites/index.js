@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Button, Container, Divider, Icon } from 'semantic-ui-react'
 
+import FavsHeader from './FavsHeader';
 import FavsList from './FavsList';
+import FavsMessage from './FavsMessage';
 
 class Favourites extends Component {
 
@@ -35,13 +38,19 @@ class Favourites extends Component {
     render() {
 
         return (
-            <React.Fragment>
-                <h2>Obserwowane produkty:</h2>
+            <Container>
+                <FavsHeader/>
+                <Divider/>
+                <FavsMessage favParts={this.state.favParts}/>
                 <FavsList favParts={this.state.favParts} removeFavPart={this.removeFavPart}/>
+                <Divider/>
                 <Link to={`/search`}>
-                    <button>Wróć do wyszukiwarki</button>
+                    <Button primary size="huge">
+                        <Icon name="reply" />
+                        Wróć do wyszukiwarki
+                    </Button>
                 </Link>
-            </React.Fragment>
+            </Container>
         )
     };
 
