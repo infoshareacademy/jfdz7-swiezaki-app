@@ -3,24 +3,17 @@ import { connect } from 'react-redux';
 
 import PartsList from './PartsList';
 import { fetchParts } from "../../state/parts";
-import { toggleFilter, userInputFilter } from "../../state/filters";
+import { initPartsCounter, toggleFilter, userInputFilter } from "../../state/filters";
 
 class Browser extends Component {
 
     componentDidMount() {
-        this.props.fetchParts()
+        this.props.fetchParts();
+        this.props.initPartsCounter();
     }
-
-    changeMessageState = () => {
-        this.setState({showEmptyMessage: false});
-    };
-
 
     render() {
 
-        console.log('vehicle: ', this.props.vehicle, 'producer: ', this.props.producer,
-            'category: ', this.props.category, 'userInput: ', this.props.userInput,
-            'showEmptyMessage: ', this.props.showEmptyMessage);
         return (
             <React.Fragment>
 
@@ -82,10 +75,9 @@ class Browser extends Component {
                     price={part.price}
                     image={part.image}
                     key={idx}
-                    changeMessageState={this.changeMessageState}
                     />
                     :
-                    null
+                       null
                     )}
 
             </React.Fragment>
@@ -102,4 +94,4 @@ export default connect(state => ({
     brand: state.filters.brand,
     userInput: state.filters.userInput,
     showEmptyMessage: state.filters.showEmptyMessage
-    }), { fetchParts, toggleFilter, userInputFilter })(Browser)
+    }), { fetchParts, toggleFilter, userInputFilter, initPartsCounter })(Browser)

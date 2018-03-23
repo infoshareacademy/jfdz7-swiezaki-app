@@ -3,10 +3,6 @@ import { Link } from 'react-router-dom';
 
 class PartsList extends Component {
 
-    componentWillMount() {
-        this.props.changeMessageState();
-    }
-
     handleAddToFavsBtn = () => {
         const currentPart = this.props;
 
