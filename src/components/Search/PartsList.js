@@ -5,7 +5,7 @@ import { incrementPartsCounter } from '../../state/filters';
 
 class PartsList extends Component {
 
-    componentWillMount() {
+    componentDidMount() {
         this.props.incrementPartsCounter();
     }
 
