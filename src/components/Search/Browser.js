@@ -3,13 +3,12 @@ import { connect } from 'react-redux';
 
 import PartsList from './PartsList';
 import { fetchParts } from "../../state/parts";
-import { initPartsCounter, toggleFilter, userInputFilter } from "../../state/filters";
+import { toggleFilter, userInputFilter } from "../../state/filters";
 
 class Browser extends Component {
 
     componentDidMount() {
         this.props.fetchParts();
-        this.props.initPartsCounter();
     }
 
     render() {
@@ -54,14 +53,14 @@ class Browser extends Component {
                     <br/>
                     <input type="text" size="40" placeholder="Wprowadź nazwę części, np. hamulec" onChange={this.props.userInputFilter} />
                     <br/>
-                {
-                    !this.props.showEmptyMessage ?
-                    <div style={{marginTop: '10px'}}>Lista części spełniających kryteria &darr; ({document.getElementsByTagName('li').length})</div>
-                    :
-                    <div style={{margin: '10px 0'}}>:/ Brak części spełniających podane kryteria</div>
-                }
 
-                {this.props.parts && this.props.parts.map((part, idx) =>
+                    { this.props.partsCounter > 0 ?
+                        <div>Lista części spełniających podane kryteria &darr; ({this.props.partsCounter})</div>
+                        :
+                        <div>Brak części spełniającej podane kryteria :/</div>
+                    }
+
+                    {this.props.parts && this.props.parts.map((part, idx) =>
 
                     part.vehicle === this.props.vehicle &&
                     part.category === this.props.category &&
@@ -93,5 +92,6 @@ export default connect(state => ({
     vehicle: state.filters.vehicle,
     brand: state.filters.brand,
     userInput: state.filters.userInput,
-    showEmptyMessage: state.filters.showEmptyMessage
-    }), { fetchParts, toggleFilter, userInputFilter, initPartsCounter })(Browser)
+    showEmptyMessage: state.filters.showEmptyMessage,
+    partsCounter: state.filters.partsCounter
+    }), { fetchParts, toggleFilter, userInputFilter })(Browser)

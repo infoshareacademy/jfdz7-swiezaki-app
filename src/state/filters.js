@@ -1,6 +1,5 @@
 const TOGGLE_FILTER = 'filters/TOGGLE_FILTER';
 const USER_INPUT_FILTER = 'filters/USER_INPUT_FILTER';
-const INIT_PARTS_COUNTER = 'filters/INIT_PARTS_COUNTER';
 const INCREMENT_PARTS_COUNTER = 'filters/INCREMENT_PARTS_COUNTER';
 
 export const toggleFilter = ({ target: { name, value}}) => ({
@@ -14,11 +13,7 @@ export const userInputFilter = ({ target: { value }}) => ({
     value
 });
 
-export const initPartsCounter = () => ({
-    type: INIT_PARTS_COUNTER
-});
-
-export const decrementPartsCounter = () => ({
+export const incrementPartsCounter = () => ({
     type: INCREMENT_PARTS_COUNTER
 });
 
@@ -37,17 +32,14 @@ export default (state = initialState, action = {}) => {
             return {
                 ...state,
                 [action.name]: action.value,
-                showEmptyMessage: true
+                showEmptyMessage: true,
+                partsCounter: 0
             };
         case USER_INPUT_FILTER:
             return {
                 ...state,
                 userInput: action.value.toLowerCase(),
-                showEmptyMessage: true
-            };
-        case INIT_PARTS_COUNTER:
-            return {
-                ...state,
+                showEmptyMessage: true,
                 partsCounter: 0
             };
         case INCREMENT_PARTS_COUNTER:
