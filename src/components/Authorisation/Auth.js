@@ -1,23 +1,21 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
-
+import { connect } from 'react-redux'
+import SignUpForm from './SignUpForm'
+import SignInForm from './SignInForm'
 
 class Auth extends Component {
-
-       handleSubmit = () => {
-        this.props.history.push('/search');
-    };
-
     render() {
-        return (
-            <React.Fragment>
-                <label>Adres e-mail</label><br/><input type="email"/><br/>
-                <label>Hasło</label><br/><input type="password"/><br/>
-                <button onClick={this.handleSubmit}>Zaloguj</button>
-                <input type="checkbox"/><label>Zapamiętaj mnie</label>
-            </React.Fragment>
+        return this.props.user === null ? (
+            <div>
+                <SignUpForm />
+                <SignInForm />
+            </div>
+        ) : (
+            this.props.children
         )
     }
 }
 
-export default Auth
+export default connect(state => ({
+    user: state.auth.user
+}))(Auth)
