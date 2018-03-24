@@ -1,7 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import './setupFirebase';
-import auth, { setUser } from "./state/auth";
+import auth from "./state/auth";
 import parts from './state/parts';
 import filters from './state/filters';
 
