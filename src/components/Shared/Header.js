@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-
+import SignOutButton from '../Authorisation/SignOutButton'
 
 class Header extends Component {
  render() {
    return (
        <React.Fragment>
+
+           <SignOutButton />
            <menu>
-               <Link to={`/search`}>
+               <Link to={`/`}>
                    [ Wyszukiwarka ]
                </Link>
                 &nbsp;

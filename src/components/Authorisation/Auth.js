@@ -10,9 +10,7 @@ class Auth extends Component {
                 <SignUpForm />
                 <SignInForm />
             </div>
-        ) : (
-            this.props.children
-        )
+        ) : ( this.props.children )
     }
 }
 
