@@ -6,6 +6,7 @@ export const setUser = user => ({
     type: SET_USER,
     user
 });
+
 export const signIn = (email, password) => dispatch => {
     return firebase.auth().signInWithEmailAndPassword(email, password)
 };

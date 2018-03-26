@@ -7,7 +7,7 @@ class Header extends Component {
    return (
        <React.Fragment>
            <menu>
-               <Link to={`/search`}>
+               <Link to={`/`}>
                    [ Wyszukiwarka ]
                </Link>
                 &nbsp;

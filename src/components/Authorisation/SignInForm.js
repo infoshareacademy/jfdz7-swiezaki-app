@@ -6,21 +6,21 @@ class SignInForm extends Component {
     state = {
         email: '',
         password: ''
-    }
+    };
 
     handleSubmit = event => {
-        event.preventDefault()
+        event.preventDefault();
 
         this.props
             .signIn(this.state.email, this.state.password)
             .catch(error => this.setState({ error }))
-    }
+    };
 
     handleChange = ({ target: { name, value } }) => {
         this.setState({
             [name]: value
         })
-    }
+    };
 
     renderInput(fieldName, type = 'text') {
         return (

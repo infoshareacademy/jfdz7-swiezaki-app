@@ -11,13 +11,12 @@ import Auth from '../src/components/Authorisation/Auth'
 import App from './components/App';
 import store from './store';
 
-
 ReactDOM.render(
     <Provider store={ store }>
         <Auth>
-        <Router>
-            <App />
-        </Router>
+            <Router>
+                <App />
+            </Router>
         </Auth>
     </Provider>,
     document.getElementById('root')
