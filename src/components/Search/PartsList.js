@@ -37,7 +37,7 @@ class PartsList extends Component {
                     <List.Item>
                         <Image avatar src={ image } />
                         <List.Content>
-                            <List.Header as='a'>
+                            <List.Header>
                               <Link to={`/products/${ id }`}>
                                 { name }
                               </Link>

@@ -21,26 +21,38 @@ class Browser extends Component {
                 { this.props.error && <p>{ this.props.error.message }</p> }
                 { this.props.isFetching && <p>Pobieram dane...</p> }
 
-                <input type="radio" name="vehicle" value="osobowe"
-                    onChange={this.props.toggleFilter}
+                <Radio toggle
+                    label='osobowe'
+                    name='vehicle'
+                    value='osobowe'
                     checked={this.props.vehicle === 'osobowe'}
-                    />osobowe
-
-                    <input type="radio" name="vehicle" value="ciężarowe"
                     onChange={this.props.toggleFilter}
+                    style={{"padding": "0 10px 10px 0"}}
+                />
+                <Radio toggle
+                    label='ciężarowe'
+                    name='vehicle'
+                    value='ciężarowe'
                     checked={this.props.vehicle === 'ciężarowe'}
-                    />ciężarowe
-
-
-                    <input type="radio" name="category" value="nowe"
                     onChange={this.props.toggleFilter}
-                    checked={this.props.category === 'nowe'}
-                    />nowe
-
-                    <input type="radio" name="category" value="używane"
-                    onChange={this.props.toggleFilter}
-                    checked={this.props.category === 'używane'}
-                    />używane
+                    style={{"padding": "0 10px 10px 0"}}
+                />
+                <Radio toggle
+                       label='nowe'
+                       name='category'
+                       value='nowe'
+                       checked={this.props.category === 'nowe'}
+                       onChange={this.props.toggleFilter}
+                       style={{"padding": "0 10px 10px 0"}}
+                />
+                <Radio toggle
+                       label='używane'
+                       name='category'
+                       value='używane'
+                       checked={this.props.category === 'używane'}
+                       onChange={this.props.toggleFilter}
+                       style={{"padding": "0 10px 10px 0"}}
+                />
                     &nbsp;
                     { this.props.parts && !this.props.isFetching && <select name="brand" onChange={this.props.toggleFilter}>
                     <option value=''>Wszystkie marki</option>
