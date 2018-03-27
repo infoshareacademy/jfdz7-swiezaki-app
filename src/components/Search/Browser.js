@@ -5,6 +5,8 @@ import PartsList from './PartsList';
 import { fetchParts } from "../../state/parts";
 import { toggleFilter, userInputFilter } from "../../state/filters";
 
+import { Input, Radio } from 'semantic-ui-react';
+
 class Browser extends Component {
 
     componentDidMount() {
@@ -19,7 +21,7 @@ class Browser extends Component {
                 { this.props.error && <p>{ this.props.error.message }</p> }
                 { this.props.isFetching && <p>Pobieram dane...</p> }
 
-                    <input type="radio" name="vehicle" value="osobowe"
+                <input type="radio" name="vehicle" value="osobowe"
                     onChange={this.props.toggleFilter}
                     checked={this.props.vehicle === 'osobowe'}
                     />osobowe
@@ -28,6 +30,7 @@ class Browser extends Component {
                     onChange={this.props.toggleFilter}
                     checked={this.props.vehicle === 'ciężarowe'}
                     />ciężarowe
+
 
                     <input type="radio" name="category" value="nowe"
                     onChange={this.props.toggleFilter}
@@ -51,7 +54,7 @@ class Browser extends Component {
                     }
                     </select> }
                     <br/>
-                    <input type="text" size="40" placeholder="Wprowadź nazwę części, np. hamulec" onChange={this.props.userInputFilter} />
+                    <Input icon='search' iconPosition='left' size='large' style={{"width": "100%"}} placeholder="Wprowadź nazwę części, np. hamulec" onChange={this.props.userInputFilter} />
                     <br/>
 
                     { this.props.partsCounter > 0 ?
