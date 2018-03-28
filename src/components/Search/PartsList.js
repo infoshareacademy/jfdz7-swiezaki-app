@@ -44,6 +44,7 @@ class PartsList extends Component {
                             </List.Header>
                             <List.Description>
                                 rok produkcji: { date } | cena: <strong>{ price }</strong>
+                                <button onClick={ this.handleAddToFavsBtn }>Dodaj do ulubionych</button>
                             </List.Description>
                         </List.Content>
                     </List.Item>
