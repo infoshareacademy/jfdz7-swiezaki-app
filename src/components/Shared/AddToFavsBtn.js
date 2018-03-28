@@ -6,8 +6,8 @@ import { addFavPart } from "../../state/favourites";
 class AddToFavsBtn extends Component {
 
     handleAddFavPartBtn = () => {
-        const { currentPart } = this.props;
-        this.props.addFavPart(currentPart)
+        const partID = this.props.partID;
+        this.props.addFavPart(partID)
     };
 
     render() {
@@ -18,7 +18,7 @@ class AddToFavsBtn extends Component {
 
 export default connect(
     state => ({
-        favParts: state.favourites.favParts
+        favPartsIDs: state.favourites.favPartsIDs
     }),
     { addFavPart }
 )(AddToFavsBtn)

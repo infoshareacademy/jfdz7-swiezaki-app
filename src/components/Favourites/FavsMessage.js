@@ -6,7 +6,7 @@ class FavsMessage extends Component {
 
     constructor(props) {
         super(props);
-        this.props.favParts.length === 0
+        this.props.favPartsIDs.length === 0
             ?
             this.state = {noFavParts: true}
             :
@@ -14,7 +14,7 @@ class FavsMessage extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        nextProps.favParts.length === 0
+        nextProps.favPartsIDs.length === 0
             ?
             this.setState({noFavParts: true})
             :
@@ -39,6 +39,6 @@ class FavsMessage extends Component {
 
 export default connect(
     state => ({
-        favParts: state.favourites.favParts
+        favPartsIDs: state.favourites.favPartsIDs
     }),
 )(FavsMessage)

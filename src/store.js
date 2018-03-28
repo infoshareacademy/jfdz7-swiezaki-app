@@ -26,8 +26,8 @@ firebase.auth().onAuthStateChanged(user => {
 });
 
 store.subscribe(() => {
-    const currentFavParts = store.getState().favourites.favParts;
-    localStorage.setItem('carPartsBrowserFavParts', JSON.stringify(currentFavParts));
+    const currentFavPartsIDs = store.getState().favourites.favPartsIDs;
+    localStorage.setItem('carPartsBrowserFavParts', JSON.stringify(currentFavPartsIDs));
 });
 
 export default store;

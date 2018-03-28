@@ -32,7 +32,7 @@ class PartsList extends Component {
                             </List.Header>
                             <List.Description>
                                 rok produkcji: { date } | cena: <strong>{ price }</strong>
-                                <AddToFavsBtn currentPart={this.props}/>
+                                <AddToFavsBtn partID={ id }/>
                             </List.Description>
                         </List.Content>
                     </List.Item>
