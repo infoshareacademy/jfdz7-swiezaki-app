@@ -16,7 +16,7 @@ class Auth extends Component {
         return this.props.user === null ? (
             <Grid centered columns={4}>
                 <Grid.Column>
-           <Tab panes={panes} defaultActiveIndex={0} />
+                    <Tab panes={panes} defaultActiveIndex={0} />
                     <Divider horizontal>lub</Divider>
                     <Button fluid color='facebook'>
                         <Icon name='facebook' /> Kontynuuj z Facebook
