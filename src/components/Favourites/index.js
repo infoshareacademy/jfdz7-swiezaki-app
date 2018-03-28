@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Container, Divider, Icon } from 'semantic-ui-react'
+import { Button, Container, Divider, Icon } from 'semantic-ui-react';
 
 import FavsHeader from './FavsHeader';
 import FavsList from './FavsList';
@@ -17,12 +17,14 @@ class Favourites extends Component {
                 <FavsMessage/>
                 <FavsList/>
                 <Divider/>
-                <Link to={`/search`}>
-                    <Button primary size="huge">
-                        <Icon name="reply" />
-                        Wróć do wyszukiwarki
-                    </Button>
-                </Link>
+                <div className="returnToSearchBtn">
+                    <Link to={`/`}>
+                        <Button primary size="huge">
+                            <Icon name="reply" />
+                            Wróć do wyszukiwarki
+                        </Button>
+                    </Link>
+                </div>
             </Container>
         )
     };
