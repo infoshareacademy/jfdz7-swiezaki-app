@@ -14,7 +14,7 @@ class Favourites extends Component {
             <Container>
                 <FavsHeader/>
                 <Divider/>
-
+                <FavsMessage/>
                 <FavsList/>
                 <Divider/>
                 <Link to={`/search`}>

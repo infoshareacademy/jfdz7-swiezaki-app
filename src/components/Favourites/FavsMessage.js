@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Message } from 'semantic-ui-react';
 
 class FavsMessage extends Component {
@@ -24,4 +25,8 @@ class FavsMessage extends Component {
 
 }
 
-export default FavsMessage
+export default connect(
+    state => ({
+        favParts: state.favourites.favParts
+    }),
+)(FavsMessage)
