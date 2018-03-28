@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Tab, Grid } from 'semantic-ui-react';
+import { Tab, Grid, Button, Icon } from 'semantic-ui-react';
 
 import SignUpForm from './SignUpForm'
 import SignInForm from './SignInForm'
@@ -17,6 +17,9 @@ class Auth extends Component {
             <Grid centered columns={4}>
                 <Grid.Column>
            <Tab panes={panes} defaultActiveIndex={0} />
+                    <Button fluid color='facebook'>
+                        <Icon name='facebook' /> Kontynuuj z Facebook
+                    </Button>
                 </Grid.Column>
             </Grid>
         ) : ( this.props.children )

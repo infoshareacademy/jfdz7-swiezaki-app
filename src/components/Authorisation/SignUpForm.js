@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Button, Input } from 'semantic-ui-react';
+import { Button, Form, Input } from 'semantic-ui-react';
 
 import { signUp } from '../../state/auth'
 
@@ -27,12 +27,13 @@ class SignUpForm extends Component {
         })
     }
 
-    renderInput(fieldName, type = 'text') {
+    renderInput(fieldName, type = 'text', placeholder) {
         return (
             <Input
                 name={fieldName}
                 value={this.state[fieldName]}
                 type={type}
+                placeholder={placeholder}
                 onChange={this.handleChange}
             />
         )
@@ -40,12 +41,12 @@ class SignUpForm extends Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <Form onSubmit={this.handleSubmit}>
                 {this.state.error && <p>{this.state.error.message}</p>}
-                <div>Adres email: {this.renderInput('email')}</div>
-                <div>Hasło: {this.renderInput('password', 'password')}</div>
-                <Button size='tiny' color='red'>Zapisz się!</Button>
-            </form>
+                <Form.Field>{this.renderInput('email', 'email', 'E-mail')}</Form.Field>
+                <Form.Field>{this.renderInput('password', 'password', 'Hasło')}</Form.Field>
+                <Button fluid size='tiny' color='red'>Zarejestruj się!</Button>
+            </Form>
         )
     }
 }
