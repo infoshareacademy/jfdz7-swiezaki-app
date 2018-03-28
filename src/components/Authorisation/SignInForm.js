@@ -6,7 +6,7 @@ class SignInForm extends Component {
     state = {
         email: '',
         password: ''
-    };
+    }
 
     handleSubmit = event => {
         event.preventDefault();
@@ -37,7 +37,6 @@ class SignInForm extends Component {
         console.log(this.state.error);
         return (
             <form onSubmit={this.handleSubmit}>
-                <h1>Logowanie</h1>
                 {this.state.error && <p>{
                     this.state.error.code === 'auth/invalid-email' ?
                         'Błędny adres e-mail' : null

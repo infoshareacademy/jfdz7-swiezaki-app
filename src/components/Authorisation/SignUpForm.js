@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Button, Input } from 'semantic-ui-react';
+
 import { signUp } from '../../state/auth'
 
 class SignUpForm extends Component {
@@ -27,7 +29,7 @@ class SignUpForm extends Component {
 
     renderInput(fieldName, type = 'text') {
         return (
-            <input
+            <Input
                 name={fieldName}
                 value={this.state[fieldName]}
                 type={type}
@@ -39,11 +41,10 @@ class SignUpForm extends Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-                <h1>Załóż konto!</h1>
                 {this.state.error && <p>{this.state.error.message}</p>}
                 <div>Adres email: {this.renderInput('email')}</div>
                 <div>Hasło: {this.renderInput('password', 'password')}</div>
-                <button>Zapisz się!</button>
+                <Button size='tiny' color='red'>Zapisz się!</Button>
             </form>
         )
     }
