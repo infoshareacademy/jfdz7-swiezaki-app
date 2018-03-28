@@ -6,7 +6,7 @@ import { signOut } from '../../state/auth';
 
 class SignOutButton extends Component {
     render() {
-        return <Icon name='sign out' onClick={() => this.props.signOut()}>Wyloguj...</Icon>
+        return <Icon name='sign out' size='large' onClick={() => this.props.signOut()}>Wyloguj...</Icon>
     }
 }
 
