@@ -6,7 +6,19 @@ class FavsMessage extends Component {
 
     constructor(props) {
         super(props);
-        this.props.favParts.length === 0 ? this.state = {noFavParts: true} : this.state = {noFavParts: false};
+        this.props.favParts.length === 0
+            ?
+            this.state = {noFavParts: true}
+            :
+            this.state = {noFavParts: false};
+    }
+
+    componentWillReceiveProps(nextProps) {
+        nextProps.favParts.length === 0
+            ?
+            this.setState({noFavParts: true})
+            :
+            this.setState({noFavParts: false});
     }
 
     render() {
