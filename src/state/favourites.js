@@ -22,22 +22,20 @@ export default (state = initialState, action = {}) => {
 
         case ADD_FAVPART:
 
-            let currentFavParts = JSON.parse((localStorage.getItem('carPartsBrowserFavParts') || '[]'));
-            localStorage.setItem('carPartsBrowserFavParts', JSON.stringify(currentFavParts));
+            let currentFavParts = state.favParts;
 
             currentFavParts = currentFavParts.filter(part => {
                 return part.id !== action.currentPart.id
             });
 
             const updatedFavParts = currentFavParts.concat(action.currentPart);
-            localStorage.setItem("carPartsBrowserFavParts", JSON.stringify(updatedFavParts));
 
             return {
-                ...state,
                 favParts: updatedFavParts
             };
 
         case REMOVE_FAVPART:
+
             return {
                 ...state,
                 favParts: state.favParts.filter(favPart => favPart.id !== action.favPartId)

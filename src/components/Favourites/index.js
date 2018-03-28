@@ -27,10 +27,6 @@ class Favourites extends Component {
         )
     };
 
-    // componentDidUpdate() {
-    //     localStorage.setItem("carPartsBrowserFavParts", JSON.stringify(this.state.favParts))
-    // } // updating local storage with current state in case some parts were removed
-
 }
 
 export default Favourites
