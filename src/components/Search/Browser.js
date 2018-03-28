@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 
 import PartsList from './PartsList';
 import { fetchParts } from "../../state/parts";
-import { toggleFilter, userInputFilter } from "../../state/filters";
+import { toggleFilter, toggleSelect, userInputFilter } from "../../state/filters";
 
-import { Input, Radio } from 'semantic-ui-react';
+import { Input, Radio, Form } from 'semantic-ui-react';
 
 class Browser extends Component {
 
@@ -54,7 +54,15 @@ class Browser extends Component {
                        style={{"padding": "0 10px 10px 0"}}
                 />
                     &nbsp;
-                    { this.props.parts && !this.props.isFetching && <select name="brand" onChange={this.props.toggleFilter}>
+                { this.props.parts && !this.props.isFetching
+                && <select name="brand" onChange={this.props.toggleSelect}
+                style={{
+                    "border": "1px solid #C2C2C2",
+                    "background": "white",
+                    "font-family": "Verdana, sans-serif",
+                    "border-radius": "7%",
+                    "padding": "3px"
+                }}>
                     <option value=''>Wszystkie marki</option>
                     {
                         [...(new Set(this.props.parts.map(({brand}) => brand)))].map((category, idx) =>
@@ -64,7 +72,7 @@ class Browser extends Component {
                             </option>
                         )
                     }
-                    </select> }
+                </select> }
                     <br/>
                     <Input icon='search' iconPosition='left' size='large' style={{"width": "100%"}} placeholder="Wprowadź nazwę części, np. hamulec" onChange={this.props.userInputFilter} />
                     <br/>
@@ -109,4 +117,4 @@ export default connect(state => ({
     userInput: state.filters.userInput,
     showEmptyMessage: state.filters.showEmptyMessage,
     partsCounter: state.filters.partsCounter
-    }), { fetchParts, toggleFilter, userInputFilter })(Browser)
+    }), { fetchParts, toggleFilter, toggleSelect, userInputFilter })(Browser)
