@@ -9,18 +9,18 @@ class SignInForm extends Component {
     }
 
     handleSubmit = event => {
-        event.preventDefault()
+        event.preventDefault();
 
         this.props
             .signIn(this.state.email, this.state.password)
             .catch(error => this.setState({ error }))
-    }
+    };
 
     handleChange = ({ target: { name, value } }) => {
         this.setState({
             [name]: value
         })
-    }
+    };
 
     renderInput(fieldName, type = 'text') {
         return (
@@ -34,10 +34,13 @@ class SignInForm extends Component {
     }
 
     render() {
+        console.log(this.state.error);
         return (
             <form onSubmit={this.handleSubmit}>
-                <h1>Logowanie</h1>
-                {this.state.error && <p>{this.state.error.message}</p>}
+                {this.state.error && <p>{
+                    this.state.error.code === 'auth/invalid-email' ?
+                        'Błędny adres e-mail' : null
+                }</p>}
                 <div>Adres email: {this.renderInput('email')}</div>
                 <div>Hasło: {this.renderInput('password', 'password')}</div>
                 <button>Zaloguj się</button>
