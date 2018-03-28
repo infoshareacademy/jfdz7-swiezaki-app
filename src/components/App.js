@@ -14,7 +14,7 @@ class App extends Component {
             <React.Fragment>
                 <Header/>
                 <Route exact path="/" component={Search}/>
-                <Route path="/:id" component={Product}/>
+                <Route path="/products/:id" component={Product}/>
                 <Route path="/favourites" component={Favourites}/>
                 <Footer/>
             </React.Fragment>
