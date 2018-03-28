@@ -5,7 +5,7 @@ import PartsList from './PartsList';
 import { fetchParts } from "../../state/parts";
 import { toggleFilter, toggleSelect, userInputFilter } from "../../state/filters";
 
-import { Input, Radio, Form } from 'semantic-ui-react';
+import { Input, Radio, Label, Icon } from 'semantic-ui-react';
 
 class Browser extends Component {
 
@@ -78,9 +78,9 @@ class Browser extends Component {
                     <br/>
 
                     { this.props.partsCounter > 0 ?
-                        <div>Lista części spełniających podane kryteria &darr; ({this.props.partsCounter})</div>
+                        <Label style={{"marginTop": "10px"}}><Icon name='announcement' /> Liczba znalezionych części: {this.props.partsCounter}</Label>
                         :
-                        <div>Brak części spełniającej podane kryteria :/</div>
+                        <Label style={{"marginTop": "10px"}}><Icon name='warning' /> Brak części spełniającej podane kryteria wyszukiwania.</Label>
                     }
 
                     {this.props.parts && this.props.parts.map((part, idx) =>
