@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Tab, Grid, Button, Icon } from 'semantic-ui-react';
+import { Tab, Grid, Divider, Button, Icon } from 'semantic-ui-react';
 
 import SignUpForm from './SignUpForm'
 import SignInForm from './SignInForm'
@@ -17,6 +17,7 @@ class Auth extends Component {
             <Grid centered columns={4}>
                 <Grid.Column>
            <Tab panes={panes} defaultActiveIndex={0} />
+                    <Divider horizontal>lub</Divider>
                     <Button fluid color='facebook'>
                         <Icon name='facebook' /> Kontynuuj z Facebook
                     </Button>
