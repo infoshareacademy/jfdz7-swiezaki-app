@@ -1,11 +1,24 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Message } from 'semantic-ui-react';
 
 class FavsMessage extends Component {
 
     constructor(props) {
         super(props);
-        this.props.favParts.length === 0 ? this.state = {noFavParts: true} : this.state = {noFavParts: false};
+        this.props.favPartsIDs.length === 0
+            ?
+            this.state = {noFavParts: true}
+            :
+            this.state = {noFavParts: false};
+    }
+
+    componentWillReceiveProps(nextProps) {
+        nextProps.favPartsIDs.length === 0
+            ?
+            this.setState({noFavParts: true})
+            :
+            this.setState({noFavParts: false});
     }
 
     render() {
@@ -24,4 +37,8 @@ class FavsMessage extends Component {
 
 }
 
-export default FavsMessage
+export default connect(
+    state => ({
+        favPartsIDs: state.favourites.favPartsIDs
+    }),
+)(FavsMessage)

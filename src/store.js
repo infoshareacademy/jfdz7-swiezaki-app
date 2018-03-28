@@ -5,12 +5,14 @@ import './setupFirebase';
 import auth, { setUser } from "./state/auth";
 import parts from './state/parts';
 import filters from './state/filters';
+import favourites from './state/favourites';
 
 
 const reducer = combineReducers({
     auth,
     parts,
-    filters
+    filters,
+    favourites
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -21,6 +23,11 @@ const store = createStore(
 
 firebase.auth().onAuthStateChanged(user => {
     store.dispatch(setUser(user))
+});
+
+store.subscribe(() => {
+    const currentFavPartsIDs = store.getState().favourites.favPartsIDs;
+    localStorage.setItem('carPartsBrowserFavParts', JSON.stringify(currentFavPartsIDs));
 });
 
 export default store;

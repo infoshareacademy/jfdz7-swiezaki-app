@@ -1,53 +1,55 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Grid, Image, Card, Icon, Button } from 'semantic-ui-react'
+import { Grid, Image, Card, Icon, Button } from 'semantic-ui-react';
+import { connect } from 'react-redux'
 
+import { removeFavPart } from "../../state/favourites";
 
 class FavsList extends Component {
 
     handleRemove = event => {
-        const favPartId = event.target.dataset.favpartId;
-        this.props.removeFavPart(favPartId);
+        const favPartID = event.target.dataset.favpartId;
+        this.props.removeFavPart(favPartID);
     };
 
     render() {
 
-        const { favParts } = this.props;
+        const favPartsIDs = this.props.favPartsIDs;
+        const parts = this.props.parts;
 
         return (
             <Grid>
                 {
-                    favParts.map(favPart =>
+                    favPartsIDs.map(favPartID =>
                     <Grid.Column
-                        key={favPart.id}
+                        key={favPartID}
                         mobile={16} tablet={8} computer={4} largeScreen={3} widescreen={3}>
                         <Card centered>
-                                <Link to={`/search/${ favPart.id }`}>
-                                    <Image src="/data/images/akumulator.png" />
+                                <Link to={ `/search/${ favPartID }`}>
+                                    <Image src={ parts[favPartID].image } />
                                 </Link>
-                                {/* This is temporary image, will be replaced after setting new JSON file */}
                             <Card.Content>
                                     <Card.Header>
-                                        {favPart.name}
+                                        { parts[favPartID].name }
                                     </Card.Header>
                                     <Card.Meta>
-                                        {favPart.producer}
+
                                     </Card.Meta>
                                 <Card.Description>
                                     <p>
                                         <strong>Rodzaj: </strong>
-                                        {favPart.type}
+                                        { parts[favPartID].vehicle }
                                     </p>
                                     <p>
                                         <strong>Rok produkcji: </strong>
-                                        {favPart.date}
+                                        { parts[favPartID].date }
                                     </p>
                                 </Card.Description>
                             </Card.Content>
                             <Card.Content extra>
                                 <Button
                                     color="red"
-                                    data-favpart-id={favPart.id}
+                                    data-favpart-id={ favPartID }
                                     onClick={ this.handleRemove }>
                                     <Icon name="remove circle" />
                                         Usuń z ulubionych
@@ -62,4 +64,10 @@ class FavsList extends Component {
     }
 }
 
-export default FavsList
+export default connect(
+    state => ({
+        favPartsIDs: state.favourites.favPartsIDs,
+        parts: state.parts.data
+    }),
+    { removeFavPart }
+)(FavsList)

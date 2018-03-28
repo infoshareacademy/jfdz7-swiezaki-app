@@ -5,26 +5,14 @@ import { incrementPartsCounter } from '../../state/filters';
 
 import { Image, List } from 'semantic-ui-react';
 
+import AddToFavsBtn from '../Shared/AddToFavsBtn';
+
 class PartsList extends Component {
 
     componentDidMount() {
         this.props.incrementPartsCounter();
     }
 
-    handleAddToFavsBtn = () => {
-        const currentPart = this.props;
-
-        let currentFavParts = JSON.parse((localStorage.getItem('carPartsBrowserFavParts') || '[]'));
-        localStorage.setItem('carPartsBrowserFavParts', JSON.stringify(currentFavParts));
-
-        currentFavParts = currentFavParts.filter(part => {
-            return part.id !== currentPart.id
-        });
-
-        const updatedFavParts = currentFavParts.concat(currentPart);
-        localStorage.setItem("carPartsBrowserFavParts", JSON.stringify(updatedFavParts))
-    };
-    
     render() {
 
         const { id, name, date, price, image } = this.props;
@@ -44,7 +32,7 @@ class PartsList extends Component {
                             </List.Header>
                             <List.Description>
                                 rok produkcji: { date } | cena: <strong>{ price }</strong>
-                                <button onClick={ this.handleAddToFavsBtn }>Dodaj do ulubionych</button>
+                                <AddToFavsBtn partID={ id }/>
                             </List.Description>
                         </List.Content>
                     </List.Item>

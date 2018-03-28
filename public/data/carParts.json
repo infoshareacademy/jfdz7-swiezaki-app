@@ -1,6 +1,6 @@
 [
   {
-    "id": "1",
+    "id": "0",
     "vehicle": "osobowe",
     "category": "nowe",
     "name": "hamulec komplet 2 sztuki ATE",
@@ -22,7 +22,7 @@
   },
 
   {
-    "id": "2",
+    "id": "1",
     "vehicle": "ciężarowe",
     "category": "używane",
     "name": "hamulec komplet 4 sztuki Wulf Gaertner Autoparts",
@@ -44,7 +44,7 @@
   },
 
   {
-    "id": "3",
+    "id": "2",
     "vehicle": "osobowe",
     "category": "używane",
     "name": "hamulec komplet 2 sztuki Wulf Gaertner Autoparts",
@@ -66,7 +66,7 @@
   },
 
   {
-    "id": "4",
+    "id": "3",
     "vehicle": "ciężarowe",
     "category": "nowe",
     "name": "hamulec komplet 4 sztuki MaXgear",
@@ -88,7 +88,7 @@
   },
 
   {
-    "id": "5",
+    "id": "4",
     "vehicle": "osobowe",
     "category": "nowe",
     "name": "hamulec komplet 2 sztuki ATE",
@@ -110,7 +110,7 @@
   },
 
   {
-    "id": "6",
+    "id": "5",
     "vehicle": "osobowe",
     "category": "nowe",
     "name": "hamulec komplet 2 sztuki MaxGear",
@@ -132,7 +132,7 @@
   },
 
   {
-    "id": "7",
+    "id": "6",
     "vehicle": "osobowe",
     "category": "używane",
     "name": "tłumik przedni ASMET",
@@ -154,7 +154,7 @@
   },
 
   {
-    "id": "8",
+    "id": "7",
     "vehicle": "ciężarowe",
     "category": "nowe",
     "name": "tłumik tylny ASMET",
@@ -176,7 +176,7 @@
   },
 
   {
-    "id": "9",
+    "id": "8",
     "vehicle": "osobowe",
     "category": "używane",
     "name": "tłumik przedni Edex",
@@ -198,7 +198,7 @@
   },
 
   {
-    "id": "10",
+    "id": "9",
     "vehicle": "ciężarowe",
     "category": "nowe",
     "name": "tłumik tylny Edex",
@@ -220,7 +220,7 @@
   },
 
   {
-    "id": "11",
+    "id": "10",
     "vehicle": "osobowe",
     "category": "używane",
     "name": "akumulator Varta",
@@ -242,7 +242,7 @@
   },
 
   {
-    "id": "12",
+    "id": "11",
     "vehicle": "ciężarowe",
     "category": "nowe",
     "name": "akumulator Varta",
@@ -264,7 +264,7 @@
   },
 
   {
-    "id": "13",
+    "id": "12",
     "vehicle": "osobowe",
     "category": "używane",
     "name": "akumulator Varta",
@@ -286,7 +286,7 @@
   },
 
   {
-    "id": "14",
+    "id": "13",
     "vehicle": "ciężarowe",
     "category": "nowe",
     "name": "akumulator Energizer",
@@ -308,7 +308,7 @@
   },
 
   {
-    "id": "15",
+    "id": "14",
     "vehicle": "osobowe",
     "category": "używane",
     "name": "akumulator Energizer",
@@ -330,7 +330,7 @@
   },
 
   {
-    "id": "16",
+    "id": "15",
     "vehicle": "ciężarowe",
     "category": "nowe",
     "name": "akumulator Energizer",
@@ -352,7 +352,7 @@
   },
 
   {
-    "id": "17",
+    "id": "16",
     "vehicle": "osobowe",
     "category": "używane",
     "name": "akumulator Kager",
@@ -374,7 +374,7 @@
   },
 
   {
-    "id": "18",
+    "id": "17",
     "vehicle": "ciężarowe",
     "category": "nowe",
     "name": "akumulator Kager",
@@ -396,7 +396,7 @@
   },
 
   {
-    "id": "19",
+    "id": "18",
     "vehicle": "osobowe",
     "category": "używane",
     "name": "akumulator Kager",
@@ -418,7 +418,7 @@
   },
 
   {
-    "id": "20",
+    "id": "19",
     "vehicle": "ciężarowe",
     "category": "nowe",
     "name": "akumulator Centra",
@@ -440,7 +440,7 @@
   },
 
   {
-    "id": "21",
+    "id": "20",
     "vehicle": "osobowe",
     "category": "używane",
     "name": "łożysko komplet 4 sztuki Swag",
@@ -462,7 +462,7 @@
   },
 
   {
-    "id": "22",
+    "id": "21",
     "vehicle": "ciężarowe",
     "category": "nowe",
     "name": "łożysko komplet 4 sztuki Ruville",
@@ -484,7 +484,7 @@
   },
 
   {
-    "id": "23",
+    "id": "22",
     "vehicle": "osobowe",
     "category": "używane",
     "name": "łożysko komplet 4 sztuki Swag",
@@ -506,7 +506,7 @@
   },
 
   {
-    "id": "24",
+    "id": "23",
     "vehicle": "ciężarowe",
     "category": "nowe",
     "name": "łożysko komplet 4 sztuki Kager",
@@ -528,7 +528,7 @@
   },
 
   {
-    "id": "25",
+    "id": "24",
     "vehicle": "osobowe",
     "category": "używane",
     "name": "amortyzator tył SACHS",
@@ -550,7 +550,7 @@
   },
 
   {
-    "id": "26",
+    "id": "25",
     "vehicle": "ciężarowe",
     "category": "nowe",
     "name": "amortyzator tył SACHS",
@@ -572,7 +572,7 @@
   },
 
   {
-    "id": "27",
+    "id": "26",
     "vehicle": "osobowe",
     "category": "używane",
     "name": "amortyzator przód SACHS",
@@ -594,7 +594,7 @@
   },
 
   {
-    "id": "28",
+    "id": "27",
     "vehicle": "ciężarowe",
     "category": "nowe",
     "name": "amortyzator przód SACHS",
@@ -616,7 +616,7 @@
   },
 
   {
-    "id": "29",
+    "id": "28",
     "vehicle": "osobowe",
     "category": "używane",
     "name": "amortyzatory komplet przód i tył SACHS",
@@ -638,7 +638,7 @@
   },
 
   {
-    "id": "30",
+    "id": "29",
     "vehicle": "ciężarowe",
     "category": "nowe",
     "name": "amortyzatory komplet przód i tył SACHS",
@@ -660,7 +660,7 @@
   },
 
   {
-    "id": "31",
+    "id": "30",
     "vehicle": "ciężarowe",
     "category": "używane",
     "name": "amortyzatory komplet przód i tył SACHS",
@@ -682,7 +682,7 @@
   },
 
   {
-    "id": "32",
+    "id": "31",
     "vehicle": "ciężarowe",
     "category": "używane",
     "name": "łożysko komplet 4 sztuki Swag",
@@ -704,7 +704,7 @@
   },
 
   {
-    "id": "33",
+    "id": "32",
     "vehicle": "ciężarowe",
     "category": "używane",
     "name": "tłumik przedni ASMET",
@@ -726,7 +726,7 @@
   },
 
   {
-    "id": "34",
+    "id": "33",
     "vehicle": "ciężarowe",
     "category": "używane",
     "name": "tłumik przedni Edex",
@@ -748,7 +748,7 @@
   },
 
   {
-    "id": "35",
+    "id": "34",
     "vehicle": "osobowe",
     "category": "nowe",
     "name": "tłumik tylny ASMET",
@@ -770,7 +770,7 @@
   },
 
   {
-    "id": "36",
+    "id": "35",
     "vehicle": "osobowe",
     "category": "nowe",
     "name": "akumulator Varta",
@@ -792,7 +792,7 @@
   },
 
   {
-    "id": "37",
+    "id": "36",
     "vehicle": "osobowe",
     "category": "nowe",
     "name": "akumulator Energizer",
@@ -814,7 +814,7 @@
   },
 
   {
-    "id": "38",
+    "id": "37",
     "vehicle": "osobowe",
     "category": "nowe",
     "name": "akumulator Energizer",
@@ -836,7 +836,7 @@
   },
 
   {
-    "id": "39",
+    "id": "38",
     "vehicle": "osobowe",
     "category": "nowe",
     "name": "akumulator Kager",
@@ -858,7 +858,7 @@
   },
 
   {
-    "id": "40",
+    "id": "39",
     "vehicle": "osobowe",
     "category": "nowe",
     "name": "akumulator Centra",
@@ -880,7 +880,7 @@
   },
 
   {
-    "id": "41",
+    "id": "40",
     "vehicle": "osobowe",
     "category": "nowe",
     "name": "łożysko komplet 4 sztuki Ruville",
@@ -902,7 +902,7 @@
   },
 
   {
-    "id": "42",
+    "id": "41",
     "vehicle": "osobowe",
     "category": "nowe",
     "name": "łożysko komplet 4 sztuki Kager",
@@ -924,7 +924,7 @@
   },
 
   {
-    "id": "43",
+    "id": "42",
     "vehicle": "osobowe",
     "category": "nowe",
     "name": "amortyzator tył SACHS",
@@ -946,7 +946,7 @@
   },
 
   {
-    "id": "44",
+    "id": "43",
     "vehicle": "osobowe",
     "category": "nowe",
     "name": "amortyzator przód SACHS",
@@ -968,7 +968,7 @@
   },
 
   {
-    "id": "45",
+    "id": "44",
     "vehicle": "osobowe",
     "category": "nowe",
     "name": "amortyzatory komplet przód i tył SACHS",
