@@ -1,25 +1,24 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import { addFavPart } from "../../state/favourites";
 
 class AddToFavsBtn extends Component {
 
-    handleAddToFavsBtn = () => {
+    handleAddFavPartBtn = () => {
         const { currentPart } = this.props;
-
-        let currentFavParts = JSON.parse((localStorage.getItem('carPartsBrowserFavParts') || '[]'));
-        localStorage.setItem('carPartsBrowserFavParts', JSON.stringify(currentFavParts));
-
-        currentFavParts = currentFavParts.filter(part => {
-            return part.id !== currentPart.id
-        });
-
-        const updatedFavParts = currentFavParts.concat(currentPart);
-        localStorage.setItem("carPartsBrowserFavParts", JSON.stringify(updatedFavParts))
+        this.props.addFavPart(currentPart)
     };
 
     render() {
-        return (<button onClick={ this.handleAddToFavsBtn }>Dodaj do ulubionych</button>)
+        return (<button onClick={ this.handleAddFavPartBtn }>Dodaj do ulubionych</button>)
     }
 
 }
 
-export default AddToFavsBtn
+export default connect(
+    state => ({
+        favParts: state.favourites.favParts
+    }),
+    { addFavPart }
+)(AddToFavsBtn)
