@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import Browser from './Browser';
 
+import { Container } from 'semantic-ui-react';
+
 class Search extends Component {
 
     render() {
         return (
-            <React.Fragment>
+            <Container>
                 <Browser />
-            </React.Fragment>
+            </Container>
         )
     }
 }

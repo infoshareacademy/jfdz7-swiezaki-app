@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 
 import PartsList from './PartsList';
 import { fetchParts } from "../../state/parts";
-import { toggleFilter, userInputFilter } from "../../state/filters";
+import { toggleFilter, toggleSelect, userInputFilter } from "../../state/filters";
+
+import { Input, Radio, Label, Icon } from 'semantic-ui-react';
 
 class Browser extends Component {
 
@@ -19,27 +21,48 @@ class Browser extends Component {
                 { this.props.error && <p>{ this.props.error.message }</p> }
                 { this.props.isFetching && <p>Pobieram dane...</p> }
 
-                    <input type="radio" name="vehicle" value="osobowe"
-                    onChange={this.props.toggleFilter}
+                <Radio toggle
+                    label='osobowe'
+                    name='vehicle'
+                    value='osobowe'
                     checked={this.props.vehicle === 'osobowe'}
-                    />osobowe
-
-                    <input type="radio" name="vehicle" value="ciężarowe"
                     onChange={this.props.toggleFilter}
+                    style={{"padding": "0 10px 10px 0"}}
+                />
+                <Radio toggle
+                    label='ciężarowe'
+                    name='vehicle'
+                    value='ciężarowe'
                     checked={this.props.vehicle === 'ciężarowe'}
-                    />ciężarowe
-
-                    <input type="radio" name="category" value="nowe"
                     onChange={this.props.toggleFilter}
-                    checked={this.props.category === 'nowe'}
-                    />nowe
-
-                    <input type="radio" name="category" value="używane"
-                    onChange={this.props.toggleFilter}
-                    checked={this.props.category === 'używane'}
-                    />używane
+                    style={{"padding": "0 10px 10px 0"}}
+                />
+                <Radio toggle
+                       label='nowe'
+                       name='category'
+                       value='nowe'
+                       checked={this.props.category === 'nowe'}
+                       onChange={this.props.toggleFilter}
+                       style={{"padding": "0 10px 10px 0"}}
+                />
+                <Radio toggle
+                       label='używane'
+                       name='category'
+                       value='używane'
+                       checked={this.props.category === 'używane'}
+                       onChange={this.props.toggleFilter}
+                       style={{"padding": "0 10px 10px 0"}}
+                />
                     &nbsp;
-                    { this.props.parts && !this.props.isFetching && <select name="brand" onChange={this.props.toggleFilter}>
+                { this.props.parts && !this.props.isFetching
+                && <select name="brand" onChange={this.props.toggleSelect}
+                style={{
+                    "border": "1px solid #C2C2C2",
+                    "background": "white",
+                    "font-family": "Verdana, sans-serif",
+                    "border-radius": "7%",
+                    "padding": "3px"
+                }}>
                     <option value=''>Wszystkie marki</option>
                     {
                         [...(new Set(this.props.parts.map(({brand}) => brand)))].map((category, idx) =>
@@ -49,15 +72,15 @@ class Browser extends Component {
                             </option>
                         )
                     }
-                    </select> }
+                </select> }
                     <br/>
-                    <input type="text" size="40" placeholder="Wprowadź nazwę części, np. hamulec" onChange={this.props.userInputFilter} />
+                    <Input icon='search' iconPosition='left' size='large' style={{"width": "100%"}} placeholder="Wprowadź nazwę części, np. hamulec" onChange={this.props.userInputFilter} />
                     <br/>
 
                     { this.props.partsCounter > 0 ?
-                        <div>Lista części spełniających podane kryteria &darr; ({this.props.partsCounter})</div>
+                        <Label style={{"marginTop": "10px"}}><Icon name='announcement' /> Liczba znalezionych części: {this.props.partsCounter}</Label>
                         :
-                        <div>Brak części spełniającej podane kryteria :/</div>
+                        <Label style={{"marginTop": "10px"}}><Icon name='warning' /> Brak części spełniającej podane kryteria wyszukiwania.</Label>
                     }
 
                     {this.props.parts && this.props.parts.map((part, idx) =>
@@ -94,4 +117,4 @@ export default connect(state => ({
     userInput: state.filters.userInput,
     showEmptyMessage: state.filters.showEmptyMessage,
     partsCounter: state.filters.partsCounter
-    }), { fetchParts, toggleFilter, userInputFilter })(Browser)
+    }), { fetchParts, toggleFilter, toggleSelect, userInputFilter })(Browser)

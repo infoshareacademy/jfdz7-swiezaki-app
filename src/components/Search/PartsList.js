@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { incrementPartsCounter } from '../../state/filters';
 
+import { Image, List } from 'semantic-ui-react';
+
 class PartsList extends Component {
 
     componentDidMount() {
@@ -30,13 +32,24 @@ class PartsList extends Component {
         return (
 
             <React.Fragment>
-                <ul>
-                    <li>
-                        <Link to={`/${ id }`}><img src={ image } alt='car part' style={{"width": "50px"}} /><strong>{ name }</strong> | { date } | { price }</Link>
-                        <br/>
-                        <button onClick={ this.handleAddToFavsBtn }>Dodaj do ulubionych</button>
-                    </li>
-                </ul>
+                <List selection verticalAlign='middle' size='large'>
+
+                    <List.Item>
+                        <Image avatar src={ image } />
+                        <List.Content>
+                            <List.Header>
+                              <Link to={`/products/${ id }`}>
+                                { name }
+                              </Link>
+                            </List.Header>
+                            <List.Description>
+                                rok produkcji: { date } | cena: <strong>{ price }</strong>
+                                <button onClick={ this.handleAddToFavsBtn }>Dodaj do ulubionych</button>
+                            </List.Description>
+                        </List.Content>
+                    </List.Item>
+
+                </List>
             </React.Fragment>
         );
     }
