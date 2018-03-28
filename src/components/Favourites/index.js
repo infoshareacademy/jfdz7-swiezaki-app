@@ -8,41 +8,14 @@ import FavsMessage from './FavsMessage';
 
 class Favourites extends Component {
 
-    state = {
-        favParts: []
-    };
-
-    componentWillMount() {
-
-        let favPartsFromStorage;
-
-        !localStorage.getItem("carPartsBrowserFavParts") ?
-            favPartsFromStorage = []
-            :
-            favPartsFromStorage = JSON.parse(localStorage.getItem("carPartsBrowserFavParts"));
-        /* This check is necessary to prevent an error caused by trying to get data from null
-            (in case user didn't add anything to favourites yet)*/
-
-        this.setState({
-            favParts: favPartsFromStorage
-        })
-
-    };
-
-    removeFavPart = favPartId => {
-        this.setState({
-            favParts: this.state.favParts.filter(favPart => favPart.id !== favPartId)
-        });
-    };
-
     render() {
 
         return (
             <Container>
                 <FavsHeader/>
                 <Divider/>
-                <FavsMessage favParts={this.state.favParts}/>
-                <FavsList favParts={this.state.favParts} removeFavPart={this.removeFavPart}/>
+
+                <FavsList/>
                 <Divider/>
                 <Link to={`/search`}>
                     <Button primary size="huge">

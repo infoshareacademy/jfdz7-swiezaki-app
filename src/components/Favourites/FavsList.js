@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Grid, Image, Card, Icon, Button } from 'semantic-ui-react'
+import { Grid, Image, Card, Icon, Button } from 'semantic-ui-react';
+import { connect } from 'react-redux'
+
+import { removeFavPart } from "../../state/favourites";
 
 
 class FavsList extends Component {
@@ -62,4 +65,9 @@ class FavsList extends Component {
     }
 }
 
-export default FavsList
+export default connect(
+    state => ({
+        favParts: state.favourites.favParts
+    }),
+    { removeFavPart }
+)(FavsList)
