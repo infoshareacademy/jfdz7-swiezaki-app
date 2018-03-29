@@ -4,8 +4,13 @@ import { Grid, Image, Card, Icon, Button } from 'semantic-ui-react';
 import { connect } from 'react-redux'
 
 import { removeFavPart } from "../../state/favourites";
+import { fetchParts } from "../../state/parts";
 
 class FavsList extends Component {
+
+    componentDidMount() {
+        this.props.fetchParts();
+    };
 
     handleRemove = event => {
         const favPartID = event.target.dataset.favpartId;
@@ -17,57 +22,68 @@ class FavsList extends Component {
         const favPartsIDs = this.props.favPartsIDs;
         const parts = this.props.parts;
 
-        return (
-            <Grid>
-                {
-                    favPartsIDs.map(favPartID =>
-                    <Grid.Column
-                        key={favPartID}
-                        mobile={16} tablet={8} computer={4} largeScreen={3} widescreen={3}>
-                        <Card centered>
-                                <Link to={ `/search/${ favPartID }`}>
-                                    <Image src={ parts[favPartID].image } />
-                                </Link>
-                            <Card.Content>
-                                    <Card.Header>
-                                        { parts[favPartID].name }
-                                    </Card.Header>
-                                    <Card.Meta>
+            return (
+                <React.Fragment>
 
-                                    </Card.Meta>
-                                <Card.Description>
-                                    <p>
-                                        <strong>Rodzaj: </strong>
-                                        { parts[favPartID].vehicle }
-                                    </p>
-                                    <p>
-                                        <strong>Rok produkcji: </strong>
-                                        { parts[favPartID].date }
-                                    </p>
-                                </Card.Description>
-                            </Card.Content>
-                            <Card.Content extra>
-                                <Button
-                                    color="red"
-                                    data-favpart-id={ favPartID }
-                                    onClick={ this.handleRemove }>
-                                    <Icon name="remove circle" />
-                                        Usuń z ulubionych
-                                </Button>
-                            </Card.Content>
-                        </Card>
-                    </Grid.Column>
-                    )
-                }
-            </Grid>
-        )
-    }
+                    { this.props.error && <p>{ this.props.error.message }</p> }
+                    { this.props.isFetching && <p>Pobieram dane...</p> }
+
+                    { this.props.parts && !this.props.isFetching &&
+                <Grid>
+                    {
+                        favPartsIDs.map(favPartID =>
+                            <Grid.Column
+                                key={favPartID}
+                                mobile={16} tablet={8} computer={4} largeScreen={3} widescreen={3}>
+                                <Card centered>
+                                    <Link to={`/search/${ favPartID }`}>
+                                        <Image src={parts[favPartID].image}/>
+                                    </Link>
+                                    <Card.Content>
+                                        <Card.Header>
+                                            {parts[favPartID].name}
+                                        </Card.Header>
+                                        <Card.Meta>
+
+                                        </Card.Meta>
+                                        <Card.Description>
+                                            <p>
+                                                <strong>Rodzaj: </strong>
+                                                {parts[favPartID].vehicle}
+                                            </p>
+                                            <p>
+                                                <strong>Rok produkcji: </strong>
+                                                {parts[favPartID].date}
+                                            </p>
+                                        </Card.Description>
+                                    </Card.Content>
+                                    <Card.Content extra>
+                                        <Button
+                                            color="red"
+                                            data-favpart-id={favPartID}
+                                            onClick={this.handleRemove}>
+                                            <Icon name="remove circle"/>
+                                            Usuń z ulubionych
+                                        </Button>
+                                    </Card.Content>
+                                </Card>
+                            </Grid.Column>
+                        )
+                    }
+                </Grid>
+                        }
+
+                </React.Fragment>
+            )
+        }
 }
 
 export default connect(
     state => ({
         favPartsIDs: state.favourites.favPartsIDs,
-        parts: state.parts.data
+        parts: state.parts.data,
+        isFetching: state.parts.isFetching,
+        error: state.parts.error
     }),
-    { removeFavPart }
+    { removeFavPart, fetchParts }
 )(FavsList)
