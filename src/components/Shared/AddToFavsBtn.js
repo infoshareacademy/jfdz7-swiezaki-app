@@ -4,28 +4,70 @@ import { Button, Icon, Popup } from 'semantic-ui-react';
 
 import { addFavPart } from "../../state/favourites";
 
+const initialState = {
+    color: 'red',
+    messsage: 'Dodaj tę część do ulubionych.'
+};
+
 class AddToFavsBtn extends Component {
+
+    state = {
+        color: '',
+        messsage: ''
+    };
 
     handleAddFavPartBtn = () => {
         const partID = this.props.partID;
         this.props.addFavPart(partID)
     };
 
+    componentWillMount() {
+
+        this.props.favPartsIDs.includes(this.props.partID) ?
+            this.setState({
+                color: 'grey',
+                messsage: 'Część dodana do ulubionych.'
+            })
+            :
+            this.setState({...initialState})
+
+    }
+
+    componentWillReceiveProps(nextProps) {
+
+        nextProps.favPartsIDs.includes(this.props.partID) ?
+            this.setState({
+                color: 'grey',
+                messsage: 'Część dodana do ulubionych.'
+            })
+            :
+            this.setState({...initialState})
+
+    }
+
     render() {
+
+        const color = this.state.color;
+        const message = this.state.messsage;
+
         return (
+            <React.Fragment>
+
             <Popup
-                content='Dodaj tę część do ulubionych.'
+                content={message}
                 on='hover'
                 trigger={
                     <Button
                         icon
-                        color='red'
+                        color={color}
                         size='mini'
                         onClick={ this.handleAddFavPartBtn }>
                         <Icon name='heart' />
                     </Button>
                 }
                 />
+
+            </React.Fragment>
         )
     }
 
@@ -33,7 +75,7 @@ class AddToFavsBtn extends Component {
 
 export default connect(
     state => ({
-        favPartsIDs: state.favourites.favPartsIDs
+        favPartsIDs: state.favourites.favPartsIDs,
     }),
     { addFavPart }
 )(AddToFavsBtn)

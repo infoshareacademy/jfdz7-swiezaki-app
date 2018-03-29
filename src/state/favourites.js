@@ -14,7 +14,7 @@ export const removeFavPart = favPartID => ({
 const initialState = {
     favPartsIDs: JSON.parse((
         localStorage.getItem('carPartsBrowserFavParts') || '[]'
-    ))
+    )),
 };
 
 export default (state = initialState, action = {}) => {
