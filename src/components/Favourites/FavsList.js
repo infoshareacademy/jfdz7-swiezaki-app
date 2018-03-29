@@ -34,7 +34,7 @@ class FavsList extends Component {
                     { this.props.isFetching && <p>Pobieram dane...</p> }
 
                     { this.props.parts && !this.props.isFetching &&
-                <Grid className="favGrid">
+                <Grid centered className="favGrid">
                     {
                         favPartsIDs.map(favPartID =>
                             <Grid.Column
