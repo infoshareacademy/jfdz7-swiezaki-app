@@ -8,13 +8,18 @@ import { fetchParts } from "../../state/parts";
 
 class FavsList extends Component {
 
-    componentDidMount() {
-        this.props.fetchParts();
-    };
-
     handleRemove = event => {
         const favPartID = event.target.dataset.favpartId;
         this.props.removeFavPart(favPartID);
+    };
+
+    shortenName = name => {
+        const maxNameLength = 38;
+        return name.length > maxNameLength ? `${ name.slice(0, maxNameLength - 3) }...` : name
+    };
+
+    componentDidMount() {
+        this.props.fetchParts();
     };
 
     render() {
@@ -37,11 +42,11 @@ class FavsList extends Component {
                                 mobile={16} tablet={8} computer={4} largeScreen={3} widescreen={3}>
                                 <Card centered>
                                     <Link to={`/search/${ favPartID }`}>
-                                        <Image src={parts[favPartID].image}/>
+                                        <Image src={ parts[favPartID].image }/>
                                     </Link>
                                     <Card.Content>
                                         <Card.Header>
-                                            {parts[favPartID].name}
+                                            { this.shortenName(parts[favPartID].name) }
                                         </Card.Header>
                                         <Card.Meta>
                                             {parts[favPartID].vehicle}
