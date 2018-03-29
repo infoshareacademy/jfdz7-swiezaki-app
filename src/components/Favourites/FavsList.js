@@ -44,12 +44,13 @@ class FavsList extends Component {
                                             {parts[favPartID].name}
                                         </Card.Header>
                                         <Card.Meta>
-
+                                            {parts[favPartID].vehicle}
                                         </Card.Meta>
                                         <Card.Description>
                                             <p>
-                                                <strong>Rodzaj: </strong>
-                                                {parts[favPartID].vehicle}
+                                                <strong>Cena: </strong>
+                                                {parts[favPartID].price}
+                                                &nbsp;PLN
                                             </p>
                                             <p>
                                                 <strong>Rok produkcji: </strong>
