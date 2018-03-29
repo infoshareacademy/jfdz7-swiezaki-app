@@ -44,7 +44,7 @@ class FavsList extends Component {
                                     <Link to={`/search/${ favPartID }`}>
                                         <Image src={ parts[favPartID].image }/>
                                     </Link>
-                                    <Card.Content>
+                                    <Card.Content className="favDetailsBox">
                                         <Card.Header>
                                             { this.shortenName(parts[favPartID].name) }
                                         </Card.Header>
