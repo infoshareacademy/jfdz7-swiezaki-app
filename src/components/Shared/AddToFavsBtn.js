@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button, Icon } from 'semantic-ui-react';
+import { Button, Icon, Popup } from 'semantic-ui-react';
 
 import { addFavPart } from "../../state/favourites";
 
@@ -13,12 +13,19 @@ class AddToFavsBtn extends Component {
 
     render() {
         return (
-            <Button
-                icon
-                color='red'
-                onClick={ this.handleAddFavPartBtn }>
-                <Icon name='heart' />
-        </Button>
+            <Popup
+                content='Dodaj tę część do ulubionych.'
+                on='hover'
+                trigger={
+                    <Button
+                        icon
+                        color='red'
+                        size='mini'
+                        onClick={ this.handleAddFavPartBtn }>
+                        <Icon name='heart' />
+                    </Button>
+                }
+                />
         )
     }
 
