@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Button, Icon } from 'semantic-ui-react';
 
 import { addFavPart } from "../../state/favourites";
 
@@ -11,7 +12,14 @@ class AddToFavsBtn extends Component {
     };
 
     render() {
-        return (<button onClick={ this.handleAddFavPartBtn }>Dodaj do ulubionych</button>)
+        return (
+            <Button
+                icon
+                color='red'
+                onClick={ this.handleAddFavPartBtn }>
+                <Icon name='heart' />
+        </Button>
+        )
     }
 
 }
