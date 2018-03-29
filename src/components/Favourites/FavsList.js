@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Grid, Image, Card, Icon, Button } from 'semantic-ui-react';
+import { Grid, Image, Card, Icon, Button, Transition } from 'semantic-ui-react';
 import { connect } from 'react-redux'
 
 import { removeFavPart } from "../../state/favourites";
@@ -34,9 +34,16 @@ class FavsList extends Component {
                     { this.props.isFetching && <p>Pobieram dane...</p> }
 
                     { this.props.parts && !this.props.isFetching &&
-                <Grid centered className="favGrid">
-                    {
-                        favPartsIDs.map(favPartID =>
+
+                    <Transition.Group
+                        as={Grid}
+                        duration={500}
+                        animation="scale"
+                        centered
+                        className="favGrid"
+                    >
+
+                    {favPartsIDs.map(favPartID =>
                             <Grid.Column
                                 key={favPartID}
                                 mobile={16} tablet={8} computer={4} largeScreen={3} widescreen={3}>
@@ -74,14 +81,14 @@ class FavsList extends Component {
                                     </Card.Content>
                                 </Card>
                             </Grid.Column>
-                        )
-                    }
-                </Grid>
+                        )}
+
+                    </Transition.Group>
+
                         }
 
                 </React.Fragment>
-            )
-        }
+            )}
 }
 
 export default connect(
