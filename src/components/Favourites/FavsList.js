@@ -14,7 +14,7 @@ class FavsList extends Component {
     };
 
     shortenName = name => {
-        const maxNameLength = 38;
+        const maxNameLength = 40;
         return name.length > maxNameLength ? `${ name.slice(0, maxNameLength - 3) }...` : name
     };
 
@@ -34,13 +34,13 @@ class FavsList extends Component {
                     { this.props.isFetching && <p>Pobieram dane...</p> }
 
                     { this.props.parts && !this.props.isFetching &&
-                <Grid>
+                <Grid className="favGrid">
                     {
                         favPartsIDs.map(favPartID =>
                             <Grid.Column
                                 key={favPartID}
                                 mobile={16} tablet={8} computer={4} largeScreen={3} widescreen={3}>
-                                <Card centered>
+                                <Card centered className="favBox">
                                     <Link to={`/search/${ favPartID }`}>
                                         <Image src={ parts[favPartID].image }/>
                                     </Link>
