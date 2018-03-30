@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 
 import { removeFavPart } from "../../state/favourites";
 import { fetchParts } from "../../state/parts";
+import Product from "../Product";
 
 class FavsList extends Component {
 
@@ -48,9 +49,7 @@ class FavsList extends Component {
                                 key={favPartID}
                                 mobile={16} tablet={8} computer={4} largeScreen={3} widescreen={3}>
                                 <Card centered className="favBox">
-                                    <Link to={`/search/${ favPartID }`}>
-                                        <Image src={ parts[favPartID].image }/>
-                                    </Link>
+                                    <Product ID={favPartID}/>
                                     <Card.Content className="favDetailsBox">
                                         <Card.Header>
                                             { this.shortenName(parts[favPartID].name) }

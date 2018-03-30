@@ -14,7 +14,7 @@ class Product extends Component {
 
     render() {
 
-        const displayedPartID = this.props.match.params.id;
+        const displayedPartID = this.props.ID;
         const displayedPart = this.props.parts[displayedPartID];
 
         const {
@@ -42,7 +42,7 @@ class Product extends Component {
         return (
 
             <Modal
-                open={true}
+                trigger={<Image src={image} style={{'cursor': 'pointer'}}/>}
                 style={{'marginTop': '0 !important',
                     'marginLeft': 'auto',
                     'marginRight': 'auto',
