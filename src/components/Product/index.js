@@ -6,7 +6,7 @@ If you're going to import this component, please note:
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Image, Modal, List } from 'semantic-ui-react';
+import { Image, Modal, List, Label, Divider } from 'semantic-ui-react';
 
 import AddToFavsBtn from '../Shared/AddToFavsBtn';
 
@@ -58,6 +58,12 @@ class Product extends Component {
                 {/* These styles are temporary - Modal positioning requires Media Queries
                 to work correctly, so I will put this in a separate stylesheet later. */}
 
+                <Label color='red' ribbon>
+                    {vehicle.toUpperCase()}
+                    &nbsp; / &nbsp;
+                    {category.toUpperCase()}
+                    </Label>
+
                 <Modal.Header>
                     {name}
                     <div style={{'float': 'right'}}>
@@ -70,7 +76,6 @@ class Product extends Component {
                     <Modal.Description>
 
                         <List celled >
-                            <List.Item>{vehicle}&nbsp;{category}</List.Item>
                             <List.Item>Marka: &nbsp;{brand}</List.Item>
                             <List.Item>Producent: &nbsp;{producer}</List.Item>
                             <List.Item>Rodzaj: {type}&nbsp;{kind}</List.Item>
