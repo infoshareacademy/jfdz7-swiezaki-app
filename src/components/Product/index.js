@@ -47,7 +47,13 @@ class Product extends Component {
             >
                 {/* These styles are temporary */}
 
-                <Modal.Header>{name}</Modal.Header>
+                <Modal.Header>
+                    {name}
+                    <div style={{'float': 'right'}}>
+                        <AddToFavsBtn partID={ id }/>
+                    </div>
+                </Modal.Header>
+
                 <Modal.Content image scrolling>
                     <Image size='big' src={image} wrapped/>
                     <Modal.Description>
@@ -71,6 +77,7 @@ class Product extends Component {
 
                     </Modal.Description>
                 </Modal.Content>
+
             </Modal>
         );
     }
