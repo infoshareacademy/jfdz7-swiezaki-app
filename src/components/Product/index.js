@@ -43,7 +43,11 @@ class Product extends Component {
 
             <Modal
                 open={true}
-                style={{'marginTop': '0', 'position': 'relative', 'top': '20vh', 'left': '20vh'}}
+                style={{'marginTop': '0 !important',
+                    'marginLeft': 'auto',
+                    'marginRight': 'auto',
+                    'position': 'relative',
+                    'top': '20vh'}}
             >
                 {/* These styles are temporary */}
 
