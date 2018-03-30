@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Image, Modal, List } from 'semantic-ui-react';
 
 import AddToFavsBtn from '../Shared/AddToFavsBtn';
 
@@ -39,24 +40,33 @@ class Product extends Component {
         } = displayedPart;
 
         return (
-            <React.Fragment>
-                <p>{name}</p>
-                <p>{vehicle}&nbsp;{category}</p>
-                <p>Marka: &nbsp;{brand}</p>
-                <p>Producent: &nbsp;{producer}</p>
-                <p>Rodzaj: {type}&nbsp;{kind}</p>
-                <p>Ilość: &nbsp;{quantity}</p>
-                <p>Kod producenta:&nbsp;{producerCode}</p>
-                <p>Kod EAN:&nbsp;{EanCode}</p>
-                <p>Rok produkcji:&nbsp;{date}</p>
-                <p>Stan:&nbsp;{condition}</p>
-                <p>Kupisz w:&nbsp;{shop}{shopUrl}</p>
-                <p>Telefon do sprzedawcy:&nbsp;{phone}</p>
-                <p>Cena netto:&nbsp;{price}&nbsp;PLN</p>
-                <p>Cena brutto:&nbsp;{this.getBrutto(price)}&nbsp;PLN</p>
-                <p>Opis:&nbsp;{description}</p>
-                <img src={image} alt={name}/>
-            </React.Fragment>
+
+            <Modal open={true} style={{'marginTop': '0'}}>
+                <Modal.Header>{name}</Modal.Header>
+                <Modal.Content image scrolling>
+                    <Image size='big' src={image} wrapped/>
+                    <Modal.Description>
+
+                        <List celled >
+                            <List.Item>{vehicle}&nbsp;{category}</List.Item>
+                            <List.Item>Marka: &nbsp;{brand}</List.Item>
+                            <List.Item>Producent: &nbsp;{producer}</List.Item>
+                            <List.Item>Rodzaj: {type}&nbsp;{kind}</List.Item>
+                            <List.Item>Ilość: &nbsp;{quantity}</List.Item>
+                            <List.Item>Kod producenta:&nbsp;{producerCode}</List.Item>
+                            <List.Item>Kod EAN:&nbsp;{EanCode}</List.Item>
+                            <List.Item>Rok produkcji:&nbsp;{date}</List.Item>
+                            <List.Item>Stan:&nbsp;{condition}</List.Item>
+                            <List.Item>Kupisz w:&nbsp;{shop}&nbsp;{shopUrl}</List.Item>
+                            <List.Item>Telefon do sprzedawcy:&nbsp;{phone}</List.Item>
+                            <List.Item>Cena netto:&nbsp;{price}&nbsp;PLN</List.Item>
+                            <List.Item>Cena brutto:&nbsp;{this.getBrutto(price)}&nbsp;PLN</List.Item>
+                            <List.Item>{description}</List.Item>
+                        </List>
+
+                    </Modal.Description>
+                </Modal.Content>
+            </Modal>
         );
     }
 }
