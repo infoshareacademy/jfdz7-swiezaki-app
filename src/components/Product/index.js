@@ -1,3 +1,9 @@
+/*
+If you're going to import this component, please note:
+1) It will render as current product's photo. Clicking this photo will trigger modal to open.
+2) It requires current product's ID passed inside props (as "ID").
+ */
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Image, Modal, List } from 'semantic-ui-react';
@@ -49,7 +55,8 @@ class Product extends Component {
                     'position': 'relative',
                     'top': '20vh'}}
             >
-                {/* These styles are temporary */}
+                {/* These styles are temporary - Modal positioning requires Media Queries
+                to work correctly, so I will put this in a separate stylesheet later. */}
 
                 <Modal.Header>
                     {name}
