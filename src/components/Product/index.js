@@ -5,6 +5,12 @@ import AddToFavsBtn from '../Shared/AddToFavsBtn';
 
 class Product extends Component {
 
+    getBrutto = (netto) => {
+        const nettoParsed = parseFloat(netto);
+        const VAT = (23/100) * nettoParsed;
+        return (nettoParsed + VAT).toFixed(2);
+    };
+
     render() {
 
         const displayedPartID = this.props.match.params.id;
@@ -46,7 +52,8 @@ class Product extends Component {
                 <p>Stan:&nbsp;{condition}</p>
                 <p>Kupisz w:&nbsp;{shop}{shopUrl}</p>
                 <p>Telefon do sprzedawcy:&nbsp;{phone}</p>
-                <p>Cena brutto:&nbsp;{price}</p>
+                <p>Cena netto:&nbsp;{price}&nbsp;PLN</p>
+                <p>Cena brutto:&nbsp;{this.getBrutto(price)}&nbsp;PLN</p>
                 <p>Opis:&nbsp;{description}</p>
                 <img src={image} alt={name}/>
             </React.Fragment>
