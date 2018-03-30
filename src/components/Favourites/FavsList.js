@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { Grid, Image, Card, Icon, Button, Transition } from 'semantic-ui-react';
+import { Grid, Card, Icon, Button, Transition } from 'semantic-ui-react';
 import { connect } from 'react-redux'
 
 import { removeFavPart } from "../../state/favourites";

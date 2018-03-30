@@ -4,7 +4,6 @@ import { Route, withRouter } from 'react-router-dom'
 import Header from './Shared/Header'
 import Search from './Search'
 import Footer from './Shared/Footer'
-import Product from './Product'
 import Favourites from './Favourites'
 
 class App extends Component {
