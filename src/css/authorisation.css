@@ -1,0 +1,17 @@
+
+
+body {
+    background-image: url("../components/Authorisation/Background/counter-background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh
+}
+
+
+.col-centered {
+    background-color: white;
+    border-radius: 5px;
+    position: relative;
+    top: 25vh;
+    padding-top: 10px !important;
+}
