@@ -18,7 +18,7 @@ class Auth extends Component {
     render() {
         return this.props.user === null ? (
 
-            <Grid container columns={3} centered={4} className='col-centered'>
+            <Grid container columns={1} centered={4} className='col-centered'>
                 <Header as="h2" textAlign='center'>
                     <Header.Content>
                     Wyszukiwarka części samochodowych

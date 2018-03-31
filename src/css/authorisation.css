@@ -4,7 +4,9 @@ body {
     background-image: url("../components/Authorisation/Background/counter-background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh
+    height: 100vh;
+    padding-left: 15%;
+    padding-right: 15%;
 }
 
 
@@ -14,4 +16,19 @@ body {
     position: relative;
     top: 25vh;
     padding-top: 10px !important;
+    max-width: 450px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+    body {
+        padding-left: 25%;
+        padding-right: 25%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    body {
+        padding-left: 30%;
+        padding-right: 30%;
+    }
 }
