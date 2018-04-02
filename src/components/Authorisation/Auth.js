@@ -4,6 +4,8 @@ import { Button, Header, Divider, Grid, Icon, Tab } from 'semantic-ui-react';
 
 import SignUpForm from './SignUpForm'
 import SignInForm from './SignInForm'
+import {authWithFacebook} from '../../state/auth';
+
 
 import '../../css/authorisation.css'
 
@@ -23,12 +25,15 @@ class Auth extends Component {
                     <Header.Content>
                     Wyszukiwarka części samochodowych
                 </Header.Content>
+                    <Header.Subheader>
+                        Pomożemy Ci znaleźć każdą część do Twojego samochodu
+                    </Header.Subheader>
                 </Header>
                 <Grid.Row className='row-centered'>
                 <Grid.Column>
                     <Tab panes={panes} defaultActiveIndex={0} />
                     <Divider horizontal>lub</Divider>
-                    <Button fluid color='facebook'>
+                    <Button fluid color='facebook' onClick={this.props.authWithFacebook}>
                         <Icon name='facebook' /> Kontynuuj z Facebook
                     </Button>
 
@@ -41,4 +46,4 @@ class Auth extends Component {
 
 export default connect(state => ({
     user: state.auth.user
-}))(Auth)
+}), { authWithFacebook })(Auth)
