@@ -1,10 +1,10 @@
 
-
+/*TODO obraz ma się wyświetlać tylko na pierwszym ekranie*/
 body {
-    background-image: url("../components/Authorisation/Background/counter-background.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh;
+    /*background-image: url("../components/Authorisation/Background/background.jpg");*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: cover;*/
+    /*height: 100vh;*/
     padding-left: 15%;
     padding-right: 15%;
 }
@@ -16,7 +16,7 @@ body {
     position: relative;
     top: 25vh;
     padding-top: 10px !important;
-    max-width: 450px;
+    max-width: 450px !important;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1200px) {
