@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Tab, Grid, Divider, Button, Icon } from 'semantic-ui-react';
+import { Button, Header, Divider, Grid, Icon, Tab } from 'semantic-ui-react';
 
 import SignUpForm from './SignUpForm'
 import SignInForm from './SignInForm'
+import {authWithFacebook} from '../../state/auth';
+
+
+import '../../css/authorisation.css'
+
 
 const panes= [
     { menuItem: 'Logowanie', render: () => <Tab.Pane><SignInForm /></Tab.Pane>},
@@ -14,14 +19,26 @@ const panes= [
 class Auth extends Component {
     render() {
         return this.props.user === null ? (
-            <Grid centered columns={4}>
+
+            <Grid container columns={1} centered={4} className='col-centered'>
+                <Header as="h2" textAlign='center'>
+                    <Header.Content>
+                    Wyszukiwarka części samochodowych
+                </Header.Content>
+                    <Header.Subheader>
+                        Pomożemy Ci znaleźć każdą część do Twojego samochodu
+                    </Header.Subheader>
+                </Header>
+                <Grid.Row className='row-centered'>
                 <Grid.Column>
                     <Tab panes={panes} defaultActiveIndex={0} />
                     <Divider horizontal>lub</Divider>
-                    <Button fluid color='facebook'>
+                    <Button fluid color='facebook' onClick={this.props.authWithFacebook}>
                         <Icon name='facebook' /> Kontynuuj z Facebook
                     </Button>
+
                 </Grid.Column>
+                </Grid.Row>
             </Grid>
         ) : ( this.props.children )
     }
@@ -29,4 +46,4 @@ class Auth extends Component {
 
 export default connect(state => ({
     user: state.auth.user
-}))(Auth)
+}), { authWithFacebook })(Auth)
