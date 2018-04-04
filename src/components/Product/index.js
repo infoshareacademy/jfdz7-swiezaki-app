@@ -66,13 +66,19 @@ class Product extends Component {
                     {name}
                     <div className="modalTopRightButtons">
                         <AddToFavsBtn partID={ id }/>
-                        <Button
-                            icon
-                            size="mini"
-                            color="red"
-                            onClick={ this.handleCloseBtn }>
-                            <Icon name="close" />
-                        </Button>
+                        <Popup
+                            content="Zamknij okno"
+                            on='hover'
+                            trigger={
+                                <Button
+                                    icon
+                                    size="mini"
+                                    color="red"
+                                    onClick={this.handleCloseBtn}>
+                                    <Icon name="close"/>
+                                </Button>
+                            }
+                        />
                     </div>
                 </Modal.Header>
 
