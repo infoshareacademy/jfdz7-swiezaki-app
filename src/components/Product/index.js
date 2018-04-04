@@ -83,30 +83,38 @@ class Product extends Component {
                 </Modal.Header>
 
                 <Modal.Content image scrolling>
-                    <Image size="big" src={image} wrapped/>
-                    <Modal.Description>
+                    <Image src={image} size="big" wrapped />
+
+                    <Modal.Description className="modalDescription">
 
                         <List>
-                            <List.Item>Pasuje do auta:&nbsp;{brand}</List.Item>
-                            <List.Item>Producent: &nbsp;{producer}</List.Item>
+
                             <List.Item>Rodzaj: {type}&nbsp;{kind}</List.Item>
                             <List.Item>Ilość: &nbsp;{quantity}</List.Item>
+                            <List.Item>Producent: &nbsp;{producer}</List.Item>
+                            <List.Item>Pasuje do auta:&nbsp;{brand}</List.Item>
                             <Divider/>
+
                             <List.Item>Kod producenta:&nbsp;{producerCode}</List.Item>
                             <List.Item>Kod EAN:&nbsp;{EanCode}</List.Item>
                             <Divider/>
+
                             <List.Item>Rok produkcji:&nbsp;{date}</List.Item>
                             { category !== "nowe" && <List.Item>Stan:&nbsp;{condition}</List.Item> }
                             { category === "nowe" && <List.Item>Kupisz w:&nbsp;<a href={shopUrl} target="_blank">{shop}</a></List.Item> }
                             { category !== "nowe" && <List.Item>Telefon do sprzedawcy:&nbsp;{phone}</List.Item> }
                             <Divider/>
+
                             <List.Item>Cena netto:&nbsp;{price}&nbsp;PLN</List.Item>
                             <List.Item>Cena brutto:&nbsp;{this.getBrutto(price)}&nbsp;PLN</List.Item>
                             <Divider/>
+
                             <List.Item>{description}</List.Item>
+
                         </List>
 
                     </Modal.Description>
+
                 </Modal.Content>
 
             </Modal>
