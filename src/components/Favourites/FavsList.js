@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import { removeFavPart } from "../../state/favourites";
 import { fetchParts } from "../../state/parts";
 import { openModal } from "../../state/product";
-
 import Product from "../Product";
 
 class FavsList extends Component {
@@ -54,12 +53,21 @@ class FavsList extends Component {
                             <Grid.Column
                                 key={favPartID}
                                 mobile={16} tablet={8} computer={4} largeScreen={3} widescreen={3}>
+
+                                <Product ID={favPartID}/>
+                                
                                 <Card centered className="favBox">
-                                    <Image src={parts[favPartID].image}/>
+                                    <Image
+                                        src={parts[favPartID].image}
+                                        data-favpart-id={favPartID}
+                                        onClick={this.handleModalVisibility}
+                                        className="favsListActiveElements"
+                                    />
                                     <Card.Content className="favDetailsBox">
                                         <Card.Header
                                             data-favpart-id={favPartID}
                                             onClick={this.handleModalVisibility}
+                                            className="favsListActiveElements"
                                         >
                                             { this.shortenName(parts[favPartID].name) }
                                         </Card.Header>
