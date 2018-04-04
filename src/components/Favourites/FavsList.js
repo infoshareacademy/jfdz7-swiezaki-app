@@ -48,7 +48,10 @@ class FavsList extends Component {
                                 key={favPartID}
                                 mobile={16} tablet={8} computer={4} largeScreen={3} widescreen={3}>
                                 <Card centered className="favBox">
-                                    <Product ID={favPartID}/>
+                                    <Product
+                                        ID={favPartID}
+                                        isAvatar={false}
+                                    />
                                     <Card.Content className="favDetailsBox">
                                         <Card.Header>
                                             { this.shortenName(parts[favPartID].name) }

@@ -2,6 +2,8 @@
 If you're going to import this component, please note:
 1) It will render as current product's photo. Clicking this photo will trigger modal to open.
 2) It requires current product's ID passed inside props (as "ID").
+3) If you want to render product's photo as an avatar (small image), you need to pass "true" to "isAvatar" props value
+(see PartsList.js for reference).
  */
 
 import React, { Component } from 'react';
@@ -48,7 +50,9 @@ class Product extends Component {
         return (
 
             <Modal
-                trigger={<Image src={image} style={{'cursor': 'pointer'}}/>}
+                trigger={<Image src={image}
+                                avatar={this.props.isAvatar}
+                                style={{'cursor': 'pointer'}}/>}
                 style={{'marginTop': '0 !important',
                     'marginLeft': 'auto',
                     'marginRight': 'auto',
