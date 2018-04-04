@@ -1,10 +1,10 @@
 
-/*TODO obraz ma się wyświetlać tylko na pierwszym ekranie*/
-body {
-    /*background-image: url("../components/Authorisation/Background/background.jpg");*/
-    /*background-repeat: no-repeat;*/
-    /*background-size: cover;*/
-    /*height: 100vh;*/
+
+ .auth-container{
+    background-image: url("../components/Authorisation/Background/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
     padding-left: 15%;
     padding-right: 15%;
 }
@@ -14,20 +14,20 @@ body {
     background-color: white;
     border-radius: 5px;
     position: relative;
-    top: 25vh;
+    top: 15vh;
     padding-top: 10px !important;
     max-width: 450px !important;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1200px) {
-    body {
+    .auth-container {
         padding-left: 25%;
         padding-right: 25%;
     }
 }
 
 @media screen and (min-width: 1200px) {
-    body {
+    .auth-container {
         padding-left: 30%;
         padding-right: 30%;
     }
