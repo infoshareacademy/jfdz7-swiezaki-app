@@ -14,7 +14,7 @@ const fetchSuccess = data => ({
 const fetchFail = error => ({
     type: FETCH__FAIL,
     error
-});
+})
 
 export const fetchParts = () => dispatch => {
     dispatch(fetchBegin());
