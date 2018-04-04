@@ -14,7 +14,7 @@ If you're going to import this component, please note:
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Image, Modal, List, Label, Divider, Button, Icon } from 'semantic-ui-react';
+import { Image, Modal, List, Label, Divider, Button, Icon, TransitionablePortal } from 'semantic-ui-react';
 
 import { closeModal } from "../../state/product";
 
@@ -61,14 +61,20 @@ class Product extends Component {
 
         return (
 
+            <TransitionablePortal
+            open={this.props.currentlyOpenedModal === id}
+            transition={{animation: 'drop', duration: 800}}
+            >
+
             <Modal
-                open={this.props.currentlyOpenedModal === id}
+                open={true}
 
                 style={{'marginTop': '0 !important',
                     'marginLeft': 'auto',
                     'marginRight': 'auto',
                     'position': 'relative',
-                    'top': '20vh'}}
+                    'top': '20vh',
+                }}
             >
                 {/* These styles are temporary - Modal positioning requires Media Queries
                 to work correctly, so I will put this in a separate stylesheet later. */}
@@ -122,6 +128,8 @@ class Product extends Component {
                 </Modal.Content>
 
             </Modal>
+
+            </TransitionablePortal>
         );
     }
 }
@@ -129,7 +137,6 @@ class Product extends Component {
 export default connect(
     state => ({
         parts: state.parts.data,
-        favPartsIDs: state.favourites.favPartsIDs,
         currentlyOpenedModal: state.product.currentlyOpenedModal
     }),
     { closeModal }

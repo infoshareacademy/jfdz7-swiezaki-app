@@ -16,7 +16,6 @@ class FavsList extends Component {
     };
 
     handleModalVisibility = event => {
-        console.log(event.target.dataset.favpartId);
         const partID = event.target.dataset.favpartId;
         this.props.openModal(partID)
     };
