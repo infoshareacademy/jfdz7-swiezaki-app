@@ -33,7 +33,7 @@ class PartsList extends Component {
                               </Link>
                             </List.Header>
                             <List.Description>
-                                rok produkcji: { date } | cena: <strong>{ price }</strong>
+                                rok produkcji: { date } | cena: <strong>{ price.replace('.',',') }</strong> PLN
                                 <AddToFavsBtn partID={ id }/>
                             </List.Description>
                         </List.Content>
