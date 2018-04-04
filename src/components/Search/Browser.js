@@ -116,5 +116,5 @@ export default connect(state => ({
     brand: state.filters.brand,
     userInput: state.filters.userInput,
     showEmptyMessage: state.filters.showEmptyMessage,
-    partsCounter: state.filters.partsCounter
+    partsCounter: state.counter.partsCounter
     }), { fetchParts, toggleFilter, toggleSelect, userInputFilter })(Browser)
