@@ -56,7 +56,7 @@ class Product extends Component {
         return (
 
             <Modal
-                open={false}
+                open={this.props.currentlyOpenedModal === id}
 
                 style={{'marginTop': '0 !important',
                     'marginLeft': 'auto',
@@ -115,6 +115,7 @@ class Product extends Component {
 export default connect(
     state => ({
         parts: state.parts.data,
-        favPartsIDs: state.favourites.favPartsIDs
+        favPartsIDs: state.favourites.favPartsIDs,
+        currentlyOpenedModal: state.product.currentlyOpenedModal
     })
 )(Product);
