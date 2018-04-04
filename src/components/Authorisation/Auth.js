@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Button, Header, Divider, Grid, Icon, Tab } from 'semantic-ui-react';
+import { Button, Container, Header, Divider, Grid, Icon, Tab } from 'semantic-ui-react';
 
 import SignUpForm from './SignUpForm'
 import SignInForm from './SignInForm'
@@ -19,7 +19,7 @@ const panes= [
 class Auth extends Component {
     render() {
         return this.props.user === null ? (
-
+            <Container fluid className='auth-container'>
             <Grid container columns={1} centered={4} className='col-centered'>
                 <Header as="h2" textAlign='center'>
                     <Header.Content>
@@ -40,6 +40,7 @@ class Auth extends Component {
                 </Grid.Column>
                 </Grid.Row>
             </Grid>
+            </Container>
         ) : ( this.props.children )
     }
 }
