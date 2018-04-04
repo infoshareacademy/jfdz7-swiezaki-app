@@ -11,6 +11,7 @@ class PartsList extends Component {
 
     componentDidMount() {
         this.props.incrementPartsCounter();
+        console.log('increment');
     }
 
     render() {

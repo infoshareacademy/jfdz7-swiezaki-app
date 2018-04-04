@@ -59,8 +59,8 @@ class Browser extends Component {
                 style={{
                     "border": "1px solid #C2C2C2",
                     "background": "white",
-                    "font-family": "Verdana, sans-serif",
-                    "border-radius": "7%",
+                    "fontFamily": "Verdana, sans-serif",
+                    "borderRadius": "7%",
                     "padding": "3px"
                 }}>
                     <option value=''>Wszystkie marki</option>
