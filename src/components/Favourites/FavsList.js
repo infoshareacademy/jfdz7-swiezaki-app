@@ -15,7 +15,7 @@ class FavsList extends Component {
         this.props.removeFavPart(favPartID);
     };
 
-    handleOpenModal = event => {
+    handleModalVisibility = event => {
         console.log(event.target.dataset.favpartId);
         const partID = event.target.dataset.favpartId;
         this.props.openModal(partID)
@@ -63,7 +63,7 @@ class FavsList extends Component {
                                     <Card.Content className="favDetailsBox">
                                         <Card.Header
                                             data-favpart-id={favPartID}
-                                            onClick={this.handleOpenModal}
+                                            onClick={this.handleModalVisibility}
                                         >
                                             { this.shortenName(parts[favPartID].name) }
                                         </Card.Header>

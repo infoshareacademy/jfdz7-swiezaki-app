@@ -14,11 +14,17 @@ If you're going to import this component, please note:
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Image, Modal, List, Label, Divider } from 'semantic-ui-react';
+import { Image, Modal, List, Label, Divider, Button, Icon } from 'semantic-ui-react';
+
+import { closeModal } from "../../state/product";
 
 import AddToFavsBtn from '../Shared/AddToFavsBtn';
 
 class Product extends Component {
+
+    handleCloseBtn = () => {
+        this.props.closeModal()
+    };
 
     getBrutto = (netto) => {
         const nettoParsed = parseFloat(netto);
@@ -102,6 +108,14 @@ class Product extends Component {
                             <List.Item>Cena brutto:&nbsp;{this.getBrutto(price)}&nbsp;PLN</List.Item>
                             <Divider/>
                             <List.Item>{description}</List.Item>
+                            <List.Item>
+                                <Button
+                                icon
+                                color='red'
+                                size='mini'
+                                onClick={ this.handleCloseBtn }>
+                                    <Icon name='window close' />
+                            </Button></List.Item>
                         </List>
 
                     </Modal.Description>
@@ -117,5 +131,6 @@ export default connect(
         parts: state.parts.data,
         favPartsIDs: state.favourites.favPartsIDs,
         currentlyOpenedModal: state.product.currentlyOpenedModal
-    })
+    }),
+    { closeModal }
 )(Product);
