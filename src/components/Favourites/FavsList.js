@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 
 import { removeFavPart } from "../../state/favourites";
 import { fetchParts } from "../../state/parts";
+import { openModal } from "../../state/product";
+
 import Product from "../Product";
 
 class FavsList extends Component {
@@ -11,6 +13,12 @@ class FavsList extends Component {
     handleRemove = event => {
         const favPartID = event.target.dataset.favpartId;
         this.props.removeFavPart(favPartID);
+    };
+
+    handleOpenModal = event => {
+        console.log(event.target.dataset.favpartId);
+        const partID = event.target.dataset.favpartId;
+        this.props.openModal(partID)
     };
 
     shortenName = name => {
@@ -53,7 +61,10 @@ class FavsList extends Component {
                                         isAvatar={false}
                                     />
                                     <Card.Content className="favDetailsBox">
-                                        <Card.Header>
+                                        <Card.Header
+                                            data-favpart-id={favPartID}
+                                            onClick={this.handleOpenModal}
+                                        >
                                             { this.shortenName(parts[favPartID].name) }
                                         </Card.Header>
                                         <Card.Meta>
@@ -99,5 +110,5 @@ export default connect(
         isFetching: state.parts.isFetching,
         error: state.parts.error
     }),
-    { removeFavPart, fetchParts }
+    { removeFavPart, fetchParts, openModal }
 )(FavsList)

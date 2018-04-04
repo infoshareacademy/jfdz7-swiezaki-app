@@ -6,6 +6,12 @@ If you're going to import this component, please note:
 (see PartsList.js for reference).
  */
 
+/*
+                trigger={<Image src={image}
+                                avatar={this.props.isAvatar}
+                                style={{'cursor': 'pointer'}}/>}
+ */
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Image, Modal, List, Label, Divider } from 'semantic-ui-react';
@@ -50,9 +56,8 @@ class Product extends Component {
         return (
 
             <Modal
-                trigger={<Image src={image}
-                                avatar={this.props.isAvatar}
-                                style={{'cursor': 'pointer'}}/>}
+                open={false}
+
                 style={{'marginTop': '0 !important',
                     'marginLeft': 'auto',
                     'marginRight': 'auto',
