@@ -2,12 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { incrementPartsCounter, decrementPartsCounter } from '../../state/counter';
-
 import { Image, List } from 'semantic-ui-react';
-
 import AddToFavsBtn from '../Shared/AddToFavsBtn';
 
-        this.props.decrementPartsCounter();
 class PartsList extends Component {
 
     componentDidMount() {
