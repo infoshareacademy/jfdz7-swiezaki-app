@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Card, Icon, Button, Transition } from 'semantic-ui-react';
+import { Grid, Card, Icon, Button, Transition, Image } from 'semantic-ui-react';
 import { connect } from 'react-redux'
 
 import { removeFavPart } from "../../state/favourites";
@@ -55,10 +55,7 @@ class FavsList extends Component {
                                 key={favPartID}
                                 mobile={16} tablet={8} computer={4} largeScreen={3} widescreen={3}>
                                 <Card centered className="favBox">
-                                    <Product
-                                        ID={favPartID}
-                                        isAvatar={false}
-                                    />
+                                    <Image src={parts[favPartID].image}/>
                                     <Card.Content className="favDetailsBox">
                                         <Card.Header
                                             data-favpart-id={favPartID}

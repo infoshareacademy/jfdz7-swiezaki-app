@@ -1,23 +1,8 @@
-/*
-If you're going to import this component, please note:
-1) It will render as current product's photo. Clicking this photo will trigger modal to open.
-2) It requires current product's ID passed inside props (as "ID").
-3) If you want to render product's photo as an avatar (small image), you need to pass "true" to "isAvatar" props value
-(see PartsList.js for reference).
- */
-
-/*
-                trigger={<Image src={image}
-                                avatar={this.props.isAvatar}
-                                style={{'cursor': 'pointer'}}/>}
- */
-
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Image, Modal, List, Label, Divider, Button, Icon, TransitionablePortal } from 'semantic-ui-react';
 
 import { closeModal } from "../../state/product";
-
 import AddToFavsBtn from '../Shared/AddToFavsBtn';
 
 class Product extends Component {
@@ -76,8 +61,6 @@ class Product extends Component {
                     'top': '20vh',
                 }}
             >
-                {/* These styles are temporary - Modal positioning requires Media Queries
-                to work correctly, so I will put this in a separate stylesheet later. */}
 
                 <Label color='red' ribbon>
                     {vehicle.toUpperCase()}
