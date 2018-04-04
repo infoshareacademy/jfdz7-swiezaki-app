@@ -32,28 +32,17 @@ export default (state = initialState, action = {}) => {
             return {
                 ...state,
                 [action.name]: action.value,
-                showEmptyMessage: true,
-                partsCounter: 0
             };
         case TOGGLE_SELECT:
             return {
                 ...state,
                 [action.name]: action.value,
-                showEmptyMessage: true,
-                partsCounter: 0 // TODO: check why the counter updates before toggle
-            };
+             };
         case USER_INPUT_FILTER:
             return {
                 ...state,
                 userInput: action.value.toLowerCase(),
-                showEmptyMessage: true,
-                partsCounter: 0
-            };
-        case INCREMENT_PARTS_COUNTER:
-            return {
-                ...state,
-                partsCounter: state.partsCounter + 1
-            };
+             };
         default:
             return state
     }
