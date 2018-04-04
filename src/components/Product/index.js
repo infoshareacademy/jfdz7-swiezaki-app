@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Image, Modal, List, Label, Divider, Button, Icon, TransitionablePortal } from 'semantic-ui-react';
+import { Image, Modal, List, Label, Divider, Button, Icon, Popup, TransitionablePortal } from 'semantic-ui-react';
 
 import { closeModal } from "../../state/product";
 import AddToFavsBtn from '../Shared/AddToFavsBtn';
@@ -48,7 +48,7 @@ class Product extends Component {
 
             <TransitionablePortal
             open={this.props.currentlyOpenedModal === id}
-            transition={{animation: 'drop', duration: 800}}
+            transition={{animation: "drop", duration: 800}}
             >
 
             <Modal
@@ -56,7 +56,7 @@ class Product extends Component {
                 className="modalCentered"
             >
 
-                <Label color='red' ribbon>
+                <Label color="red" ribbon>
                     {vehicle.toUpperCase()}
                     &nbsp; / &nbsp;
                     {category.toUpperCase()}
@@ -66,11 +66,18 @@ class Product extends Component {
                     {name}
                     <div className="modalTopRightButtons">
                         <AddToFavsBtn partID={ id }/>
+                        <Button
+                            icon
+                            size="mini"
+                            color="red"
+                            onClick={ this.handleCloseBtn }>
+                            <Icon name="close" />
+                        </Button>
                     </div>
                 </Modal.Header>
 
                 <Modal.Content image scrolling>
-                    <Image size='big' src={image} wrapped/>
+                    <Image size="big" src={image} wrapped/>
                     <Modal.Description>
 
                         <List>
@@ -91,14 +98,6 @@ class Product extends Component {
                             <List.Item>Cena brutto:&nbsp;{this.getBrutto(price)}&nbsp;PLN</List.Item>
                             <Divider/>
                             <List.Item>{description}</List.Item>
-                            <List.Item>
-                                <Button
-                                icon
-                                color='red'
-                                size='mini'
-                                onClick={ this.handleCloseBtn }>
-                                    <Icon name='window close' />
-                            </Button></List.Item>
                         </List>
 
                     </Modal.Description>
