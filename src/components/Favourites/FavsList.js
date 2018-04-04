@@ -55,7 +55,7 @@ class FavsList extends Component {
                                 mobile={16} tablet={8} computer={4} largeScreen={3} widescreen={3}>
 
                                 <Product ID={favPartID}/>
-                                
+
                                 <Card centered className="favBox">
                                     <Image
                                         src={parts[favPartID].image}

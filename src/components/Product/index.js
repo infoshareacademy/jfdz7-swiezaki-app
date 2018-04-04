@@ -53,13 +53,7 @@ class Product extends Component {
 
             <Modal
                 open={true}
-
-                style={{'marginTop': '0 !important',
-                    'marginLeft': 'auto',
-                    'marginRight': 'auto',
-                    'position': 'relative',
-                    'top': '20vh',
-                }}
+                className="modalCentered"
             >
 
                 <Label color='red' ribbon>
@@ -70,7 +64,7 @@ class Product extends Component {
 
                 <Modal.Header>
                     {name}
-                    <div style={{'float': 'right'}}>
+                    <div className="modalTopRightButtons">
                         <AddToFavsBtn partID={ id }/>
                     </div>
                 </Modal.Header>

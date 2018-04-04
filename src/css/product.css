@@ -1,0 +1,12 @@
+.modalCentered {
+    margin-top: 0 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    position: relative;
+    top: 20vh;
+}
+
+.modalTopRightButtons {
+    float: right;
+}
+
