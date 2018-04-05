@@ -25,6 +25,24 @@ class SignInForm extends Component {
         })
     };
 
+    changeErrorMessage = () => {
+        if (this.props.auth.error.code === 'auth/user-not-found') {
+            return (
+                <p>Nieznany użytkownik. Zarejestruj się</p>
+            )
+        }
+        if (this.props.auth.error.code === 'auth/wrong-password') {
+            return (
+                <p>Błędne hasło</p>
+            )
+        }
+        if (this.props.auth.error.code === 'auth/invalid-email') {
+            return (
+                <p>Błędny adres e-mail</p>
+            )
+        }
+    }
+
     renderInput(fieldName, type = 'text', placeholder) {
         return (
             <Input
@@ -40,10 +58,7 @@ class SignInForm extends Component {
     render() {
         return (
             <Form onSubmit={this.handleSubmit}>
-                {this.state.error && <p>{
-                    this.state.error.code === 'auth/invalid-email' ?
-                        'Błędny adres e-mail' : null
-                }</p>}
+                 <p style={{"color": "red"}}>{this.props.auth.error ? this.changeErrorMessage() : null }</p>
                 <Form.Field>{this.renderInput('email', 'email', 'E-mail')}</Form.Field>
                 <Form.Field>{this.renderInput('password', 'password', 'Hasło')}</Form.Field>
                 <Button fluid size='tiny' color='red'>Zaloguj</Button>
@@ -51,5 +66,12 @@ class SignInForm extends Component {
         )
     }
 }
+const mapStateToProps = state => ({
+    auth: state.auth
+})
 
-export default connect(null, { signIn })(SignInForm)
+const mapDispatchToProps = dispatch => ({
+    signIn: (email, password) => dispatch(signIn(email, password))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignInForm)
