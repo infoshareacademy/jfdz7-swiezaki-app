@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { incrementPartsCounter, decrementPartsCounter } from '../../state/counter';
 import { Image, List } from 'semantic-ui-react';
+import { openModal } from "../../state/product";
 import AddToFavsBtn from '../Shared/AddToFavsBtn';
 
 class PartsList extends Component {
@@ -14,6 +15,11 @@ class PartsList extends Component {
     componentWillUnmount () {
         this.props.decrementPartsCounter();
     }
+
+    handleModalVisibility = event => {
+        const partID = event.target.dataset.favpartId;
+        this.props.openModal(partID)
+    };
 
     render() {
 
@@ -28,9 +34,7 @@ class PartsList extends Component {
                         <Image avatar src={ image } />
                         <List.Content>
                             <List.Header>
-                              <Link to={`/products/${ id }`}>
                                 { name }
-                              </Link>
                             </List.Header>
                             <List.Description>
                                 rok produkcji: { date } | cena: <strong>{ price.replace('.',',') }</strong> PLN
@@ -45,4 +49,4 @@ class PartsList extends Component {
     }
 }
 
-export default connect(null, { incrementPartsCounter, decrementPartsCounter })(PartsList);
+export default connect(null, { incrementPartsCounter, decrementPartsCounter, openModal })(PartsList);
