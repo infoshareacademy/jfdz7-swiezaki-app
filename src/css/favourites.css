@@ -1,3 +1,7 @@
+.favsListActiveElements {
+    cursor: pointer;
+}
+
 .favGrid {
     margin-bottom: 10px !important;
 }

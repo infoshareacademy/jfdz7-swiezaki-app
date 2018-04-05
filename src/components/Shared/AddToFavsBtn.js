@@ -4,55 +4,16 @@ import { Button, Icon, Popup } from 'semantic-ui-react';
 
 import { addFavPart } from "../../state/favourites";
 
-const initialState = {
-    color: 'red',
-    messsage: 'Dodaj tę część do ulubionych.'
-};
-
 class AddToFavsBtn extends Component {
-
-    state = {
-        color: '',
-        messsage: ''
-    };
 
     handleAddFavPartBtn = () => {
         const partID = this.props.partID;
         this.props.addFavPart(partID)
     };
 
-    componentWillMount() {
-
-        this.props.favPartsIDs.includes(this.props.partID) ?
-            this.setState({
-                color: 'grey',
-                messsage: 'Część dodana do ulubionych.'
-            })
-            :
-            this.setState({...initialState})
-
-    }
-
-    componentWillReceiveProps(nextProps) {
-
-        nextProps.favPartsIDs.includes(this.props.partID) ?
-            this.setState({
-                color: 'grey',
-                messsage: 'Część dodana do ulubionych.'
-            })
-            :
-            this.setState({...initialState})
-
-    }
-
-    render() {
-
-        const color = this.state.color;
-        const message = this.state.messsage;
+    renderButton = (message, color) => {
 
         return (
-            <React.Fragment>
-
             <Popup
                 content={message}
                 on='hover'
@@ -61,14 +22,27 @@ class AddToFavsBtn extends Component {
                         icon
                         color={color}
                         size='mini'
-                        onClick={ this.handleAddFavPartBtn }>
-                        <Icon name='heart' />
+                        style={{'marginLeft': '10px'}}
+                        onClick={this.handleAddFavPartBtn}>
+                        <Icon name='heart'/>
                     </Button>
                 }
-                />
-
-            </React.Fragment>
+            />
         )
+    };
+
+    render() {
+
+        let currentMessage = 'Dodaj tę część do ulubionych.';
+        let currentColor = 'red';
+
+        if (this.props.favPartsIDs.includes(this.props.partID)) {
+            currentMessage = 'Część dodana do ulubionych.';
+            currentColor = 'grey'
+        }
+
+         return this.renderButton(currentMessage, currentColor)
+
     }
 
 }

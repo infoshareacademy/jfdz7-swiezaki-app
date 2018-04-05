@@ -5,6 +5,7 @@ import './setupFirebase';
 import auth, { setUser } from "./state/auth";
 import counter from "./state/counter";
 import favourites from './state/favourites';
+import product from './state/product';
 import filters from './state/filters';
 import parts from './state/parts';
 
@@ -15,6 +16,7 @@ const reducer = combineReducers({
     counter,
     favourites,
     filters,
+    product,
     parts
 });
 
