@@ -22,6 +22,7 @@ class AddToFavsBtn extends Component {
                         icon
                         color={color}
                         size='mini'
+                        style={{'marginLeft': '10px'}}
                         onClick={this.handleAddFavPartBtn}>
                         <Icon name='heart'/>
                     </Button>
