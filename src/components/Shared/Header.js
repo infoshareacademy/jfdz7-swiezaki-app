@@ -1,11 +1,12 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import SignOutButton from '../Authorisation/SignOutButton'
+import { Container } from 'semantic-ui-react';
+import SignOutButton from '../Authorisation/SignOutButton';
 
 class Header extends Component {
  render() {
    return (
-       <React.Fragment>
+       <Container>
 
            <SignOutButton />
            <menu>
@@ -16,13 +17,11 @@ class Header extends Component {
                 <Link to={`/favourites`}>
                     [ Ulubione ]
                 </Link>
-
            </menu>
-       </React.Fragment>
-   )
+
+       </Container>
+            )
      }
 }
-
-// Later we should add a function which will hide favsBtn if user is already in favs
 
 export default Header

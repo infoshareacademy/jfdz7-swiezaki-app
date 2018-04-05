@@ -1,12 +1,13 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Container } from 'semantic-ui-react';
 
 
 class Footer extends Component {
     render() {
         return (
-            <React.Fragment>
+            <Container>
                 <div>Copyright &copy; 2018 by Świeżaki DevTeam. All Rights Reserved.</div>
-            </React.Fragment>
+            </Container>
         )
 
     }
