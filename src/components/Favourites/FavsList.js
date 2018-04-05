@@ -21,7 +21,7 @@ class FavsList extends Component {
     };
 
     componentDidMount() {
-        this.props.fetchParts();
+        this.props.parts || this.props.fetchParts();
     };
 
     render() {
