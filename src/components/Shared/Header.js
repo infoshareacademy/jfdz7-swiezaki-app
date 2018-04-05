@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Container, Menu } from 'semantic-ui-react';
+import { Container, Menu, Label } from 'semantic-ui-react';
 import { signOut } from '../../state/auth';
 
 class Header extends Component {
@@ -31,8 +31,12 @@ class Header extends Component {
                    name='Ulubione'
                    active={activeItem === 'Ulubione'}
                    onClick={ this.handleItemClick }
-               />
+               >
+                   Ulubione (1)
+               </Menu.Item>
+
                </Link>
+
                    <Menu.Menu position='right'>
                        <Menu.Item name='Wyloguj' onClick={ this.props.signOut }/>
                    </Menu.Menu>
