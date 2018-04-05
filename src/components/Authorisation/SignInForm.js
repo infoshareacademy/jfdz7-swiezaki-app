@@ -38,7 +38,6 @@ class SignInForm extends Component {
     }
 
     render() {
-        console.log(this.state.error);
         return (
             <Form onSubmit={this.handleSubmit}>
                 {this.state.error && <p>{
