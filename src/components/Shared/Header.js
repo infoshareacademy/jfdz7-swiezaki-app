@@ -22,28 +22,23 @@ class Header extends Component {
  render() {
 
      const { activeItem } = this.state;
-     console.log(this.props.favPartsIDs);
 
    return (
        <Container>
 
            <Menu pointing style={{"margin": "10px 0"}}>
-               {/*<Link to={'/'}>*/}
                <Menu.Item
                    name='Wyszukiwarka'
                    active={ activeItem === 'Wyszukiwarka' }
                    onClick={ this.handleItemClick }
                />
-               {/*</Link>*/}
 
-               {/*<Link to={'/favourites'}>*/}
                <Menu.Item
                    link
                    name='Ulubione'
                    active={activeItem === 'Ulubione'}
                    onClick={ this.handleItemClick }
                />
-               {/*</Link>*/}
 
                    <Menu.Menu position='right'>
                        <Menu.Item name='Wyloguj' onClick={ this.props.signOut }/>
