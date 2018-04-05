@@ -1,5 +1,31 @@
+.favGrid {
+    margin-bottom: 10px !important;
+}
+
+.favBox {
+    padding: 10px !important;
+    border: 1px solid rgba(128,128,128, 0.5) !important;
+    box-shadow: 5px 10px rgba(128,128,128, 0.5) !important;
+}
+
 .returnToSearchBtn {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+
+    .favDetailsBox {
+        min-height: 142px;
+    }
+
+}
+
+@media screen and (min-width: 1200px) {
+
+    .favDetailsBox {
+        min-height: 165px;
+    }
+
 }
