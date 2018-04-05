@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
 import { Modal, Image, List, Divider } from 'semantic-ui-react';
 
-class ProductContent extends Component {
+import { getBrutto } from '../../utilityFunctions';
 
-    getBrutto = (netto) => {
-        const VATRate = 23;
-        const nettoParsed = parseFloat(netto);
-        const VAT = (VATRate/100) * nettoParsed;
-        return (nettoParsed + VAT).toFixed(2);
-    };
+class ProductContent extends Component {
 
     render() {
 
@@ -42,7 +37,7 @@ class ProductContent extends Component {
                         <Divider/>
 
                         <List.Item>Cena netto:&nbsp;{price}&nbsp;PLN</List.Item>
-                        <List.Item>Cena brutto:&nbsp;{this.getBrutto(price)}&nbsp;PLN</List.Item>
+                        <List.Item>Cena brutto:&nbsp;{getBrutto(price)}&nbsp;PLN</List.Item>
                         <Divider/>
 
                         <List.Item>{description}</List.Item>
