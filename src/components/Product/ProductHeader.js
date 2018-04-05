@@ -7,10 +7,6 @@ import { closeModal } from "../../state/product";
 
 class ProductHeader extends Component {
 
-    handleCloseBtn = () => {
-        this.props.closeModal()
-    };
-
     render() {
 
         const { id, name } = this.props.displayedPart;
@@ -28,7 +24,7 @@ class ProductHeader extends Component {
                                 icon
                                 size="mini"
                                 color="red"
-                                onClick={this.handleCloseBtn}>
+                                onClick={this.props.closeModal}>
                                 <Icon name="close"/>
                             </Button>
                         }
