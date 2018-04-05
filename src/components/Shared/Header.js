@@ -18,7 +18,6 @@ class Header extends Component {
     };
 
 
-
  render() {
 
      const { activeItem } = this.state;
@@ -26,7 +25,7 @@ class Header extends Component {
    return (
        <Container>
 
-           <Menu pointing style={{"margin": "10px 0"}}>
+           <Menu pointing inverted style={{"margin": "10px 0"}}>
 
                <Menu.Item
                    name='Wyszukiwarka'
@@ -44,7 +43,7 @@ class Header extends Component {
                </Menu.Item>
 
                    <Menu.Menu position='right'>
-                       <Menu.Item name='Wyloguj' onClick={ this.props.signOut }/>
+                       <Menu.Item name='Wyloguj' onClick={ this.props.signOut } color='red' />
                    </Menu.Menu>
            </Menu>
 
