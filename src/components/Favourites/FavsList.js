@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { Grid, Card, Icon, Button, Transition } from 'semantic-ui-react';
+import { Grid, Card, Icon, Button, Transition, Image } from 'semantic-ui-react';
 import { connect } from 'react-redux'
 
 import { removeFavPart } from "../../state/favourites";
 import { fetchParts } from "../../state/parts";
+import { openModal } from "../../state/product";
+import { shortenName } from "../../utilityFunctions";
 import Product from "../Product";
 
 class FavsList extends Component {
@@ -13,13 +15,13 @@ class FavsList extends Component {
         this.props.removeFavPart(favPartID);
     };
 
-    shortenName = name => {
-        const maxNameLength = 40;
-        return name.length > maxNameLength ? `${ name.slice(0, maxNameLength - 3) }...` : name
+    handleModalVisibility = event => {
+        const partID = event.target.dataset.favpartId;
+        this.props.openModal(partID)
     };
 
     componentDidMount() {
-        this.props.fetchParts();
+        this.props.parts || this.props.fetchParts();
     };
 
     render() {
@@ -47,11 +49,23 @@ class FavsList extends Component {
                             <Grid.Column
                                 key={favPartID}
                                 mobile={16} tablet={8} computer={4} largeScreen={3} widescreen={3}>
+
+                                <Product ID={favPartID}/>
+
                                 <Card centered className="favBox">
-                                    <Product ID={favPartID}/>
+                                    <Image
+                                        src={parts[favPartID].image}
+                                        data-favpart-id={favPartID}
+                                        onClick={this.handleModalVisibility}
+                                        className="favsListActiveElements"
+                                    />
                                     <Card.Content className="favDetailsBox">
-                                        <Card.Header>
-                                            { this.shortenName(parts[favPartID].name) }
+                                        <Card.Header
+                                            data-favpart-id={favPartID}
+                                            onClick={this.handleModalVisibility}
+                                            className="favsListActiveElements"
+                                        >
+                                            { shortenName(parts[favPartID].name, 40) }
                                         </Card.Header>
                                         <Card.Meta>
                                             {parts[favPartID].vehicle}
@@ -96,5 +110,5 @@ export default connect(
         isFetching: state.parts.isFetching,
         error: state.parts.error
     }),
-    { removeFavPart, fetchParts }
+    { removeFavPart, fetchParts, openModal }
 )(FavsList)

@@ -6,13 +6,15 @@ import auth, { setUser } from "./state/auth";
 import parts from './state/parts';
 import filters from './state/filters';
 import favourites from './state/favourites';
+import product from './state/product';
 
 
 const reducer = combineReducers({
     auth,
     parts,
     filters,
-    favourites
+    favourites,
+    product
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

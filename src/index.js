@@ -8,6 +8,7 @@ import registerServiceWorker from './registerServiceWorker';
 import 'semantic-ui-css/semantic.min.css';
 
 import './css/favourites.css';
+import './css/product.css';
 
 import Auth from '../src/components/Authorisation/Auth'
 import App from './components/App';

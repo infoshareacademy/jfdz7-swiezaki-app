@@ -1,0 +1,29 @@
+.modalCentered {
+    margin-top: 5vh !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.modalTopRightButtons {
+    float: right;
+}
+
+.modalDescription {
+    max-width: 1000px !important;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+
+    .modalCentered {
+        margin-top: 10vh !important;
+    }
+
+}
+
+@media screen and (min-width: 1200px) {
+
+    .modalCentered {
+        margin-top: 15vh !important;
+    }
+
+}
