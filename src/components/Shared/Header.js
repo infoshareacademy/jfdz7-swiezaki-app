@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { Container, Menu } from 'semantic-ui-react';
-import SignOutButton from '../Authorisation/SignOutButton';
+import { signOut } from '../../state/auth';
 
 class Header extends Component {
 
-    state = { activeItem: 'Wyszukiwarka' }
+    state = { activeItem: 'Wyszukiwarka' };
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
@@ -33,25 +34,13 @@ class Header extends Component {
                />
                </Link>
                    <Menu.Menu position='right'>
-                       <Menu.Item name='Wyloguj' />
+                       <Menu.Item name='Wyloguj' onClick={ this.props.signOut }/>
                    </Menu.Menu>
            </Menu>
-
-           {/*<SignOutButton />*/}
-               {/*/!*<Link to={`/`}>*!/*/}
-                    {/*<Button onClick={ () => { document.location.href = "/"; }}>*/}
-                   {/*Wyszukiwarka*/}
-                    {/*</Button>*/}
-               {/*/!*</Link>*!/*/}
-                {/*<Button>*/}
-                {/*<Link to={`/favourites`}>*/}
-                    {/*Ulubione*/}
-                {/*</Link>*/}
-                {/*</Button>*/}
 
        </Container>
             )
      }
 }
 
-export default Header
+export default connect(null, { signOut })(Header)
