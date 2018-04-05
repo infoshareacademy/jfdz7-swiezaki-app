@@ -26,22 +26,18 @@ class SignInForm extends Component {
     };
 
     changeErrorMessage = () => {
+        let message = "";
         if (this.props.auth.error.code === 'auth/user-not-found') {
-            return (
-                <p>Nieznany użytkownik. Zarejestruj się</p>
-            )
+           message =  "Nieznany użytkownik. Zarejestruj się";
         }
-        if (this.props.auth.error.code === 'auth/wrong-password') {
-            return (
-                <p>Błędne hasło</p>
-            )
+        else if (this.props.auth.error.code === 'auth/wrong-password') {
+            message = "Błędne hasło";
         }
-        if (this.props.auth.error.code === 'auth/invalid-email') {
-            return (
-                <p>Błędny adres e-mail</p>
-            )
+        else if (this.props.auth.error.code === 'auth/invalid-email') {
+            message = "Błędny adres e-mail";
         }
-    }
+        return message;
+    };
 
     renderInput(fieldName, type = 'text', placeholder) {
         return (
