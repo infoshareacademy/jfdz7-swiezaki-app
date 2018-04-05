@@ -1,41 +1,49 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router'
 import { connect } from 'react-redux';
-import { Container, Menu, Label } from 'semantic-ui-react';
+import { Container, Menu } from 'semantic-ui-react';
 import { signOut } from '../../state/auth';
 
 class Header extends Component {
 
     state = { activeItem: 'Wyszukiwarka' };
 
-    handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+    handleItemClick = (e, { name }) => {
+
+        this.setState({ activeItem: name });
+
+        name === 'Ulubione' ?
+            this.props.history.push('/favourites') :
+            this.props.history.push('/')
+    };
+
+
 
  render() {
 
      const { activeItem } = this.state;
+     console.log(this.props.favPartsIDs);
 
    return (
        <Container>
 
            <Menu pointing style={{"margin": "10px 0"}}>
-               <Link to={'/'}>
+               {/*<Link to={'/'}>*/}
                <Menu.Item
                    name='Wyszukiwarka'
-                   active={activeItem === 'Wyszukiwarka'}
+                   active={ activeItem === 'Wyszukiwarka' }
                    onClick={ this.handleItemClick }
                />
-               </Link>
+               {/*</Link>*/}
 
-               <Link to={'/favourites'}>
+               {/*<Link to={'/favourites'}>*/}
                <Menu.Item
+                   link
                    name='Ulubione'
                    active={activeItem === 'Ulubione'}
                    onClick={ this.handleItemClick }
-               >
-                   Ulubione (1)
-               </Menu.Item>
-
-               </Link>
+               />
+               {/*</Link>*/}
 
                    <Menu.Menu position='right'>
                        <Menu.Item name='Wyloguj' onClick={ this.props.signOut }/>
@@ -47,4 +55,6 @@ class Header extends Component {
      }
 }
 
-export default connect(null, { signOut })(Header)
+export default withRouter(connect(state => ({
+    favPartsIDs: state.favourites.favPartsIDs,
+}), { signOut })(Header));
