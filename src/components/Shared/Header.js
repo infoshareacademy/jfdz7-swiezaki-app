@@ -27,6 +27,7 @@ class Header extends Component {
        <Container>
 
            <Menu pointing style={{"margin": "10px 0"}}>
+
                <Menu.Item
                    name='Wyszukiwarka'
                    active={ activeItem === 'Wyszukiwarka' }
@@ -38,7 +39,9 @@ class Header extends Component {
                    name='Ulubione'
                    active={activeItem === 'Ulubione'}
                    onClick={ this.handleItemClick }
-               />
+               >
+                   Ulubione ({ this.props.favPartsIDs.length })
+               </Menu.Item>
 
                    <Menu.Menu position='right'>
                        <Menu.Item name='Wyloguj' onClick={ this.props.signOut }/>
