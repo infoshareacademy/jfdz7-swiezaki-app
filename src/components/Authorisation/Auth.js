@@ -20,7 +20,7 @@ class Auth extends Component {
     render() {
         return this.props.user === null ? (
             <Container fluid className='auth-container'>
-            <Grid container columns={1} centered={4} className='col-centered'>
+            <Grid container columns={1} centered className='col-centered'>
                 <Header as="h2" textAlign='center'>
                     <Header.Content>
                     Wyszukiwarka części samochodowych
