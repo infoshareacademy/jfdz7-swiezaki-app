@@ -31,6 +31,7 @@ class AddToFavsBtn extends Component {
     };
 
     render() {
+
         let currentMessage = 'Dodaj tę część do ulubionych.';
         let currentColor = 'red';
 
