@@ -43,7 +43,7 @@ class Header extends Component {
                </Menu.Item>
 
                    <Menu.Menu position='right'>
-                       <Menu.Item name='Wyloguj' onClick={ this.props.signOut } color='red' />
+                       <Menu.Item name='Wyloguj' onClick={ this.props.signOut } />
                    </Menu.Menu>
            </Menu>
 
