@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { removeFavPart } from "../../state/favourites";
 import { fetchParts } from "../../state/parts";
 import { openModal } from "../../state/product";
+import { shortenName } from "../../utilityFunctions";
 import Product from "../Product";
 
 class FavsList extends Component {
@@ -17,11 +18,6 @@ class FavsList extends Component {
     handleModalVisibility = event => {
         const partID = event.target.dataset.favpartId;
         this.props.openModal(partID)
-    };
-
-    shortenName = name => {
-        const maxNameLength = 40;
-        return name.length > maxNameLength ? `${ name.slice(0, maxNameLength - 3) }...` : name
     };
 
     componentDidMount() {
@@ -69,7 +65,7 @@ class FavsList extends Component {
                                             onClick={this.handleModalVisibility}
                                             className="favsListActiveElements"
                                         >
-                                            { this.shortenName(parts[favPartID].name) }
+                                            { shortenName(parts[favPartID].name, 40) }
                                         </Card.Header>
                                         <Card.Meta>
                                             {parts[favPartID].vehicle}
