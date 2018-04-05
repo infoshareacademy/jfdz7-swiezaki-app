@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { incrementPartsCounter, decrementPartsCounter } from '../../state/counter';
 import { Image, List } from 'semantic-ui-react';
@@ -33,7 +32,10 @@ class PartsList extends Component {
                     <List.Item>
                         <Image avatar src={ image } />
                         <List.Content>
-                            <List.Header>
+                            <List.Header
+                                onClick={ this.handleModalVisibility }
+                                data-favpart-id={ id }
+                            >
                                 { name }
                             </List.Header>
                             <List.Description>
