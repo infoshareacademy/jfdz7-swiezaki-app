@@ -61,7 +61,7 @@ class Browser extends Component {
                     "background": "white",
                     "fontFamily": "Verdana, sans-serif",
                     "borderRadius": "7%",
-                    "padding": "3px"
+                    "padding": "0px 10px 0px 0px"
                 }}>
                     <option value=''>Wszystkie marki</option>
                     {
