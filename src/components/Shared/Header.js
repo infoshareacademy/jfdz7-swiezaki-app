@@ -46,7 +46,7 @@ class Header extends Component {
                        <Menu.Item name='Wyloguj' onClick={ this.props.signOut } />
                    </Menu.Menu>
            </Menu>
-
+           <p style={{"float":"right"}}>Zalogowany:{' ' + this.props.user.email}</p>
        </Container>
             )
      }
@@ -54,4 +54,5 @@ class Header extends Component {
 
 export default withRouter(connect(state => ({
     favPartsIDs: state.favourites.favPartsIDs,
+    user: state.auth.user
 }), { signOut })(Header));
