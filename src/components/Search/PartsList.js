@@ -4,6 +4,7 @@ import { incrementPartsCounter, decrementPartsCounter } from '../../state/counte
 import { Image, List } from 'semantic-ui-react';
 import { openModal } from "../../state/product";
 import AddToFavsBtn from '../Shared/AddToFavsBtn';
+import Product from "../Product";
 
 class PartsList extends Component {
 
@@ -16,8 +17,7 @@ class PartsList extends Component {
     }
 
     handleModalVisibility = event => {
-        const partID = event.target.dataset.favpartId;
-        this.props.openModal(partID)
+        this.props.openModal(event.target.dataset.partId)
     };
 
     render() {
@@ -27,18 +27,27 @@ class PartsList extends Component {
         return (
 
             <React.Fragment>
+
+                <Product ID={ id }/>
+
                 <List selection verticalAlign='middle' size='large'>
 
                     <List.Item>
-                        <Image avatar src={ image } />
+                        <Image avatar src={ image }
+                               onClick={ this.handleModalVisibility }
+                               data-part-id={ id }
+                        />
                         <List.Content>
                             <List.Header
                                 onClick={ this.handleModalVisibility }
-                                data-favpart-id={ id }
+                                data-part-id={ id }
                             >
                                 { name }
                             </List.Header>
-                            <List.Description>
+                            <List.Description
+                                onClick={ this.handleModalVisibility }
+                                data-part-id={ id }
+                            >
                                 rok produkcji: { date } | cena: <strong>{ price.replace('.',',') }</strong> PLN
                                 <AddToFavsBtn partID={ id }/>
                             </List.Description>
