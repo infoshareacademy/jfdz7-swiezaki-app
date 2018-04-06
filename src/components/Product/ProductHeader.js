@@ -23,7 +23,7 @@ class ProductHeader extends Component {
                             <Button
                                 icon
                                 size="mini"
-                                color="red"
+                                color="black"
                                 onClick={this.props.closeModal}>
                                 <Icon name="close"/>
                             </Button>
