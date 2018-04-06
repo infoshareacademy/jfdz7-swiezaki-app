@@ -16,9 +16,7 @@ class PartsList extends Component {
         this.props.decrementPartsCounter();
     }
 
-    handleModalVisibility = event => {
-        this.props.openModal(event.target.dataset.partId)
-    };
+    handleModalVisibility = event => this.props.openModal(event.target.dataset.partId);
 
     render() {
 
@@ -30,12 +28,15 @@ class PartsList extends Component {
 
                 <Product ID={ id }/>
 
-                <List selection verticalAlign='middle' size='large'>
+                <List selection verticalAlign='middle' size='big'>
 
                     <List.Item>
-                        <Image avatar src={ image }
+                        <Image
+                               size='tiny'
+                               src={ image }
                                onClick={ this.handleModalVisibility }
                                data-part-id={ id }
+                               style={{ "paddingRight": "10px" }}
                         />
                         <List.Content>
                             <List.Header
