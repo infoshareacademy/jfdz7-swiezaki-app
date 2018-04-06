@@ -17,14 +17,6 @@ class Favourites extends Component {
                 <FavsMessage/>
                 <FavsList/>
                 <Divider/>
-                <div className="returnToSearchBtn">
-                    <Link to={`/`}>
-                        <Button primary size="huge">
-                            <Icon name="reply" />
-                            Wróć do wyszukiwarki
-                        </Button>
-                    </Link>
-                </div>
             </Container>
         )
     };
