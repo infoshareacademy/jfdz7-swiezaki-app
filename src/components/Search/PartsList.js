@@ -20,7 +20,7 @@ class PartsList extends Component {
 
     render() {
 
-        const { id, name, date, price, image } = this.props;
+        const { id, name, brand, date, price, image } = this.props;
 
         return (
 
@@ -49,7 +49,9 @@ class PartsList extends Component {
                                 onClick={ this.handleModalVisibility }
                                 data-part-id={ id }
                             >
-                                rok produkcji: { date } | cena: <strong>{ price.replace('.',',') }</strong> PLN
+                                model: { brand } |
+                                rok produkcji: { date } |
+                                cena: <strong>{ price.replace('.',',') }</strong> PLN
                                 <AddToFavsBtn partID={ id }/>
                             </List.Description>
                         </List.Content>

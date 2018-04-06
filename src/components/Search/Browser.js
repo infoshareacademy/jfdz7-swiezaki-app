@@ -91,12 +91,13 @@ class Browser extends Component {
                     part.name.toLowerCase().includes(this.props.userInput) ?
 
                     <PartsList
-                    id = {part.id}
-                    name={part.name.toLowerCase()}
-                    date={part.date}
-                    price={part.price}
-                    image={part.image}
-                    key={idx}
+                    id = { part.id }
+                    name={ part.name.toLowerCase() }
+                    brand={ part.brand }
+                    date={ part.date }
+                    price={ part.price }
+                    image={ part.image }
+                    key={ idx }
                     />
                     :
                        null
