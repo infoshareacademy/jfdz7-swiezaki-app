@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { Route, withRouter } from 'react-router-dom'
+import React, { Component } from 'react';
+import { Route, withRouter } from 'react-router-dom';
 
 import Header from './Shared/Header'
 import Search from './Search'

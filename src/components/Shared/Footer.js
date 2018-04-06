@@ -1,12 +1,15 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Container, Segment } from 'semantic-ui-react';
 
 
 class Footer extends Component {
     render() {
         return (
-            <React.Fragment>
-                <div>Copyright &copy; 2018 by Świeżaki DevTeam. All Rights Reserved.</div>
-            </React.Fragment>
+            <Container>
+                <Segment inverted textAlign='center' style={{ "margin": "10px 0px" }}>
+                Copyright &copy; 2018 by Świeżaki DevTeam. All Rights Reserved.
+                </Segment>
+            </Container>
         )
 
     }

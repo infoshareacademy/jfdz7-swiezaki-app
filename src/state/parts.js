@@ -14,11 +14,11 @@ const fetchSuccess = data => ({
 const fetchFail = error => ({
     type: FETCH__FAIL,
     error
-});
+})
 
 export const fetchParts = () => dispatch => {
     dispatch(fetchBegin());
-    return fetch(`${process.env.PUBLIC_URL}/data/carParts.json`)
+    return fetch('https://myawsomeproject-82083.firebaseio.com/stuffs.json')
         .then(response => response.json())
         .then(data => dispatch(fetchSuccess(data)))
         .catch(error => dispatch(fetchFail(error)))

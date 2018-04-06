@@ -59,9 +59,9 @@ class Browser extends Component {
                 style={{
                     "border": "1px solid #C2C2C2",
                     "background": "white",
-                    "font-family": "Verdana, sans-serif",
-                    "border-radius": "7%",
-                    "padding": "3px"
+                    "fontFamily": "Verdana, sans-serif",
+                    "borderRadius": "7%",
+                    "padding": "0px 10px 0px 0px"
                 }}>
                     <option value=''>Wszystkie marki</option>
                     {
@@ -91,12 +91,13 @@ class Browser extends Component {
                     part.name.toLowerCase().includes(this.props.userInput) ?
 
                     <PartsList
-                    id = {part.id}
-                    name={part.name.toLowerCase()}
-                    date={part.date}
-                    price={part.price}
-                    image={part.image}
-                    key={idx}
+                    id = { part.id }
+                    name={ part.name.toLowerCase() }
+                    brand={ part.brand }
+                    date={ part.date }
+                    price={ part.price }
+                    image={ part.image }
+                    key={ idx }
                     />
                     :
                        null
@@ -116,5 +117,5 @@ export default connect(state => ({
     brand: state.filters.brand,
     userInput: state.filters.userInput,
     showEmptyMessage: state.filters.showEmptyMessage,
-    partsCounter: state.filters.partsCounter
+    partsCounter: state.counter.partsCounter
     }), { fetchParts, toggleFilter, toggleSelect, userInputFilter })(Browser)

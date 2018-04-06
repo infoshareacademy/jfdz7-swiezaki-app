@@ -3,18 +3,21 @@ import thunk from 'redux-thunk';
 import firebase from 'firebase';
 import './setupFirebase';
 import auth, { setUser } from "./state/auth";
-import parts from './state/parts';
-import filters from './state/filters';
+import counter from "./state/counter";
 import favourites from './state/favourites';
 import product from './state/product';
+import filters from './state/filters';
+import parts from './state/parts';
+
 
 
 const reducer = combineReducers({
     auth,
-    parts,
-    filters,
+    counter,
     favourites,
-    product
+    filters,
+    product,
+    parts
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

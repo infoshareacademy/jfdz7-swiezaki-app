@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { incrementPartsCounter } from '../../state/filters';
-
+import { incrementPartsCounter, decrementPartsCounter } from '../../state/counter';
 import { Image, List } from 'semantic-ui-react';
-
+import { openModal } from "../../state/product";
 import AddToFavsBtn from '../Shared/AddToFavsBtn';
+import Product from "../Product";
 
 class PartsList extends Component {
 
@@ -13,25 +12,46 @@ class PartsList extends Component {
         this.props.incrementPartsCounter();
     }
 
+    componentWillUnmount () {
+        this.props.decrementPartsCounter();
+    }
+
+    handleModalVisibility = event => this.props.openModal(event.target.dataset.partId);
+
     render() {
 
-        const { id, name, date, price, image } = this.props;
+        const { id, name, brand, date, price, image } = this.props;
 
         return (
 
             <React.Fragment>
-                <List selection verticalAlign='middle' size='large'>
+
+                <Product ID={ id }/>
+
+                <List selection verticalAlign='middle' size='big'>
 
                     <List.Item>
-                        <Image avatar src={ image } />
+                        <Image
+                               size='tiny'
+                               src={ image }
+                               onClick={ this.handleModalVisibility }
+                               data-part-id={ id }
+                               style={{ "paddingRight": "10px" }}
+                        />
                         <List.Content>
-                            <List.Header>
-                              <Link to={`/products/${ id }`}>
+                            <List.Header
+                                onClick={ this.handleModalVisibility }
+                                data-part-id={ id }
+                            >
                                 { name }
-                              </Link>
                             </List.Header>
-                            <List.Description>
-                                rok produkcji: { date } | cena: <strong>{ price }</strong>
+                            <List.Description
+                                onClick={ this.handleModalVisibility }
+                                data-part-id={ id }
+                            >
+                                model: { brand } |
+                                rok produkcji: { date } |
+                                cena: <strong>{ price.replace('.',',') }</strong> PLN
                                 <AddToFavsBtn partID={ id }/>
                             </List.Description>
                         </List.Content>
@@ -43,4 +63,4 @@ class PartsList extends Component {
     }
 }
 
-export default connect(null, { incrementPartsCounter })(PartsList);
+export default connect(null, { incrementPartsCounter, decrementPartsCounter, openModal })(PartsList);
