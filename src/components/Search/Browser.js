@@ -21,6 +21,7 @@ class Browser extends Component {
                 { this.props.error && <p>{ this.props.error.message }</p> }
                 { this.props.isFetching && <p>Pobieram dane...</p> }
 
+                <div style={{"float": "left"}}>
                 <Radio toggle
                     label='osobowe'
                     name='vehicle'
@@ -37,6 +38,8 @@ class Browser extends Component {
                     onChange={this.props.toggleFilter}
                     style={{"padding": "0 10px 10px 0"}}
                 />
+                </div>
+                <div style={{"float": "left"}}>
                 <Radio toggle
                        label='nowe'
                        name='category'
@@ -53,7 +56,9 @@ class Browser extends Component {
                        onChange={this.props.toggleFilter}
                        style={{"padding": "0 10px 10px 0"}}
                 />
-                    &nbsp;
+                </div>
+
+                <div style={{"float": "left"}}>
                 { this.props.parts && !this.props.isFetching
                 && <select name="brand" onChange={this.props.toggleSelect}
                 style={{
@@ -73,6 +78,7 @@ class Browser extends Component {
                         )
                     }
                 </select> }
+                </div>
                     <br/>
                     <Input icon='search' iconPosition='left' size='large' style={{"width": "100%"}} placeholder="Wprowadź nazwę części, np. hamulec" onChange={this.props.userInputFilter} />
                     <br/>
