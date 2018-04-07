@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Container, Segment } from 'semantic-ui-react';
+import '../../css/footer.css';
 
 
 class Footer extends Component {
     render() {
         return (
             <Container>
-                <Segment inverted textAlign='center' style={{ "margin": "10px 0px" }}>
+                <Segment inverted textAlign='center' className="content-margin">
                 Copyright &copy; 2018 by Świeżaki DevTeam. All Rights Reserved.
                 </Segment>
             </Container>
