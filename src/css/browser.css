@@ -1,0 +1,43 @@
+.select-section {
+
+    float: left;
+
+}
+
+.select-brand {
+
+border: 1px solid #C2C2C2;
+background: white;
+font-family: Verdana, sans-serif;
+border-radius: 7%;
+margin: 0 0 8px 0;
+padding: 2px 0 2px 0;
+
+}
+
+.select-radio-switch {
+
+    padding: 0 10px 10px 0;
+
+}
+
+.label-counter {
+
+    margin-top: 10px !important;
+
+}
+
+.icon-img {
+
+    width: 100%;
+
+}
+
+@media screen and (min-width: 685px) {
+
+    .select-brand {
+
+        margin: 0 0 8px 20px;
+
+    }
+}

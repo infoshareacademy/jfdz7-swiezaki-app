@@ -6,6 +6,7 @@ import { fetchParts } from "../../state/parts";
 import { toggleFilter, toggleSelect, userInputFilter } from "../../state/filters";
 
 import { Input, Radio, Label, Icon } from 'semantic-ui-react';
+import '../../css/browser.css';
 
 class Browser extends Component {
 
@@ -21,14 +22,14 @@ class Browser extends Component {
                 { this.props.error && <p>{ this.props.error.message }</p> }
                 { this.props.isFetching && <p>Pobieram dane...</p> }
 
-                <div style={{"float": "left"}}>
+                <div className="select-section">
                 <Radio toggle
                     label='osobowe'
                     name='vehicle'
                     value='osobowe'
                     checked={this.props.vehicle === 'osobowe'}
                     onChange={this.props.toggleFilter}
-                    style={{"padding": "0 10px 10px 0"}}
+                    className="select-radio-switch"
                 />
                 <Radio toggle
                     label='ciężarowe'
@@ -36,17 +37,17 @@ class Browser extends Component {
                     value='ciężarowe'
                     checked={this.props.vehicle === 'ciężarowe'}
                     onChange={this.props.toggleFilter}
-                    style={{"padding": "0 10px 10px 0"}}
+                    className="select-radio-switch"
                 />
                 </div>
-                <div style={{"float": "left"}}>
+                <div className="select-section">
                 <Radio toggle
                        label='nowe'
                        name='category'
                        value='nowe'
                        checked={this.props.category === 'nowe'}
                        onChange={this.props.toggleFilter}
-                       style={{"padding": "0 10px 10px 0"}}
+                       className="select-radio-switch"
                 />
                 <Radio toggle
                        label='używane'
@@ -54,20 +55,17 @@ class Browser extends Component {
                        value='używane'
                        checked={this.props.category === 'używane'}
                        onChange={this.props.toggleFilter}
-                       style={{"padding": "0 10px 10px 0"}}
+                       className="select-radio-switch"
                 />
                 </div>
 
-                <div style={{"float": "left"}}>
+                <div className="select-section">
                 { this.props.parts && !this.props.isFetching
-                && <select name="brand" onChange={this.props.toggleSelect}
-                style={{
-                    "border": "1px solid #C2C2C2",
-                    "background": "white",
-                    "fontFamily": "Verdana, sans-serif",
-                    "borderRadius": "7%",
-                    "padding": "0px 10px 0px 0px"
-                }}>
+                && <select
+                        name="brand"
+                        onChange={this.props.toggleSelect}
+                        className="select-brand"
+                >
                     <option value=''>Wszystkie marki</option>
                     {
                         [...(new Set(this.props.parts.map(({brand}) => brand)))].map((category, idx) =>
@@ -80,13 +78,13 @@ class Browser extends Component {
                 </select> }
                 </div>
                     <br/>
-                    <Input icon='search' iconPosition='left' size='large' style={{"width": "100%"}} placeholder="Wprowadź nazwę części, np. hamulec" onChange={this.props.userInputFilter} />
+                    <Input icon='search' iconPosition='left' size='large' className="icon-img" placeholder="Wprowadź nazwę części, np. hamulec" onChange={this.props.userInputFilter} />
                     <br/>
 
                     { this.props.partsCounter > 0 ?
-                        <Label style={{"marginTop": "10px"}}><Icon name='announcement' /> Liczba znalezionych części: {this.props.partsCounter}</Label>
+                        <Label className="label-counter"><Icon name='announcement' /> Liczba znalezionych części: {this.props.partsCounter}</Label>
                         :
-                        <Label style={{"marginTop": "10px"}}><Icon name='warning' /> Brak części spełniającej podane kryteria wyszukiwania.</Label>
+                        <Label className="label-counter"><Icon name='warning' /> Brak części spełniającej podane kryteria wyszukiwania.</Label>
                     }
 
                     {this.props.parts && this.props.parts.map((part, idx) =>
