@@ -7,10 +7,10 @@ Flexible, easy to operate car parts browser allowing user to search (by filters)
 
 __Functionality:__
 
-* Search - main component allowing user to filter entire car parts base according to his/her needs.
-* Product - displaying of a currently chosen product/car part. Showing detailed info.
-* Login/Register - welcome screen allows user to login or register to the application.
+* Authorisation - welcome screen allows user to login or register to the application.
 * Favourites - allows user to store his/her favourite car parts having an opportunity to get back to them later.
+* Product - displaying of a currently chosen product/car part. Showing detailed info.
+* Search - main component allowing user to filter entire car parts base according to his/her needs.
 * Shared - header and footer components shared by all the application screens.
 
 __Technology:__
