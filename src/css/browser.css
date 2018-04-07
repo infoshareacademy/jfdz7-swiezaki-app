@@ -33,6 +33,12 @@ padding: 2px 0 2px 0;
 
 }
 
+.parts-list-img {
+
+    padding-right: 10px;
+
+}
+
 @media screen and (min-width: 685px) {
 
     .select-brand {
