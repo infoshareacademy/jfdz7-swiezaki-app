@@ -24,6 +24,7 @@ class Header extends Component {
 
      const { activeItem } = this.state;
      const email  = this.props.user.email;
+     const user = email.split("@")[0];
 
    return (
        <Container>
@@ -53,7 +54,13 @@ class Header extends Component {
                        <Menu.Item name='Wyloguj' onClick={ this.props.signOut } />
                    </Menu.Menu>
            </Menu>
-           <div className="login-message">Zalogowany:{' ' + email.split("@")[0]}</div>
+           <div
+               className="login-message">Zalogowany:
+               {' '
+                    + user.charAt(0).toUpperCase()
+                    + user.substr(1)
+               }
+           </div>
        </Container>
             )
      }
