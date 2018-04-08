@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { Container, Menu } from 'semantic-ui-react';
 import { signOut } from '../../state/auth';
 
+import '../../css/header.css';
+
 class Header extends Component {
 
     state = { activeItem: 'Wyszukiwarka' };
@@ -22,11 +24,16 @@ class Header extends Component {
 
      const { activeItem } = this.state;
      const email  = this.props.user.email;
+     const user = email.split("@")[0];
 
    return (
        <Container>
 
-           <Menu pointing inverted style={{"margin": "10px 0"}}>
+           <Menu
+               pointing
+               inverted
+               className="content-margin"
+           >
 
                <Menu.Item
                    name='Wyszukiwarka'
@@ -47,7 +54,13 @@ class Header extends Component {
                        <Menu.Item name='Wyloguj' onClick={ this.props.signOut } />
                    </Menu.Menu>
            </Menu>
-           <p style={{"float":"right"}}>Zalogowany:{' ' + email.split("@")[0]}</p>
+           <div
+               className="login-message">Zalogowany:
+               {' '
+                    + user.charAt(0).toUpperCase()
+                    + user.substr(1)
+               }
+           </div>
        </Container>
             )
      }

@@ -1,0 +1,15 @@
+.content-margin {
+
+    margin: 10px 0;
+
+}
+
+.login-message {
+
+    width: 100%;
+    text-align: right;
+    border-bottom: 1px solid #C2C2C2;
+    margin: 5px 0 10px;
+    padding-right: 15px;
+
+}

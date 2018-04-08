@@ -5,6 +5,7 @@ import { Image, List } from 'semantic-ui-react';
 import { openModal } from "../../state/product";
 import AddToFavsBtn from '../Shared/AddToFavsBtn';
 import Product from "../Product";
+import '../../css/browser.css';
 
 class PartsList extends Component {
 
@@ -36,7 +37,7 @@ class PartsList extends Component {
                                src={ image }
                                onClick={ this.handleModalVisibility }
                                data-part-id={ id }
-                               style={{ "paddingRight": "10px" }}
+                               className="parts-list-img"
                         />
                         <List.Content>
                             <List.Header
