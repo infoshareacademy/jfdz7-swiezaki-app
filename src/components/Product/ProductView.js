@@ -3,13 +3,15 @@ import { connect } from 'react-redux';
 import { TransitionablePortal, Modal, Label } from 'semantic-ui-react';
 
 import ProductHeader from './ProductHeader';
-import ProductContent from './ProductContent'
+import ProductContent from './ProductContent';
+import {closeModal} from "../../state/product";
 
 class ProductView extends Component {
 
     render() {
 
         const { id, vehicle, category } = this.props.displayedPart;
+        const closeModal = this.props.closeModal;
 
         return (
 
@@ -18,7 +20,10 @@ class ProductView extends Component {
                 transition={{animation: "drop", duration: 800}}
             >
 
-                <Modal open={true} className="modalCentered">
+                <Modal open={true}
+                       closeOnDimmerClick
+                       onClose = { () => closeModal(id) }
+                       className="modalCentered">
 
                     <Label color="red" ribbon>
                         {vehicle.toUpperCase()}
@@ -39,5 +44,5 @@ class ProductView extends Component {
 export default connect(
     state => ({
         currentlyOpenedModal: state.product.currentlyOpenedModal
-    }),
+    }), {closeModal}
 )(ProductView);
